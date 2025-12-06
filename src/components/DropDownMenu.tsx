@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { MenuItem } from "./NavBar/Navbar.types";
 
 interface DropDownMenuProps extends MenuItem {
-  id: number; // уникальный идентификатор для логики открытия
+  id: number;
 }
 
 const DropDownMenu: React.FC<DropDownMenuProps> = ({
@@ -20,22 +20,15 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
   const openIndex = useSelector(selectOpenIndex);
   const isOpen = openIndex === id;
 
-  // клик по стрелке для открытия/закрытия
-  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+  const handleClick = () => {
     dispatch(setOpenIndex(isOpen ? null : id));
   };
 
-  // клик по ссылке закрывает меню
-  const handleLinkClick = () => {
-    dispatch(closeMenu());
-  };
-
   return (
-    <div className="relative flex-1">
-      {/* Верхняя кнопка с названием и стрелкой */}
+    <div className="relative group flex-1">
+      {/* Верхняя кнопка */}
       <button
-        onClick={handleToggle}
+        onClick={handleClick}
         className="
           relative 
           w-full 
@@ -49,9 +42,10 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
           transition-colors 
           duration-200 
           rounded-t-[10px]    
+          flex justify-between items-center
         "
       >
-        <Link to={to} className="block w-full" onClick={handleLinkClick}>
+        <Link to={to} className="block w-full">
           {title}
         </Link>
 
@@ -59,12 +53,8 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
           <svg
             className={`
               w-4 h-4 
-              absolute 
-              right-3 top-1/2 
-              -translate-y-1/2 
-              transition-transform 
-              duration-200 
-              ${isOpen ? "rotate-180" : ""}
+              transition-transform duration-200
+              ${isOpen ? "rotate-180" : ""} group-hover:rotate-180
             `}
             fill="none"
             stroke="currentColor"
@@ -81,14 +71,21 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
       </button>
 
       {/* Подменю */}
-      {items.length > 0 && isOpen && (
-        <div className="absolute left-0 w-full bg-[#993333]/90 backdrop-blur-md text-white rounded-b-md shadow-lg z-10">
+      {items.length > 0 && (
+        <div
+          className={`
+            absolute left-0 top-full w-full bg-[#993333]/90 backdrop-blur-md text-white rounded-b-md shadow-lg z-10
+            opacity-0 invisible group-hover:opacity-100 group-hover:visible
+            ${isOpen ? "opacity-100 visible" : ""}
+            transition-opacity duration-300
+          `}
+        >
           {items.map((subItem, idx) => (
             <Link
               key={idx}
               to={subItem.path}
               className="block px-4 py-2 hover:bg-[#d66044] transition-colors duration-200"
-              onClick={handleLinkClick}
+              onClick={() => dispatch(closeMenu())}
             >
               {subItem.label}
             </Link>
