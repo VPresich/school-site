@@ -1,40 +1,5 @@
 @import "tailwindcss";
 
-/* body {
-  margin: 0;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #f3f4f6;
-  color: #111827;
-  line-height: 1.5;
+body {
+  overflow-y: scroll;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-}
-
-a {
-  color: #1d4ed8;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #2563eb;
-}
-
-button {
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
-  background-color: #1d4ed8;
-  color: white;
-}
-
-button:hover {
-  background-color: #2563eb;
-} */

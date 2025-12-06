@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// Загружаем все jpg и png из папки slider
 const slidesImport = import.meta.glob(
   "../../assets/images/slider/*.{jpg,png}",
   { eager: true, as: "url" }
@@ -24,7 +23,7 @@ const HeadSlider: React.FC = () => {
           key={idx}
           src={slide}
           alt={`Slide ${idx + 1}`}
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-3000 ${
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
             idx === current ? "opacity-100" : "opacity-0"
           }`}
         />
