@@ -13,7 +13,7 @@ const HeadSlider: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 3000); // смена каждые 3 секунды
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -24,7 +24,7 @@ const HeadSlider: React.FC = () => {
           key={idx}
           src={slide}
           alt={`Slide ${idx + 1}`}
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-3000 ${
             idx === current ? "opacity-100" : "opacity-0"
           }`}
         />

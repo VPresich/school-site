@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { MenuItem } from "./NavBar/Navbar.types";
 
-export interface SubMenuItem {
-  label: string;
-  path: string;
-}
-
-export interface DropDownMenuProps {
-  title: string;
-  to: string;
-  items?: SubMenuItem[];
-}
-
-const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, to, items }) => {
+const DropDownMenu: React.FC<MenuItem> = ({ title, to, items }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
