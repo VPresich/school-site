@@ -3,6 +3,7 @@ import { MenuState } from "./types";
 
 const initialState: MenuState = {
   openIndex: null,
+  isSidebarOpen: false,
 };
 
 export const menuSlice = createSlice({
@@ -12,11 +13,15 @@ export const menuSlice = createSlice({
     setOpenIndex: (state, action: PayloadAction<number | null>) => {
       state.openIndex = action.payload;
     },
-    closeMenu: (state) => {
-      state.openIndex = null;
+
+    openSidebar: (state) => {
+      if (state.openIndex !== null) state.isSidebarOpen = true;
+    },
+    closeSidebar: (state) => {
+      state.isSidebarOpen = false;
     },
   },
 });
 
-export const { setOpenIndex, closeMenu } = menuSlice.actions;
+export const { setOpenIndex, openSidebar, closeSidebar } = menuSlice.actions;
 export default menuSlice.reducer;

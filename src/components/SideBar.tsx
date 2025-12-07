@@ -1,8 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../redux/store";
+import { selectActiveMenuItem } from "../redux/menu/selector";
 import { Link, useLocation } from "react-router-dom";
-import { closeMenu } from "../redux/menu/slice";
 import { MenuItem } from "./NavBar/Navbar.types";
 
 interface SidebarProps {
@@ -12,27 +12,13 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
   const location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
+  const activeMenuItem = useSelector(selectActiveMenuItem);
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    dispatch(closeMenu());
-  };
-
-  const activeMenu = menu.find(
-    (item) =>
-      location.pathname === item.to ||
-      location.pathname.startsWith(item.to + "/")
-  );
-
-  if (!activeMenu || !activeMenu.items || activeMenu.items.length === 0)
-    return null;
+  if (!activeMenuItem || !activeMenuItem.items) return null;
 
   return (
     <aside className="w-64 bg-white/80 backdrop-blur-md shadow-md p-4 flex flex-col gap-2">
-      <h2 className="text-xl font-bold text-[#993333] mb-4">
-        {activeMenu.title}
-      </h2>
-      {activeMenu.items.map((subItem, idx) => (
+      {activeMenuItem.items.map((subItem, idx) => (
         <Link
           key={idx}
           to={subItem.path}
@@ -41,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
               ? "bg-[#993333] text-white"
               : "text-[#993333]"
           }`}
-          onClick={handleClick}
+          // onClick={handleClick}
         >
           {subItem.label}
         </Link>
