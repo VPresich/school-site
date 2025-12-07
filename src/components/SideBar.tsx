@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { GiMusicalScore } from "react-icons/gi";
 import { AppDispatch } from "../redux/store";
 import { selectActiveMenuItem } from "../redux/menu/selector";
 import { Link, useLocation } from "react-router-dom";

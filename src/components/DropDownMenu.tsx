@@ -1,7 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { GiMusicSpell } from "react-icons/gi";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { setOpenIndex } from "../redux/menu/slice";
+import { selectOpenIndex } from "../redux/menu/selector";
 import { Link } from "react-router-dom";
 import { MenuItem } from "./NavBar/Navbar.types";
 
@@ -16,6 +18,8 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
   items = [],
 }) => {
   const dispatch = useDispatch<AppDispatch>();
+  const openIndex = useSelector(selectOpenIndex);
+  const isActive = openIndex === id;
 
   const handleClick = () => {
     dispatch(setOpenIndex(id));
@@ -27,12 +31,18 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
         to={to}
         onClick={handleClick}
         className="
-          relative w-full py-2 pl-4 pr-8 block
+          relative w-full py-2 pl-8 pr-8 block
           font-medium text-white bg-[#993333]
           hover:bg-[#d66044] transition-colors
           rounded-t-[10px]
         "
       >
+        <GiMusicSpell
+          className={`absolute left-2 top-1/2 -translate-y-1/2 text-white text-xl transition-all duration-300
+          ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"}
+         `}
+        />
+
         {title}
       </Link>
 
