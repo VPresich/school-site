@@ -1,10 +1,16 @@
-import React, { ReactNode } from "react";
-import { useSelector, UseSelector } from "react-redux";
-import { selectActiveMenuItem } from "../redux/menu/selector";
-import HeadSlider from "./HeadSlider/HeadSlider";
-import Sidebar from "./SideBar";
-import { menu } from "./NavBar/MenuData";
-import Navbar from "./NavBar/Navbar";
+import React, { ReactNode, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppDispatch } from '../redux/store';
+import { fetchArchive } from '../redux/archive/operation';
+import { selectActiveMenuItem } from '../redux/menu/selector';
+import HeadSlider from './HeadSlider/HeadSlider';
+import {
+  successNotify,
+  errNotify,
+} from '../auxiliary/notification/notification';
+import Sidebar from './SideBar';
+import { menu } from './NavBar/MenuData';
+import Navbar from './NavBar/Navbar';
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,6 +18,22 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const activeMenuItem = useSelector(selectActiveMenuItem);
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    const initApp = async () => {
+      try {
+        const archiveList = await dispatch(fetchArchive()).unwrap();
+        console.log('ARCHIVE: ', archiveList);
+        successNotify('Success loading ARCHIVE');
+      } catch {
+        errNotify('Error loading ARCHIVE');
+      }
+    };
+
+    initApp();
+  }, [dispatch]);
+
   return (
     <div className="min-h-screen flex flex-col gap-4">
       <div className="w-full py-4 text-center text-3xl font-bold text-[#993333] bg-white/0">

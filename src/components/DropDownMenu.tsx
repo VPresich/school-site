@@ -1,11 +1,11 @@
-import React from "react";
-import { GiMusicSpell } from "react-icons/gi";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../redux/store";
-import { setOpenIndex } from "../redux/menu/slice";
-import { selectOpenIndex } from "../redux/menu/selector";
-import { Link } from "react-router-dom";
-import { MenuItem } from "./NavBar/Navbar.types";
+import React from 'react';
+import { GiMusicSpell } from 'react-icons/gi';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../redux/store';
+import { setOpenIndex } from '../redux/menu/slice';
+import { selectOpenIndex } from '../redux/menu/selector';
+import { Link } from 'react-router-dom';
+import { MenuItem } from './NavBar/Navbar.types';
 
 interface DropDownMenuProps extends MenuItem {
   id: number;
@@ -39,7 +39,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
       >
         <GiMusicSpell
           className={`absolute left-2 top-1/2 -translate-y-1/2 text-white text-xl transition-all duration-300
-          ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"}
+          ${isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
          `}
         />
 
@@ -48,12 +48,10 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
 
       {items.length > 0 && (
         <div
-          className="
-            absolute left-0 top-full w-full
-            bg-[#993333]/90 backdrop-blur-md text-white rounded-b-md shadow-lg z-10
-            opacity-0 invisible group-hover:opacity-100 group-hover:visible
-            transition-all duration-300
-          "
+          className=" absolute left-0 top-full w-full
+           bg-[#993333]/70 backdrop-blur-lg text-white rounded-b-md shadow-lg z-10
+          opacity-0 invisible group-hover:opacity-100 group-hover:visible
+          transition-all duration-300"
         >
           {items.map((subItem, idx) => (
             <Link

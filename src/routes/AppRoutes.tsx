@@ -1,42 +1,42 @@
-import { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-const HomePage = lazy(() => import("../pages/HomePage"));
-const ArchivePage = lazy(() => import("../pages/ArchivePage"));
-const EventsPage = lazy(() => import("../pages/EventsPage"));
-const AboutPage = lazy(() => import("../pages/AboutPage"));
-const GeneralInfoPage = lazy(() => import("../pages/GeneralInfoPage"));
-const HistoryPage = lazy(() => import("../pages/HistoryPage"));
-const FacilitiesPage = lazy(() => import("../pages/FacilitiesPage"));
-const OrganizationPage = lazy(() => import("../pages/OrganizationPage"));
-const AchievementsPage = lazy(() => import("../pages/AchievementsPage"));
-const DepartmentsPage = lazy(() => import("../pages/DepartmentsPage"));
+const HomePage = lazy(() => import('../pages/home/HomePage'));
+const ArchivePage = lazy(() => import('../pages/home/ArchivePage'));
+const EventsPage = lazy(() => import('../pages/home/EventsPage'));
+const AboutPage = lazy(() => import('../pages/AboutPage'));
+const GeneralInfoPage = lazy(() => import('../pages/GeneralInfoPage'));
+const HistoryPage = lazy(() => import('../pages/HistoryPage'));
+const FacilitiesPage = lazy(() => import('../pages/FacilitiesPage'));
+const OrganizationPage = lazy(() => import('../pages/OrganizationPage'));
+const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
+const DepartmentsPage = lazy(() => import('../pages/DepartmentsPage'));
 const PianoDepartmentPage = lazy(
-  () => import("../pages/departments/PianoDepartmentPage")
+  () => import('../pages/departments/PianoDepartmentPage')
 );
 const FolkInstrumentsDepartmentPage = lazy(
-  () => import("../pages/departments/FolkInstrumentsDepartmentPage")
+  () => import('../pages/departments/FolkInstrumentsDepartmentPage')
 );
 const StringsDepartmentPage = lazy(
-  () => import("../pages/departments/StringsDepartmentPage")
+  () => import('../pages/departments/StringsDepartmentPage')
 );
 const WindPercussionDepartmentPage = lazy(
-  () => import("../pages/departments/WindPercussionDepartmentPage")
+  () => import('../pages/departments/WindPercussionDepartmentPage')
 );
 const TheoryDepartmentPage = lazy(
-  () => import("../pages/departments/TheoryDepartmentPage")
+  () => import('../pages/departments/TheoryDepartmentPage')
 );
 const VocalChorusDepartmentPage = lazy(
-  () => import("../pages/departments/VocalChorusDepartmentPage")
+  () => import('../pages/departments/VocalChorusDepartmentPage')
 );
 const ArtDepartmentPage = lazy(
-  () => import("../pages/departments/ArtDepartmentPage")
+  () => import('../pages/departments/ArtDepartmentPage')
 );
 const AestheticDepartmentPage = lazy(
-  () => import("../pages/departments/AestheticDepartmentPage")
+  () => import('../pages/departments/AestheticDepartmentPage')
 );
-const MediaPage = lazy(() => import("../pages/MediaPage"));
-const ContactPage = lazy(() => import("../pages/ContactPage"));
+const MediaPage = lazy(() => import('../pages/MediaPage'));
+const ContactPage = lazy(() => import('../pages/ContactPage'));
 
 function AppRoutes() {
   return (
