@@ -1,3 +1,5 @@
+import { PortableTextBlock } from '@portabletext/types';
+
 export interface ArchiveCategory {
   title: string;
   value: string;
@@ -18,7 +20,7 @@ export interface ArchiveItem {
   title: string;
   date: string;
   enddate?: string;
-  description?: string;
+  description?: PortableTextBlock[];
   category: ArchiveCategory;
   images?: ArchiveImage[];
   videos?: ArchiveVideo[];

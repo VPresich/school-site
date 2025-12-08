@@ -7,6 +7,7 @@ export const transformCategory = (category: string) => {
     exam: { title: 'Екзамен', value: 'exam' },
     festival: { title: 'Фестиваль', value: 'festival' },
     admissions: { title: 'Прийом', value: 'admissions' },
+    announcement: { title: 'Оголошення', value: 'announcement' },
   };
   return map[category] || { title: category, value: category };
 };

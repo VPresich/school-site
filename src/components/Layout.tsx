@@ -43,11 +43,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Navbar />
       <div className="flex w-full max-w-7xl mx-auto gap-4">
         {activeMenuItem && (
-          <div className="flex-[0_0_20%]">
+          <div className="hidden lg:flex flex-[0_0_20%]">
             <Sidebar menu={menu} />
           </div>
         )}
-        <main className="flex-[1_1_auto] p-6 bg-white rounded shadow">
+        <main className="flex-[1_1_auto] p-0 md:p-4 bg-white rounded shadow">
           {children}
         </main>
       </div>
