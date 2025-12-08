@@ -1,10 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { GiMusicalScore } from "react-icons/gi";
-import { selectActiveMenuItem } from "../redux/menu/selector";
-import { Link, useLocation } from "react-router-dom";
-import { MenuItem } from "./NavBar/Navbar.types";
-import { motion, AnimatePresence } from "framer-motion";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { GiMusicalScore } from 'react-icons/gi';
+import { selectActiveMenuItem } from '../redux/menu/selector';
+import { Link, useLocation } from 'react-router-dom';
+import { MenuItem } from './NavBar/Navbar.types';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface SidebarProps {
   menu: MenuItem[];
@@ -18,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
 
   return (
     <aside className="w-64 bg-white/80 backdrop-blur-md shadow-md p-2 flex flex-col gap-1">
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {activeMenuItem.items.map((subItem, idx) => {
           const isActive = location.pathname === subItem.path;
           return (
@@ -33,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
               <Link
                 to={subItem.path}
                 className={`flex items-center px-2 py-1 rounded hover:bg-[#d66044] hover:text-white transition-colors ${
-                  isActive ? "bg-[#993333] text-white" : "text-[#993333]"
+                  isActive ? 'bg-[#993333] text-white' : 'text-[#993333]'
                 }`}
               >
                 <GiMusicalScore className="text-xl shrink-0 mr-2" />

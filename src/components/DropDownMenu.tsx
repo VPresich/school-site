@@ -1,5 +1,5 @@
 import React from 'react';
-import { GiMusicSpell } from 'react-icons/gi';
+import { GiMusicalNotes } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { setOpenIndex } from '../redux/menu/slice';
@@ -37,7 +37,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
           rounded-t-[10px]
         "
       >
-        <GiMusicSpell
+        <GiMusicalNotes
           className={`absolute left-2 top-1/2 -translate-y-1/2 text-white text-xl transition-all duration-300
           ${isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
          `}

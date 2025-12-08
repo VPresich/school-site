@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import DropDownMenu from '../DropDownMenu';
+import MobileMenu from './MobileMenu';
 import { MenuItem } from './Navbar.types';
 import { menu } from './MenuData';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(prev => !prev);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <nav className="bg-white/30 backdrop-blur-md p-2 shadow-md relative">
@@ -21,29 +25,13 @@ const Navbar: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex md:hidden justify-between items-center px-4">
-        <div className="text-xl font-bold text-[#993333]">Menu</div>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-2xl text-gray-700"
-        >
-          {isOpen ? <FaTimes /> : <FaBars />}
+      <div className="flex justify-end md:hidden items-center px-4">
+        <button onClick={toggleMenu} className="text-2xl text-[#993333]">
+          <RxHamburgerMenu />
         </button>
       </div>
 
-      {isOpen && (
-        <div className="md:hidden flex flex-col bg-white w-full absolute top-full left-0 shadow-md z-10">
-          {menu.map((item: MenuItem, idx: number) => (
-            <DropDownMenu
-              key={idx}
-              id={idx}
-              title={item.title}
-              to={item.to}
-              items={item.items || []}
-            />
-          ))}
-        </div>
-      )}
+      <MobileMenu menu={menu} isOpen={isOpen} closeMenu={closeMenu} />
     </nav>
   );
 };
