@@ -4,6 +4,7 @@ import menuReducer from '../redux/menu/slice';
 import archiveReducer from './archive/slice';
 import departmentsReducer from './departments/slice';
 import loaderReduser from './loader/slice';
+import homeReduser from './home/slice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     archive: archiveReducer,
     departments: departmentsReducer,
     loader: loaderReduser,
+    home: homeReduser,
   },
 });
 

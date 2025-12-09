@@ -13,6 +13,7 @@ const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const DepartmentsPage = lazy(
   () => import('../pages/departments/DepartmentsPage')
 );
+
 const DepartmentPage = lazy(
   () => import('../pages/departments/DepartmentPage')
 );

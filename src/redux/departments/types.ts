@@ -6,6 +6,7 @@ export interface DepartmentImage {
     _ref: string;
     _type: 'reference';
   };
+
   hotspot?: {
     x: number;
     y: number;

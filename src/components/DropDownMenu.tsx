@@ -49,7 +49,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
       {items.length > 0 && (
         <div
           className=" absolute left-0 top-full w-full
-           bg-[#993333]/70 backdrop-blur-lg text-white rounded-b-md shadow-lg z-10
+           bg-[#993333]/70 backdrop-blur-lg text-white rounded-b-md shadow-lg z-100
           opacity-0 invisible group-hover:opacity-100 group-hover:visible
           transition-all duration-300"
         >
