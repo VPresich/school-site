@@ -59,7 +59,7 @@ const DepartmentPage: React.FC = () => {
           components={PortableTextConfig}
         />
       )}
-      {department.teachersText && (
+      {department.teachersList && (
         <>
           <h3
             className={clsx(
@@ -70,7 +70,7 @@ const DepartmentPage: React.FC = () => {
             Викладачі
           </h3>
           <PortableText
-            value={department.teachersText}
+            value={department.teachersList}
             components={PortableTextConfig}
           />
         </>
@@ -88,9 +88,9 @@ const DepartmentPage: React.FC = () => {
         </div>
       )}
 
-      {department.teachersList && (
+      {department.teachersText && (
         <PortableText
-          value={department.teachersList}
+          value={department.teachersText}
           components={PortableTextConfig}
         />
       )}
