@@ -25,7 +25,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const initApp = async () => {
       try {
         const archiveList = await dispatch(fetchArchive()).unwrap();
-        console.log('ARCHIVE: ', archiveList);
         successNotify('Success loading ARCHIVE');
       } catch {
         errNotify('Error loading ARCHIVE');
@@ -40,13 +39,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <HeaderTitle />
       <HeadSlider />
       <Navbar />
-      <div className="flex w-full max-w-7xl mx-auto gap-4">
+      <div className="flex w-full max-w-7xl mx-auto gap-3">
         {activeMenuItem && (
           <div className="hidden lg:flex flex-[0_0_20%]">
             <Sidebar menu={menu} />
           </div>
         )}
-        <main className="flex-[1_1_auto] p-0 md:p-4 bg-white rounded shadow">
+        <main className="flex-[1_1_auto] p-0 md:p-4 bg-white rounded-xl shadow">
           {children}
         </main>
       </div>

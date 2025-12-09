@@ -11,30 +11,10 @@ const FacilitiesPage = lazy(() => import('../pages/FacilitiesPage'));
 const OrganizationPage = lazy(() => import('../pages/OrganizationPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const DepartmentsPage = lazy(() => import('../pages/DepartmentsPage'));
-const PianoDepartmentPage = lazy(
-  () => import('../pages/departments/PianoDepartmentPage')
+const DepartmentPage = lazy(
+  () => import('../pages/departments/DepartmentPage')
 );
-const FolkInstrumentsDepartmentPage = lazy(
-  () => import('../pages/departments/FolkInstrumentsDepartmentPage')
-);
-const StringsDepartmentPage = lazy(
-  () => import('../pages/departments/StringsDepartmentPage')
-);
-const WindPercussionDepartmentPage = lazy(
-  () => import('../pages/departments/WindPercussionDepartmentPage')
-);
-const TheoryDepartmentPage = lazy(
-  () => import('../pages/departments/TheoryDepartmentPage')
-);
-const VocalChorusDepartmentPage = lazy(
-  () => import('../pages/departments/VocalChorusDepartmentPage')
-);
-const ArtDepartmentPage = lazy(
-  () => import('../pages/departments/ArtDepartmentPage')
-);
-const AestheticDepartmentPage = lazy(
-  () => import('../pages/departments/AestheticDepartmentPage')
-);
+
 const MediaPage = lazy(() => import('../pages/MediaPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
 
@@ -54,29 +34,7 @@ function AppRoutes() {
         <Route path="/about/achievements" element={<AchievementsPage />} />
 
         <Route path="/departments" element={<DepartmentsPage />} />
-        <Route path="/departments/piano" element={<PianoDepartmentPage />} />
-        <Route
-          path="/departments/folk"
-          element={<FolkInstrumentsDepartmentPage />}
-        />
-        <Route
-          path="/departments/strings"
-          element={<StringsDepartmentPage />}
-        />
-        <Route
-          path="/departments/wind-percussion"
-          element={<WindPercussionDepartmentPage />}
-        />
-        <Route path="/departments/theory" element={<TheoryDepartmentPage />} />
-        <Route
-          path="/departments/vocal-chorus"
-          element={<VocalChorusDepartmentPage />}
-        />
-        <Route path="/departments/art" element={<ArtDepartmentPage />} />
-        <Route
-          path="/departments/aesthetic"
-          element={<AestheticDepartmentPage />}
-        />
+        <Route path="/departments/:slug" element={<DepartmentPage />} />
 
         <Route path="/media" element={<MediaPage />} />
         <Route path="/contact" element={<ContactPage />} />

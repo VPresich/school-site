@@ -7,7 +7,7 @@ const HeaderTitle: React.FC = () => {
     <div
       className={clsx(
         css.font,
-        'text-5xl font-bold font-playfair text-[#993333] text-center tracking-wide py-4'
+        'text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-bold font-playfair text-[#993333] text-center tracking-wide py-2 sm:py-5 md:py-6 lg:py-8'
       )}
     >
       Київська дитяча школа мистецтв №1
