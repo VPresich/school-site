@@ -1,15 +1,9 @@
 import { PortableTextBlock } from '@portabletext/types';
+import { SanityImage } from '../types';
 
 export interface ArchiveCategory {
   title: string;
   value: string;
-}
-
-export interface ArchiveImage {
-  asset: {
-    _ref: string;
-    _type: string;
-  };
 }
 
 export interface ArchiveVideo {
@@ -22,7 +16,7 @@ export interface ArchiveItem {
   enddate?: string;
   description?: PortableTextBlock[];
   category: ArchiveCategory;
-  images?: ArchiveImage[];
+  images?: SanityImage[];
   videos?: ArchiveVideo[];
 }
 

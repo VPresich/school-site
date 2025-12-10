@@ -1,4 +1,6 @@
 import { PortableTextBlock } from '@portabletext/types';
+import { SanitySlug } from '../types';
+import { SanityImage } from '../types';
 
 export interface DepartmentImage {
   _type: 'image';
@@ -18,17 +20,14 @@ export interface DepartmentImage {
 export interface Department {
   _type: 'department';
   _id?: string;
-  slug: {
-    _type: 'slug';
-    current: string;
-  };
+  slug: SanitySlug;
   title: string;
   resume?: PortableTextBlock[];
   teachersText?: PortableTextBlock[];
-  teachersGallery?: DepartmentImage[];
+  teachersGallery?: SanityImage[];
   teachersList?: PortableTextBlock[];
   studentsText?: PortableTextBlock[];
-  studentsGallery?: DepartmentImage[];
+  studentsGallery?: SanityImage[];
 }
 
 export interface DepartmentsState {

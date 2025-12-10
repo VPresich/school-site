@@ -4,7 +4,7 @@ import { ErrorBoundary } from '../components/ErrorBoundary';
 const HomePage = lazy(() => import('../pages/home/HomePage'));
 const ArchivePage = lazy(() => import('../pages/home/ArchivePage'));
 const EventsPage = lazy(() => import('../pages/home/EventsPage'));
-const AboutPage = lazy(() => import('../pages/AboutPage'));
+const AboutPage = lazy(() => import('../pages/about/AboutPage'));
 const GeneralInfoPage = lazy(() => import('../pages/GeneralInfoPage'));
 const HistoryPage = lazy(() => import('../pages/HistoryPage'));
 const FacilitiesPage = lazy(() => import('../pages/FacilitiesPage'));

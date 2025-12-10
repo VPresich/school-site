@@ -1,19 +1,6 @@
 import { PortableTextBlock } from '@portabletext/types';
-
-export type PortableText = PortableTextBlock[];
-
-export interface SanityImage {
-  _type: 'image';
-  asset: {
-    _type: 'reference';
-    _ref: string;
-  };
-}
-
-export interface SanitySlug {
-  _type: 'slug';
-  current: string;
-}
+import { SanityImage } from '../types';
+import { SanitySlug } from '../types';
 
 export interface CTAButton {
   _type: 'object';
@@ -31,7 +18,7 @@ export interface CTASection {
 export interface HomeDepartment {
   _type: 'object';
   name: string;
-  description: PortableText;
+  description: PortableTextBlock[];
   image: SanityImage;
   slug: SanitySlug;
 }
@@ -39,8 +26,8 @@ export interface HomeDepartment {
 export interface HomeDocument {
   _type: 'home';
   title: string;
-  welcomeText: PortableText;
-  shortDescription: PortableText;
+  welcomeText: PortableTextBlock[];
+  shortDescription: PortableTextBlock[];
   departments: HomeDepartment[];
   ctaSection?: CTASection;
 }

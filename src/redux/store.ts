@@ -5,6 +5,7 @@ import archiveReducer from './archive/slice';
 import departmentsReducer from './departments/slice';
 import loaderReduser from './loader/slice';
 import homeReduser from './home/slice';
+import aboutReducer from './about/slice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     departments: departmentsReducer,
     loader: loaderReduser,
     home: homeReduser,
+    about: aboutReducer,
   },
 });
 
