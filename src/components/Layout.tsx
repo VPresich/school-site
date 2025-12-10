@@ -51,13 +51,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [dispatch]);
 
   return (
-    <div className="min-h-screen flex flex-col gap-4">
+    <div className="min-h-screen flex flex-col gap-2">
       <HeaderTitle />
       <HeadSlider />
       <Navbar />
       <div className="flex w-full max-w-7xl mx-auto gap-3">
         {activeMenuItem && (
-          <div className="lg:flex flex-[0_0_20%]">
+          <div className="hidden lg:block flex-[0_0_20%]">
             <Sidebar menu={menu} />
           </div>
         )}

@@ -34,7 +34,7 @@ export interface AboutDocument {
 }
 
 export interface AboutState {
-  schoolInfo?: AboutDocument;
+  page?: AboutDocument;
   loading: boolean;
   error?: string;
 }

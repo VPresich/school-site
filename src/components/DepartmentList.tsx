@@ -9,7 +9,7 @@ interface DepartmentListProps {
 
 const DepartmentList: React.FC<DepartmentListProps> = ({ departments }) => {
   return (
-    <div className="mt-12 flex flex-col gap-6">
+    <div className="flex flex-col gap-4 sm:gap-6 md:gap-10">
       {departments.map(dep => (
         <DepartmentCard key={dep.slug?.current || dep.name} department={dep} />
       ))}

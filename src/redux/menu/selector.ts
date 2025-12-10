@@ -1,5 +1,5 @@
-import { RootState } from "../store";
-import { menu } from "../../components/NavBar/MenuData";
+import { RootState } from '../store';
+import { menu } from '../../components/NavBar/MenuData';
 
 export const selectOpenIndex = (state: RootState) => state.menu.openIndex;
 export const selectIsSidebarOpen = (state: RootState) =>
@@ -7,7 +7,6 @@ export const selectIsSidebarOpen = (state: RootState) =>
 
 export const selectActiveMenuItem = (state: RootState) => {
   const index = state.menu.openIndex;
-  console.log("INDEX:", index);
   if (
     index === null ||
     !menu[index] ||

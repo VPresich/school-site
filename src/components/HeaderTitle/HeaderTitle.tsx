@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React from 'react';
 import css from './HeaderTitle.module.css';
 import clsx from 'clsx';
 
@@ -7,7 +7,7 @@ const HeaderTitle: React.FC = () => {
     <div
       className={clsx(
         css.font,
-        'text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-bold font-playfair text-[#993333] text-center tracking-wide py-2 sm:py-5 md:py-6 lg:py-8'
+        'text-x2 sm:text-3xl md:text-5xl lg:text-6xl font-bold text-[#993333] text-center tracking-wide py-2 sm:py-4 md:py-6 lg:py-8 px-2'
       )}
     >
       Київська дитяча школа мистецтв №1

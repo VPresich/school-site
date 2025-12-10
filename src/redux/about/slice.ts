@@ -3,7 +3,7 @@ import { AboutDocument, AboutState } from './types';
 import { fetchAbout } from './operations';
 
 const initialState: AboutState = {
-  schoolInfo: undefined,
+  page: undefined,
   loading: false,
   error: undefined,
 };
@@ -13,7 +13,7 @@ const aboutSlice = createSlice({
   initialState,
   reducers: {
     clearAbout(state) {
-      state.schoolInfo = undefined;
+      state.page = undefined;
     },
   },
   extraReducers: builder => {
@@ -25,7 +25,7 @@ const aboutSlice = createSlice({
       fetchAbout.fulfilled,
       (state, action: PayloadAction<AboutDocument>) => {
         state.loading = false;
-        state.schoolInfo = action.payload;
+        state.page = action.payload;
       }
     );
     builder.addCase(fetchAbout.rejected, (state, action) => {

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const slidesImport = import.meta.glob(
-  "../../assets/images/slider/*.{jpg,png}",
-  { eager: true, as: "url" }
+  '../../assets/images/slider/*.{jpg,png}',
+  { eager: true, as: 'url' }
 );
 const slides = Object.values(slidesImport);
 
@@ -11,20 +11,20 @@ const HeadSlider: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
+      setCurrent(prev => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full h-64 relative overflow-hidden">
+    <div className="w-full relative overflow-hidden h-40 sm:h-56 md:h-64 lg:h-72">
       {slides.map((slide, idx) => (
         <img
           key={idx}
           src={slide}
           alt={`Slide ${idx + 1}`}
           className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            idx === current ? "opacity-100" : "opacity-0"
+            idx === current ? 'opacity-100' : 'opacity-0'
           }`}
         />
       ))}

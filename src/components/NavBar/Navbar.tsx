@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-end md:hidden items-center px-4">
+      <div className="flex justify-end md:hidden items-center py-1 md:py-0 px-2">
         <button onClick={toggleMenu} className="text-2xl text-[#993333]">
           <RxHamburgerMenu />
         </button>
