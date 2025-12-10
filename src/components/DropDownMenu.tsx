@@ -26,7 +26,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
   };
 
   return (
-    <div className="relative group flex-1">
+    <div className="relative group flex-1 z-20">
       <Link
         to={to}
         onClick={handleClick}

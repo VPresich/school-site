@@ -6,7 +6,7 @@ export const fetchHome = createAsyncThunk<
   HomeDocument,
   void,
   { rejectValue: string }
->('departments/fetchDepartmentBySlug', async (_, thunkAPI) => {
+>('home/fetchHome', async (_, thunkAPI) => {
   try {
     const query = encodeURIComponent(
       `*[_type == "home"][0]{

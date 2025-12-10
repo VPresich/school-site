@@ -22,9 +22,9 @@ const CTASection: React.FC<CTASectionProps> = ({
 
   const handleClick = (btn: CTAButton) => {
     if (!btn.slug?.current) {
-      navigate('/departments/piano');
+      navigate('/about');
     } else {
-      navigate(`/departments/${btn.slug.current}`);
+      navigate(`/${btn.slug.current}`);
     }
   };
 

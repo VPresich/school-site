@@ -17,9 +17,9 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
   if (!activeMenuItem || !activeMenuItem.items) return null;
 
   return (
-    <aside className="w-64 bg-white/80 backdrop-blur-md shadow-md py-6 px-4 flex flex-col gap-1 rounded-xl">
+    <aside className="w-64 bg-white/80 shadow-md py-6 px-4 flex flex-col gap-1 rounded-xl">
       <AnimatePresence>
-        {activeMenuItem.items.map((subItem, idx) => {
+        {activeMenuItem.items.map(subItem => {
           const isActive = location.pathname === subItem.path;
           return (
             <motion.div

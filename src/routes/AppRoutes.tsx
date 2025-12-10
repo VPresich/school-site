@@ -27,9 +27,11 @@ function AppRoutes() {
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/events" element={<EventsPage />} />
-
+          <Route path="/media" element={<MediaPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about/general-info" element={<GeneralInfoPage />} />
           <Route path="/about/history" element={<HistoryPage />} />
@@ -39,9 +41,6 @@ function AppRoutes() {
 
           <Route path="/departments" element={<DepartmentsPage />} />
           <Route path="/departments/:slug" element={<DepartmentPage />} />
-
-          <Route path="/media" element={<MediaPage />} />
-          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </ErrorBoundary>
     </Suspense>

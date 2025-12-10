@@ -8,7 +8,6 @@ import { fetchDepartmentBySlug } from '../../redux/departments/operations';
 import { selectDepartmentBySlug } from '../../redux/departments/selectors';
 import PortableTextConfig from '../../components/PortableTextConfig';
 import { useParams } from 'react-router-dom';
-import { Department } from '../../redux/departments/types';
 import {
   errNotify,
   successNotify,
@@ -18,10 +17,7 @@ import css from './DepartmentPage.module.css';
 const DepartmentPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const dispatch = useDispatch<AppDispatch>();
-
-  if (!slug) return <div>Відділ не знайдено</div>;
-
-  const department = useSelector(selectDepartmentBySlug(slug)) as Department;
+  const department = useSelector(selectDepartmentBySlug(slug));
 
   useEffect(() => {
     const initDepartment = async () => {

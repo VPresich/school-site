@@ -1,36 +1,16 @@
 import React, { useEffect } from 'react';
 import { PortableText } from '@portabletext/react';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../../redux/store';
-import { fetchHome } from '../../redux/home/operations';
+import { useSelector } from 'react-redux';
 import { selectHomePage } from '../../redux/home/selectors';
 import DepartmentList from '../../components/DepartmentList';
 import PortableTextConfig from '../../components/PortableTextConfig';
 import CTASection from '../../components/CtaSection';
-import {
-  successNotify,
-  errNotify,
-} from '../../auxiliary/notification/notification';
 import css from './HomePage.module.css';
 
 function HomePage(): React.JSX.Element {
-  const dispatch = useDispatch<AppDispatch>();
   const homePage = useSelector(selectHomePage);
-
-  useEffect(() => {
-    const initHomePage = async () => {
-      try {
-        await dispatch(fetchHome()).unwrap();
-        successNotify('Success loading HOMEPAGE');
-      } catch {
-        errNotify('Error loading HOMEPAGE');
-      }
-    };
-    initHomePage();
-  }, [dispatch]);
-
-  if (!homePage) return <div>Дані не знайдені</div>;
+  if (!homePage) return <div>Дані не знайдено</div>;
   const cta = homePage?.ctaSection;
 
   return (

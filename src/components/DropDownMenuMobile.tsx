@@ -57,7 +57,6 @@ const DropDownMenuMobile: React.FC<DropDownMenuMobileProps> = ({
         )}
       </Link>
 
-      {/* Подменю */}
       {isOpen && items.length > 0 && (
         <div
           className="flex flex-col bg-white/90 backdrop-blur-md 

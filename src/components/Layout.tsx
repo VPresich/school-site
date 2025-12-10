@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { fetchArchive } from '../redux/archive/operation';
+import { fetchHome } from '../redux/home/operations';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import HeadSlider from './HeadSlider/HeadSlider';
 import HeaderTitle from './HeaderTitle/HeaderTitle';
@@ -29,6 +30,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       } catch {
         errNotify('Error loading ARCHIVE');
       }
+
+      try {
+        await dispatch(fetchHome()).unwrap();
+        successNotify('Success loading HOMEPAGE');
+      } catch {
+        errNotify('Error loading HOMEPAGE');
+      }
     };
 
     initApp();
@@ -41,7 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Navbar />
       <div className="flex w-full max-w-7xl mx-auto gap-3">
         {activeMenuItem && (
-          <div className="hidden lg:flex flex-[0_0_20%]">
+          <div className="lg:flex flex-[0_0_20%]">
             <Sidebar menu={menu} />
           </div>
         )}
