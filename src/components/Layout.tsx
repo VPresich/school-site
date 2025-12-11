@@ -51,7 +51,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [dispatch]);
 
   return (
-    <div className="min-h-screen flex flex-col gap-2">
+    <div className="min-h-screen flex flex-col gap-1">
       <HeaderTitle />
       <HeadSlider />
       <Navbar />
