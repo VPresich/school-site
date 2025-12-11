@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
-import { fetchArchive } from '../redux/archive/operation';
+import { fetchArchivePage } from '../redux/archive/operation';
 import { fetchHome } from '../redux/home/operations';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import { fetchAbout } from '../redux/about/operations';
@@ -26,7 +26,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   useEffect(() => {
     const initApp = async () => {
       try {
-        const archiveList = await dispatch(fetchArchive()).unwrap();
+        const archiveList = await dispatch(
+          fetchArchivePage({ page: 2, limit: 10 })
+        ).unwrap();
         successNotify('Success loading ARCHIVE');
       } catch {
         errNotify('Error loading ARCHIVE');

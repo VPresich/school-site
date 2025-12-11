@@ -7,10 +7,10 @@ import ImageSlider from '../ImageSlider';
 
 const ArchiveCard: React.FC<ArchiveCardProps> = ({ item }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-xl p-4 transition-shadow duration-300">
-      <div className="flex flex-col gap-4 relative">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-xl p-4 sm:p-6 md:p-8 transition-shadow duration-300">
+      <div className="flex flex-col gap2 md:gap-4 relative">
         <div
-          className="absolute top-0 right-0 w-32 h-32 bg-cover bg-center opacity-30 pointer-events-none"
+          className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-cover bg-center opacity-25 pointer-events-none"
           style={{ backgroundImage: `url('/${item.category.value}.jpg')` }}
         ></div>
         <div className="flex justify-between items-center">
@@ -26,7 +26,7 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({ item }) => {
         </div>
 
         <div className="w-full text-right">
-          <span className="text-sm font-bold text-red-700 capitalize">
+          <span className="text-sm md:text-xl font-medium text-red-500 capitalize">
             {item.category.title}
           </span>
         </div>

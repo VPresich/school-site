@@ -1,15 +1,58 @@
-import React from 'react';
-import { useSelector, UseSelector } from 'react-redux';
-import { selectArchiveList } from '../../redux/archive/selectors';
+import React, { useEffect } from 'react';
+import clsx from 'clsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchArchivePage } from '../../redux/archive/operation';
+import { setActivePage } from '../../redux/archive/slice';
+import Pagination from '../../components/Pagination';
+import { AppDispatch } from '../../redux/store';
+import {
+  selectArchiveList,
+  selectPage,
+  selectLimit,
+  selectTotalPages,
+} from '../../redux/archive/selectors';
 import ArchiveList from '../../components/ArchiveList/ArchiveList';
+import {
+  errNotify,
+  successNotify,
+} from '../../auxiliary/notification/notification';
+import css from './HomePage.module.css';
 
 function ArchivePage(): React.JSX.Element {
   const archiveList = useSelector(selectArchiveList);
+  const page = useSelector(selectPage);
+  const limit = useSelector(selectLimit);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    const getArchivePage = async () => {
+      try {
+        await dispatch(fetchArchivePage({ page, limit })).unwrap();
+        successNotify('Success loading ARCHIVE PAGE');
+      } catch {
+        errNotify('Error loading ARCHIVE PAGE');
+      }
+    };
+    getArchivePage();
+  }, [dispatch, page, limit]);
+
+  const handlePageChange = (p: number) => {
+    dispatch(setActivePage(p));
+  };
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto p-4 sm:p-6 md:p-8 gap-1 sm:gap-2 md:gap-4">
-      <h1 className="text-3xl font-bold mb-4">Архів</h1>
+      <h2
+        className={clsx(
+          css.font,
+          'mb-12 text-center text-5xl font-bold text-[#993333]'
+        )}
+      >
+        Останні події
+      </h2>
       <ArchiveList list={archiveList} />
+      <Pagination onPageChange={handlePageChange} />
     </div>
   );
 }

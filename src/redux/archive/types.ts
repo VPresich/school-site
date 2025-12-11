@@ -20,8 +20,23 @@ export interface ArchiveItem {
   videos?: ArchiveVideo[];
 }
 
+export interface FetchArchivePageArgs {
+  page: number;
+  limit: number;
+}
+
+export interface FetchArchivePageResponse {
+  items: ArchiveItem[];
+  total: number;
+  totalPages: number;
+}
+
 export interface ArchiveState {
   items: ArchiveItem[];
   status: string;
   error: string | null | undefined;
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
 }

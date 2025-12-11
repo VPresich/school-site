@@ -104,19 +104,18 @@ function AboutPage(): React.JSX.Element {
             <TeachersGrid teachers={teachers} />
           </div>
         )}
-
-        {/* {teachersGallery.length > 0 && (
-                <div className="flex flex-col gap-8 px-0 sm:px-0 md:px-10">
-                  {teachersGallery.map((photo, idx) => (
-                    <img
-                      key={idx}
-                      src={getImageUrl(photo.asset._ref, 1200)}
-                      alt={`Викладачі ${idx + 1}`}
-                      className="w-full h-auto rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101"
-                    />
-                  ))}
-                </div>
-              )} */}
+        {teachersGallery.length > 0 && (
+          <div className="flex flex-col gap-8 px-0 sm:px-0 md:px-10">
+            {teachersGallery.map((photo, idx) => (
+              <img
+                key={idx}
+                src={getImageUrl(photo.asset._ref, 1200)}
+                alt={`Викладачі ${idx + 1}`}
+                className="w-full h-auto rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101"
+              />
+            ))}
+          </div>
+        )}
 
         {goals && (
           <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">

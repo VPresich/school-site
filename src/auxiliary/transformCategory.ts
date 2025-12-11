@@ -8,6 +8,8 @@ export const transformCategory = (category: string) => {
     festival: { title: 'Фестиваль', value: 'festival' },
     admissions: { title: 'Прийом', value: 'admissions' },
     announcement: { title: 'Оголошення', value: 'announcement' },
+    audition: { title: 'Прослухування', value: 'audition' },
+    meeting: { title: 'Творчий вечір', value: 'meeting' },
   };
   return map[category] || { title: category, value: category };
 };

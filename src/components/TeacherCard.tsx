@@ -14,7 +14,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
   const [showBio, setShowBio] = useState(false);
 
   return (
-    <div className="relative flex flex-col items-center w-72 cursor-pointer bg-white rounded-xl shadow-md">
+    <div className="relative p-2 flex flex-col items-center w-72 cursor-pointer bg-white rounded-xl shadow-md">
       <div
         className="w-full aspect-3/4 rounded-t-xl overflow-hidden relative"
         onClick={() => setShowBio(prev => !prev)}
@@ -22,9 +22,9 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
         <img
           src={getImageUrl(teacher.photo.asset._ref, 1200)}
           alt={teacher.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-102"
         />
-
+        {/* <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-300"></div> */}
         <AnimatePresence>
           {showBio && (
             <motion.div
