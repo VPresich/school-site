@@ -1,6 +1,7 @@
 import React from 'react';
 import { PortableText } from '@portabletext/react';
 import { getImageUrl } from '../../api/getImageUrl';
+import TeachersGrid from '../../components/TeachersGrid';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import {
@@ -15,6 +16,7 @@ import {
   selectAboutTasks,
   selectTeachersSection,
   selectTeachersText,
+  selectTeachers,
   selectTeachersGallery,
 } from '../../redux/about/selectors';
 import PortableTextConfig from '../../components/PortableTextConfig';
@@ -29,6 +31,7 @@ function AboutPage(): React.JSX.Element {
   const directorPhoto = useSelector(selectDirectorPhoto);
   const teachersSection = useSelector(selectTeachersSection);
   const teachersText = useSelector(selectTeachersText);
+  const teachers = useSelector(selectTeachers);
   const teachersGallery = useSelector(selectTeachersGallery);
   const goals = useSelector(selectAboutGoals);
   const tasks = useSelector(selectAboutTasks);
@@ -46,15 +49,15 @@ function AboutPage(): React.JSX.Element {
       >
         {title}
       </h2>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-8">
         {info && (
-          <div className="text-md text-gray-700 bg-gray-100 p-4 rounded-xl shadow hover:shadow-md">
+          <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
             <PortableText value={info} components={PortableTextConfig} />
           </div>
         )}
 
         {director && (
-          <div className="text-md text-gray-700 bg-gray-100 p-4 rounded-xl shadow hover:shadow-md">
+          <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
             <h3
               className={clsx(
                 css.font,
@@ -71,11 +74,11 @@ function AboutPage(): React.JSX.Element {
             {directorPhoto && (
               <div className="flex justify-center">
                 <div className="max-w-sm w-full">
-                  <div className="p-4 bg-white">
+                  <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                     <img
                       src={getImageUrl(directorPhoto.asset._ref, 1200)}
                       alt="Директор школи"
-                      className="w-full h-auto object-cover"
+                      className="w-full h-auto object-cover rounded-xl transform transition-transform duration-300 hover:scale-101"
                     />
                   </div>
                 </div>
@@ -85,7 +88,7 @@ function AboutPage(): React.JSX.Element {
         )}
 
         {teachersSection && (
-          <div className="text-md text-gray-700 bg-gray-100 p-4 rounded-xl shadow hover:shadow-md">
+          <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
             <h3
               className={clsx(
                 css.font,
@@ -95,9 +98,10 @@ function AboutPage(): React.JSX.Element {
               Викладачі
             </h3>
             <PortableText
-              value={aboutPage.teachersSection.statsText}
+              value={teachersText}
               components={PortableTextConfig}
             />
+            <TeachersGrid teachers={teachers} />
           </div>
         )}
 
@@ -115,7 +119,7 @@ function AboutPage(): React.JSX.Element {
               )} */}
 
         {goals && (
-          <div className="text-md text-gray-700 bg-gray-100 p-4 rounded-xl shadow hover:shadow-md">
+          <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
             <h3
               className={clsx(
                 css.font,
@@ -129,7 +133,7 @@ function AboutPage(): React.JSX.Element {
         )}
 
         {tasks && (
-          <div className="text-md text-gray-700 bg-gray-100 p-4 rounded-xl shadow hover:shadow-md">
+          <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
             <h3
               className={clsx(
                 css.font,
@@ -142,7 +146,7 @@ function AboutPage(): React.JSX.Element {
           </div>
         )}
         {development && (
-          <div className="mb-12 text-md text-gray-700 bg-gray-100 p-4 rounded-xl shadow hover:shadow-md">
+          <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
             <h3
               className={clsx(
                 css.font,

@@ -14,7 +14,7 @@ const Loader: React.FC = () => {
         visible={true}
         height="300"
         width="300"
-        color="#993333"
+        color="#d3d3d3"
         ariaLabel="rings-loading"
       />
     </div>
