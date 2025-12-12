@@ -4,6 +4,7 @@ import { GiMusicalScore } from 'react-icons/gi';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import { Link, useLocation } from 'react-router-dom';
 import { MenuItem } from './NavBar/Navbar.types';
+import DateRangePicker from './DataPicker/DateRangePicker/DateRangePicker';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface SidebarProps {
@@ -46,6 +47,12 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
           );
         })}
       </AnimatePresence>
+      <DateRangePicker
+        onChange={({ startDate, endDate }) => {
+          console.log('START:', startDate);
+          console.log('END:', endDate);
+        }}
+      />
     </aside>
   );
 };

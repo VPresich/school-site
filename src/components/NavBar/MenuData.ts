@@ -7,6 +7,7 @@ export const menu: MenuItem[] = [
     items: [
       { label: 'Архів', path: '/archive' },
       { label: 'Події', path: '/events' },
+      { label: 'Анонси', path: '/anonse' },
     ],
   },
   {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectPage, selectTotalPages } from '../redux/archive/selectors';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import clsx from 'clsx';
 
 interface PaginationProps {
@@ -36,15 +37,15 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
     <div className="flex justify-center gap-2 mt-6">
       <button
         className={clsx(
-          'px-3 py-1 rounded-lg border text-sm',
+          'px-3 py-1 rounded-lg border text-sm transition-all duration-400',
           currentPage === 1
             ? 'cursor-not-allowed opacity-40'
-            : 'hover:bg-gray-200'
+            : 'hover:bg-gray-200 cursor-pointer hover:border-gray-200'
         )}
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        ‹
+        <FaChevronLeft size={18} text-gray-500 />
       </button>
 
       {pages.map((p, idx) =>
@@ -56,10 +57,10 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
           <button
             key={p}
             className={clsx(
-              'px-3 py-1 rounded-lg border text-sm',
+              'px-3 py-1 rounded-lg border text-sm transition-all duration-300',
               currentPage === p
-                ? 'bg-[#993333] text-white border-[#993333]'
-                : 'hover:bg-gray-200 text-gray-700'
+                ? 'bg-[#993333] text-white border-[#993333] cursor-pointer hover:border-red-200 hover:shadow-md hover:bg-red-500'
+                : 'hover:bg-gray-200 text-gray-700 cursor-pointer hover:border-gray-200'
             )}
             onClick={() => onPageChange(p as number)}
           >
@@ -70,15 +71,15 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
 
       <button
         className={clsx(
-          'px-3 py-1 rounded-lg border text-sm',
+          'px-3 py-1 rounded-lg border text-sm transition-all duration-300',
           currentPage === totalPages
             ? 'cursor-not-allowed opacity-40'
-            : 'hover:bg-gray-200'
+            : 'hover:bg-gray-200 cursor-pointer hover:border-gray-200'
         )}
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        ›
+        <FaChevronRight size={18} text-gray-500 />
       </button>
     </div>
   );

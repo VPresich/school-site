@@ -10,6 +10,8 @@ const HistoryPage = lazy(() => import('../pages/HistoryPage'));
 const FacilitiesPage = lazy(() => import('../pages/FacilitiesPage'));
 const OrganizationPage = lazy(() => import('../pages/OrganizationPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
+const AnnouncementsPage = lazy(() => import('../pages/home/AnnouncementsPage'));
+
 const DepartmentsPage = lazy(
   () => import('../pages/departments/DepartmentsPage')
 );
@@ -29,6 +31,7 @@ function AppRoutes() {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/archive" element={<ArchivePage />} />
+          <Route path="/anonse" element={<AnnouncementsPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/media" element={<MediaPage />} />
           <Route path="/contact" element={<ContactPage />} />
