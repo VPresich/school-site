@@ -4,7 +4,7 @@ import { FaRegCalendar } from 'react-icons/fa';
 import { uk } from 'date-fns/locale';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import '../DateRangePicker.css';
+import './DateRangePicker.css';
 
 registerLocale('uk', {
   ...uk,
@@ -39,52 +39,54 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onChange }) => {
   };
 
   return (
-    <div className="range-wrapper">
-      {/* START DATE */}
-      <div className="datepicker-field">
-        <label>Дата початку</label>
-        <div className="datepicker__wrapper">
+    <div className="date-range-picker flex flex-col gap-1">
+      <div className="flex flex-col gap-1">
+        <label className="text-[#993333]">Дата початку</label>
+
+        <div className="drp-wrapper">
           <DatePicker
             ref={startRef}
             selected={startDate}
             onChange={handleStartChange}
             locale="uk"
             placeholderText="Оберіть дату"
-            className="datepicker"
-            calendarClassName="datepicker__calendar"
+            className="drp-input"
+            calendarClassName="drp-calendar"
             showMonthDropdown
             showYearDropdown
             dropdownMode="select"
-            maxDate={endDate || undefined}
+            maxDate={endDate ?? undefined}
             showPopperArrow={false}
           />
+
           <FaRegCalendar
-            className="datepicker__icon"
+            className="drp-icon"
             onClick={() => startRef.current?.setOpen(true)}
           />
         </div>
       </div>
 
-      {/* END DATE */}
-      <div className="datepicker-field">
-        <label>Дата завершення</label>
-        <div className="datepicker__wrapper">
+      <div className="flex flex-col gap-1">
+        <label className="text-[#993333]">Дата завершення</label>
+
+        <div className="drp-wrapper">
           <DatePicker
             ref={endRef}
             selected={endDate}
             onChange={handleEndChange}
             locale="uk"
             placeholderText="Оберіть дату"
-            className="datepicker"
-            calendarClassName="datepicker__calendar"
+            className="drp-input"
+            calendarClassName="drp-calendar"
             showMonthDropdown
             showYearDropdown
             dropdownMode="select"
-            minDate={startDate || undefined}
+            minDate={startDate ?? undefined}
             showPopperArrow={false}
           />
+
           <FaRegCalendar
-            className="datepicker__icon"
+            className="drp-icon"
             onClick={() => endRef.current?.setOpen(true)}
           />
         </div>
