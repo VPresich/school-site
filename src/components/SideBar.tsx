@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { MenuItem } from './NavBar/Navbar.types';
 import FilterForm from './FilterForm/FilterForm';
 import { motion, AnimatePresence } from 'framer-motion';
+import { selectOpenIndex } from '../redux/menu/selector';
 import Separator from './Separator';
 
 interface SidebarProps {
@@ -15,6 +16,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
   const location = useLocation();
   const activeMenuItem = useSelector(selectActiveMenuItem);
+  const openIndex = useSelector(selectOpenIndex);
 
   if (!activeMenuItem || !activeMenuItem.items) return null;
 
@@ -38,7 +40,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
               >
                 <Link
                   to={subItem.path}
-                  className={`flex items-center px-2 py-2 rounded-t-xl hover:bg-[#d66044] hover:text-white transition-colors ${
+                  className={`flex font-semibold items-center px-2 py-2 rounded-t-xl hover:bg-[#d66044] hover:text-white transition-colors ${
                     isActive ? 'bg-[#993333] text-white' : 'text-[#993333]'
                   }`}
                 >
@@ -49,9 +51,13 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
             );
           })}
         </AnimatePresence>
-
-        <Separator />
-        <FilterForm />
+        {openIndex === 0 && (
+          <>
+            <Separator />
+            <p className="font-semibold text-[#993333] mt-4">Фільтр подій</p>
+            <FilterForm />
+          </>
+        )}
       </div>
     </aside>
   );

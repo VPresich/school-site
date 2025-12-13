@@ -78,3 +78,17 @@
   height: 14px;
   color: white;
 }
+
+/* TailWind - styles: */
+
+/* .container	flex flex-col gap-1.5 (gap-6px ≈ gap-1.5)
+.header	flex justify-between items-center
+.title	font-semibold text-[#993333]
+.button	font-normal text-[#993333] bg-none border-none p-0 cursor-pointer underline decoration-transparent transition-colors hover:decoration-[#993333]
+.list	flex flex-col gap-1 (gap-4px ≈ gap-1)
+.option	flex items-center gap-2.5 cursor-pointer select-none relative (gap-10px ≈ gap-2.5)
+.input	absolute opacity-0 pointer-events-none
+.label	text-sm text-[#993333]
+.box	w-4.5 h-4.5 border border-[#993333] rounded flex items-center justify-center bg-white (18px ≈ 4.5)
+.checked	bg-[#993333]
+.icon	w-3.5 h-3.5 text-white (14px ≈ 3.5) */

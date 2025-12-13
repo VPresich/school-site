@@ -52,7 +52,7 @@ const FilterForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mb-4 flex flex-col gap-2"
+      className="mb-4 mt-4 flex flex-col gap-3"
     >
       <Controller
         name="dateRange"
@@ -65,7 +65,7 @@ const FilterForm: React.FC = () => {
                 {errors.dateRange.startDate.message}
               </p>
             )}
-            <div className="h-5">
+            <div className="h-2">
               {errors.dateRange?.endDate && (
                 <p className="text-sm text-red-600">
                   {errors.dateRange.endDate.message}
