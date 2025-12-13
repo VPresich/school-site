@@ -6,6 +6,7 @@ import departmentsReducer from './departments/slice';
 import loaderReduser from './loader/slice';
 import homeReduser from './home/slice';
 import aboutReducer from './about/slice';
+import filterReducer from './filter/slice';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     loader: loaderReduser,
     home: homeReduser,
     about: aboutReducer,
+    filter: filterReducer,
   },
 });
 
