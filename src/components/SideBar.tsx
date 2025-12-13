@@ -4,7 +4,7 @@ import { GiMusicalScore } from 'react-icons/gi';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import { Link, useLocation } from 'react-router-dom';
 import { MenuItem } from './NavBar/Navbar.types';
-import FilterForm from './FilterForm';
+import FilterForm from './FilterForm/FilterForm';
 import { motion, AnimatePresence } from 'framer-motion';
 import Separator from './Separator';
 

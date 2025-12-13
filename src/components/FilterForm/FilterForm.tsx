@@ -1,0 +1,115 @@
+import React from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm, Controller } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
+import { FaCheck } from 'react-icons/fa6';
+import { saveSelectedCats, saveDateRange } from '../../redux/filter/slice';
+import {
+  selectSelectedCats,
+  selectDateRange,
+} from '../../redux/filter/selectors';
+import { AppDispatch } from '../../redux/store';
+import DateRangePicker from '../DataPicker/DateRangePicker/DateRangePicker';
+import MultySelector from '../MultySelector/MultySelector';
+import { categories } from '../../auxiliary/categories';
+import { transformCategory } from '../../auxiliary/transformCategory';
+import { feedbackSchema } from './feedbackSchema';
+import { FilterValues } from '../../redux/filter/types';
+import {
+  errNotify,
+  successNotify,
+} from '../../auxiliary/notification/notification';
+
+import Separator from '../Separator';
+
+const FilterForm: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const initDateRange = useSelector(selectDateRange);
+  const initSelectedCat = useSelector(selectSelectedCats);
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FilterValues>({
+    resolver: yupResolver(feedbackSchema),
+    defaultValues: {
+      dateRange: initDateRange,
+      selectedCats: initSelectedCat,
+    },
+  });
+
+  const onSubmit = (data: FilterValues) => {
+    try {
+      dispatch(saveSelectedCats(data.selectedCats));
+      dispatch(saveDateRange(data.dateRange));
+      successNotify('Filter saved');
+    } catch (error) {
+      errNotify('Filter not saves');
+    }
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mb-4 flex flex-col gap-2"
+    >
+      <Controller
+        name="dateRange"
+        control={control}
+        render={({ field }) => (
+          <>
+            <DateRangePicker value={field.value} onChange={field.onChange} />
+            {errors.dateRange?.startDate && (
+              <p className="text-sm text-red-600">
+                {errors.dateRange.startDate.message}
+              </p>
+            )}
+            <div className="h-5">
+              {errors.dateRange?.endDate && (
+                <p className="text-sm text-red-600">
+                  {errors.dateRange.endDate.message}
+                </p>
+              )}
+            </div>
+          </>
+        )}
+      />
+
+      <Controller
+        name="selectedCats"
+        control={control}
+        render={({ field }) => (
+          <div className="flex flex-col gap-1">
+            <MultySelector
+              options={categories}
+              selectedOptions={field.value}
+              onChange={field.onChange}
+              toValue={item => item.value}
+              transform={transformCategory}
+              CheckIcon={FaCheck}
+            />
+            <div className="h-5">
+              {errors.selectedCats && (
+                <p className="text-sm text-red-600">
+                  {errors.selectedCats.message}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+      />
+
+      <button
+        type="submit"
+        className={`px-4 py-2 rounded-t-xl text-white bg-[#993333] hover:bg-[#d66044] transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400
+  `}
+        disabled={Object.keys(errors).length > 0}
+      >
+        Застосувати
+      </button>
+    </form>
+  );
+};
+
+export default FilterForm;
