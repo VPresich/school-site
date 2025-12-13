@@ -1,35 +1,34 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
+import { saveSelectedCats, saveDateRange } from '../redux/filter/slice';
+import { selectSelectedCats, selectDateRange } from '../redux/filter/selectors';
+import { AppDispatch } from '../redux/store';
 import DateRangePicker from './DataPicker/DateRangePicker/DateRangePicker';
 import MultySelector from './MultySelector/MultySelector';
 import { categories } from '../auxiliary/categories';
 import { transformCategory } from '../auxiliary/transformCategory';
 import { FaCheck } from 'react-icons/fa6';
-import { useDispatch } from 'react-redux';
-// import { setSelectedCategories, setDateRange } from '../../redux/filterSlice';
+import { FilterValues } from '../redux/filter/types';
+
 import Separator from './Separator';
 
-interface FilterFormValues {
-  dateRange: { startDate: Date | null; endDate: Date | null };
-  categories: string[];
-}
-
 const FilterForm: React.FC = () => {
-  const dispatch = useDispatch();
-  const { handleSubmit, control } = useForm<FilterFormValues>({
+  const dispatch = useDispatch<AppDispatch>();
+  const initDateRange = useSelector(selectDateRange);
+  const initSelectedCat = useSelector(selectSelectedCats);
+
+  const { handleSubmit, control } = useForm<FilterValues>({
     defaultValues: {
-      dateRange: { startDate: null, endDate: null },
-      categories: ['concert', 'exam'],
+      dateRange: initDateRange,
+      selectedCats: initSelectedCat,
     },
   });
 
-  // Функция, которая вызывается по кнопке "Применить"
-  const onSubmit = (data: FilterFormValues) => {
-    // Здесь можно отправить данные в store или на сервер
-    // dispatch(setDateRange(data.dateRange));
-    // dispatch(setSelectedCategories(data.categories));
-
-    console.log('Отправляем на сервер:', data);
+  const onSubmit = (data: FilterValues) => {
+    console.log('FILTERINGData:', data);
+    dispatch(saveSelectedCats(data.selectedCats));
+    dispatch(saveDateRange(data.dateRange));
   };
 
   return (
@@ -46,7 +45,7 @@ const FilterForm: React.FC = () => {
       />
 
       <Controller
-        name="categories"
+        name="selectedCats"
         control={control}
         render={({ field }) => (
           <MultySelector
@@ -63,7 +62,7 @@ const FilterForm: React.FC = () => {
         type="submit"
         className="px-4 py-2 bg-[#993333] text-white rounded-t-xl hover:bg-[#d66044]"
       >
-        Применить
+        Застосувати
       </button>
     </form>
   );
