@@ -4,7 +4,7 @@ import { FaRegCalendar } from 'react-icons/fa';
 import { uk } from 'date-fns/locale';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import '../DateRangePicker.css';
+import './DatePickerRange.css';
 
 registerLocale('uk', {
   ...uk,

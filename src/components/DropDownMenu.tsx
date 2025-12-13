@@ -46,7 +46,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
         {title}
       </Link>
 
-      {items.length > 0 && (
+      {items.length > 0 && id != 0 && (
         <div
           className=" absolute left-0 top-full w-full
            bg-[#993333]/70 backdrop-blur-lg text-white rounded-b-md shadow-lg z-100

@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 const HomePage = lazy(() => import('../pages/home/HomePage'));
 const ArchivePage = lazy(() => import('../pages/home/ArchivePage'));
-const EventsPage = lazy(() => import('../pages/home/EventsPage'));
+const PostersPage = lazy(() => import('../pages/home/PostersPage'));
 const AboutPage = lazy(() => import('../pages/about/AboutPage'));
 const GeneralInfoPage = lazy(() => import('../pages/GeneralInfoPage'));
 const HistoryPage = lazy(() => import('../pages/HistoryPage'));
@@ -31,8 +31,8 @@ function AppRoutes() {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/archive" element={<ArchivePage />} />
-          <Route path="/anonse" element={<AnnouncementsPage />} />
-          <Route path="/events" element={<EventsPage />} />
+          <Route path="/announcements" element={<AnnouncementsPage />} />
+          <Route path="/posters" element={<PostersPage />} />
           <Route path="/media" element={<MediaPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />

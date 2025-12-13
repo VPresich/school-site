@@ -14,13 +14,22 @@ registerLocale('uk', {
   },
 });
 
-interface DateRangePickerProps {
-  onChange: (dates: { startDate: Date | null; endDate: Date | null }) => void;
+interface DateRange {
+  startDate: Date | null;
+  endDate: Date | null;
 }
 
-const DateRangePicker: React.FC<DateRangePickerProps> = ({ onChange }) => {
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+interface DateRangePickerProps {
+  value: DateRange;
+  onChange: (dates: DateRange) => void;
+}
+
+const DateRangePicker: React.FC<DateRangePickerProps> = ({
+  value,
+  onChange,
+}) => {
+  const [startDate, setStartDate] = useState<Date | null>(value.startDate);
+  const [endDate, setEndDate] = useState<Date | null>(value.endDate);
 
   const startRef = useRef<DatePicker>(null);
   const endRef = useRef<DatePicker>(null);
@@ -39,7 +48,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onChange }) => {
   };
 
   return (
-    <div className="date-range-picker flex flex-col gap-1">
+    <div className="date-range-picker flex flex-col gap-2">
       <div className="flex flex-col gap-1">
         <label className="text-[#993333]">Дата початку</label>
 
@@ -96,3 +105,103 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onChange }) => {
 };
 
 export default DateRangePicker;
+
+// import React, { useRef } from 'react';
+// import DatePicker, { registerLocale } from 'react-datepicker';
+// import { FaRegCalendar } from 'react-icons/fa';
+// import { uk } from 'date-fns/locale';
+
+// import 'react-datepicker/dist/react-datepicker.css';
+
+// registerLocale('uk', {
+//   ...uk,
+//   localize: {
+//     ...uk.localize,
+//     day: (n: number) => ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'][n],
+//   },
+// });
+
+// interface DateRange {
+//   startDate: Date | null;
+//   endDate: Date | null;
+// }
+
+// interface DateRangePickerProps {
+//   value: DateRange;
+//   onChange: (dates: DateRange) => void;
+// }
+
+// const DateRangePicker: React.FC<DateRangePickerProps> = ({
+//   value,
+//   onChange,
+// }) => {
+//   const startRef = useRef<DatePicker>(null);
+//   const endRef = useRef<DatePicker>(null);
+
+//   const handleStartChange = (date: Date | null) => {
+//     const newRange = {
+//       startDate: date,
+//       endDate:
+//         value.endDate && date && value.endDate < date ? null : value.endDate,
+//     };
+//     onChange(newRange);
+//   };
+
+//   const handleEndChange = (date: Date | null) => {
+//     onChange({ startDate: value.startDate, endDate: date });
+//   };
+
+//   return (
+//     <div className="date-range-picker">
+//       <div className="date-picker-field">
+//         <label>Дата початку</label>
+//         <div className="drp-wrapper">
+//           <DatePicker
+//             ref={startRef}
+//             selected={value.startDate}
+//             onChange={handleStartChange}
+//             locale="uk"
+//             placeholderText="Оберіть дату"
+//             maxDate={value.endDate ?? undefined}
+//             showMonthDropdown
+//             showYearDropdown
+//             dropdownMode="select"
+//             showPopperArrow={false}
+//             className="drp-input"
+//             calendarClassName="drp-calendar"
+//           />
+//           <FaRegCalendar
+//             className="drp-icon"
+//             onClick={() => startRef.current?.setOpen(true)}
+//           />
+//         </div>
+//       </div>
+
+//       <div className="date-picker-field">
+//         <label>Дата завершення</label>
+//         <div className="drp-wrapper">
+//           <DatePicker
+//             ref={endRef}
+//             selected={value.endDate}
+//             onChange={handleEndChange}
+//             locale="uk"
+//             placeholderText="Оберіть дату"
+//             minDate={value.startDate ?? undefined}
+//             showMonthDropdown
+//             showYearDropdown
+//             dropdownMode="select"
+//             showPopperArrow={false}
+//             className="drp-input"
+//             calendarClassName="drp-calendar"
+//           />
+//           <FaRegCalendar
+//             className="drp-icon"
+//             onClick={() => endRef.current?.setOpen(true)}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default DateRangePicker;

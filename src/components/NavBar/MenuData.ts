@@ -5,9 +5,9 @@ export const menu: MenuItem[] = [
     title: 'Головна',
     to: '/',
     items: [
-      { label: 'Архів', path: '/archive' },
-      { label: 'Події', path: '/events' },
-      { label: 'Анонси', path: '/anonse' },
+      { label: 'Анонси', path: '/announcements' },
+      { label: 'Події', path: '/archive' },
+      { label: 'Афіші', path: '/posters' },
     ],
   },
   {
