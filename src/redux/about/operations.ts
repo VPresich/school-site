@@ -17,7 +17,8 @@ export const fetchAbout = createAsyncThunk<
         teachersSection,
         goals,
         tasks,
-        development
+        development,
+        sections,
       }`
     );
 

@@ -14,7 +14,7 @@ export const menu: MenuItem[] = [
     title: 'Про школу',
     to: '/about',
     items: [
-      { label: 'Загальні відомості', path: '/about/general-info' },
+      { label: 'Загальні відомості', path: '/about/general' },
       { label: 'Історія школи', path: '/about/history' },
       { label: 'Матеріально-технічна база', path: '/about/facilities' },
       { label: 'Організація освітнього процесу', path: '/about/organization' },

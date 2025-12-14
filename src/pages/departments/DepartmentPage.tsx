@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { PortableText } from '@portabletext/react';
 import clsx from 'clsx';
 import { AppDispatch } from '../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
+import { PortableText } from '@portabletext/react';
+import PortableTextConfig from '../../components/PortableTextConfig';
 import { getImageUrl } from '../../api/getImageUrl';
 import { fetchDepartmentBySlug } from '../../redux/departments/operations';
 import { selectDepartmentBySlug } from '../../redux/departments/selectors';
-import PortableTextConfig from '../../components/PortableTextConfig';
 import { useParams } from 'react-router-dom';
 import {
   errNotify,
@@ -23,7 +23,7 @@ const DepartmentPage: React.FC = () => {
     const initDepartment = async () => {
       if (!slug) return;
       try {
-        const department = await dispatch(fetchDepartmentBySlug(slug)).unwrap();
+        await dispatch(fetchDepartmentBySlug(slug)).unwrap();
         if (!slug) return;
         successNotify(`Success loading DEPARTMENT - ${slug}`);
       } catch {

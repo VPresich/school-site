@@ -5,6 +5,7 @@ import { fetchArchivePage } from '../redux/archive/operation';
 import { fetchHome } from '../redux/home/operations';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import { fetchAbout } from '../redux/about/operations';
+import { fetchDepartments } from '../redux/departments/operations';
 import HeadSlider from './HeadSlider/HeadSlider';
 import HeaderTitle from './HeaderTitle/HeaderTitle';
 import {
@@ -46,6 +47,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         successNotify('Success loading ABOUTPAGE');
       } catch {
         errNotify('Error loading ABOUTPAGE');
+      }
+
+      try {
+        await dispatch(fetchDepartments()).unwrap();
+        successNotify('Success loading DEPARTMENTS');
+      } catch {
+        errNotify('Error loading DEPARTMENTS');
       }
     };
 

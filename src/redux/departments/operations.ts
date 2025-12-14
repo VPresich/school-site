@@ -15,7 +15,7 @@ export const fetchDepartments = createAsyncThunk<
         slug,
         resume,
         teachersText,
-        teacherPhotos,
+        teachersGallery,
         teachersList,
         studentsText,
         studentsGallery

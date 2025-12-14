@@ -29,3 +29,9 @@ export const selectAboutGoals = (state: RootState) => state.about.page?.goals;
 export const selectAboutTasks = (state: RootState) => state.about.page?.tasks;
 export const selectAboutDevelopment = (state: RootState) =>
   state.about.page?.development;
+
+export const selectSectionBySlug = (slug: string) => (state: RootState) => {
+  return state.about.page?.sections?.find(
+    section => section.slug?.current === slug
+  );
+};

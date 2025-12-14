@@ -5,7 +5,7 @@ const HomePage = lazy(() => import('../pages/home/HomePage'));
 const ArchivePage = lazy(() => import('../pages/home/ArchivePage'));
 const PostersPage = lazy(() => import('../pages/home/PostersPage'));
 const AboutPage = lazy(() => import('../pages/about/AboutPage'));
-const GeneralInfoPage = lazy(() => import('../pages/GeneralInfoPage'));
+const AboutSectionPage = lazy(() => import('../pages/about/AboutSectionPage'));
 const HistoryPage = lazy(() => import('../pages/HistoryPage'));
 const FacilitiesPage = lazy(() => import('../pages/FacilitiesPage'));
 const OrganizationPage = lazy(() => import('../pages/OrganizationPage'));
@@ -36,12 +36,8 @@ function AppRoutes() {
           <Route path="/media" element={<MediaPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/about/general-info" element={<GeneralInfoPage />} />
-          <Route path="/about/history" element={<HistoryPage />} />
-          <Route path="/about/facilities" element={<FacilitiesPage />} />
-          <Route path="/about/organization" element={<OrganizationPage />} />
-          <Route path="/about/achievements" element={<AchievementsPage />} />
-
+          <Route path="/about/general" element={<AboutPage />} />
+          <Route path="/about/:slug" element={<AboutSectionPage />} />
           <Route path="/departments" element={<DepartmentsPage />} />
           <Route path="/departments/:slug" element={<DepartmentPage />} />
         </Routes>

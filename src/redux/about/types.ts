@@ -1,5 +1,6 @@
 import { PortableTextBlock } from '@portabletext/types';
 import { SanityImage } from '../types';
+import { SanitySlug } from '../types';
 
 export interface AboutDyrector {
   _type: 'object';
@@ -22,6 +23,19 @@ export interface AboutTeacherSection {
   teachersGallery: SanityImage[];
 }
 
+export interface GallerySectionItem {
+  image: SanityImage;
+  title: string;
+}
+
+export interface AboutSchollSection {
+  _type: 'object';
+  title: string;
+  slug: SanitySlug;
+  content: PortableTextBlock[];
+  gallery?: GallerySectionItem[];
+}
+
 export interface AboutDocument {
   _type: 'about';
   title: string;
@@ -31,6 +45,7 @@ export interface AboutDocument {
   goals: PortableTextBlock[];
   tasks: PortableTextBlock[];
   development: PortableTextBlock[];
+  sections: AboutSchollSection[];
 }
 
 export interface AboutState {

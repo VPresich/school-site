@@ -1,12 +1,30 @@
-import React from "react";
+import React from 'react';
+import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import DepGalleryItem from '../../components/DepGalleryItem';
+import { selectAllDepartments } from '../../redux/departments/selectors';
+import css from './DepartmentPage.module.css';
 
-function DepartmentsPage(): React.JSX.Element {
+const DepartmentsPage: React.FC = () => {
+  const departments = useSelector(selectAllDepartments);
+
   return (
-    <div className="text-center p-8">
-      <h1 className="text-3xl font-bold mb-4">Відділи школи</h1>
-      <p>Огляд шкільних відділів.</p>
+    <div className="p-8">
+      <h2
+        className={clsx(
+          css.font,
+          'text-4xl font-bold text-[#993333] mb-8 text-center'
+        )}
+      >
+        Відділи школи
+      </h2>
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {departments.map(dep => (
+          <DepGalleryItem key={dep.slug.current} dep={dep} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default DepartmentsPage;
