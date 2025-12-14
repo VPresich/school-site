@@ -20,6 +20,8 @@ interface LayoutProps {
   children: ReactNode;
 }
 
+const isDevMode = import.meta.env.VITE_DEVELOPED_MODE === 'true';
+
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const activeMenuItem = useSelector(selectActiveMenuItem);
   const dispatch = useDispatch<AppDispatch>();
@@ -30,28 +32,36 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         const archiveList = await dispatch(
           fetchArchivePage({ page: 1, limit: 10 })
         ).unwrap();
-        successNotify('Success loading ARCHIVE');
+        if (isDevMode) {
+          successNotify('Success loading ARCHIVE');
+        }
       } catch {
         errNotify('Error loading ARCHIVE');
       }
 
       try {
         await dispatch(fetchHome()).unwrap();
-        successNotify('Success loading HOMEPAGE');
+        if (isDevMode) {
+          successNotify('Success loading HOMEPAGE');
+        }
       } catch {
         errNotify('Error loading HOMEPAGE');
       }
 
       try {
         await dispatch(fetchAbout()).unwrap();
-        successNotify('Success loading ABOUTPAGE');
+        if (isDevMode) {
+          successNotify('Success loading ABOUTPAGE');
+        }
       } catch {
         errNotify('Error loading ABOUTPAGE');
       }
 
       try {
         await dispatch(fetchDepartments()).unwrap();
-        successNotify('Success loading DEPARTMENTS');
+        if (isDevMode) {
+          successNotify('Success loading DEPARTMENTS');
+        }
       } catch {
         errNotify('Error loading DEPARTMENTS');
       }

@@ -6,10 +6,6 @@ const ArchivePage = lazy(() => import('../pages/home/ArchivePage'));
 const PostersPage = lazy(() => import('../pages/home/PostersPage'));
 const AboutPage = lazy(() => import('../pages/about/AboutPage'));
 const AboutSectionPage = lazy(() => import('../pages/about/AboutSectionPage'));
-const HistoryPage = lazy(() => import('../pages/HistoryPage'));
-const FacilitiesPage = lazy(() => import('../pages/FacilitiesPage'));
-const OrganizationPage = lazy(() => import('../pages/OrganizationPage'));
-const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const AnnouncementsPage = lazy(() => import('../pages/home/AnnouncementsPage'));
 
 const DepartmentsPage = lazy(

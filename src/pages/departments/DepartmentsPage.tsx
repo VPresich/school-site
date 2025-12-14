@@ -13,7 +13,7 @@ const DepartmentsPage: React.FC = () => {
       <h2
         className={clsx(
           css.font,
-          'text-4xl font-bold text-[#993333] mb-8 text-center'
+          'mb-12 text-center text-5xl font-bold text-[#993333]'
         )}
       >
         Відділи школи

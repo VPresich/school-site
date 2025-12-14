@@ -18,6 +18,8 @@ import {
 } from '../../auxiliary/notification/notification';
 import css from './HomePage.module.css';
 
+const isDevMode = import.meta.env.VITE_DEVELOPED_MODE === 'true';
+
 function ArchivePage(): React.JSX.Element {
   const archiveList = useSelector(selectArchiveItemsUI);
   const page = useSelector(selectPage);
@@ -29,7 +31,9 @@ function ArchivePage(): React.JSX.Element {
     const getArchivePage = async () => {
       try {
         await dispatch(fetchArchivePage({ page, limit })).unwrap();
-        successNotify('Success loading ARCHIVE PAGE');
+        if (isDevMode) {
+          successNotify('Success loading ARCHIVE PAGE');
+        }
       } catch {
         errNotify('Error loading ARCHIVE PAGE');
       }

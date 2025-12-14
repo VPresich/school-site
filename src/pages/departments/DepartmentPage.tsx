@@ -7,12 +7,15 @@ import PortableTextConfig from '../../components/PortableTextConfig';
 import { getImageUrl } from '../../api/getImageUrl';
 import { fetchDepartmentBySlug } from '../../redux/departments/operations';
 import { selectDepartmentBySlug } from '../../redux/departments/selectors';
+import { ImageLightbox } from '../../components/ImageLightbox';
 import { useParams } from 'react-router-dom';
 import {
   errNotify,
   successNotify,
 } from '../../auxiliary/notification/notification';
 import css from './DepartmentPage.module.css';
+
+const isDevMode = import.meta.env.VITE_DEVELOPED_MODE === 'true';
 
 const DepartmentPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -25,7 +28,9 @@ const DepartmentPage: React.FC = () => {
       try {
         await dispatch(fetchDepartmentBySlug(slug)).unwrap();
         if (!slug) return;
-        successNotify(`Success loading DEPARTMENT - ${slug}`);
+        if (isDevMode) {
+          successNotify(`Success loading DEPARTMENT - ${slug}`);
+        }
       } catch {
         errNotify(`Error loading DEPARTMENT - ${slug}`);
       }
@@ -90,18 +95,17 @@ const DepartmentPage: React.FC = () => {
           components={PortableTextConfig}
         />
       )}
-      {studentsGallery.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
-          {studentsGallery.map((photo, idx) => (
-            <img
-              key={idx}
-              src={getImageUrl(photo.asset._ref, 1200)}
-              alt={`Учень ${idx + 1}`}
-              className="w-full h-auto rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101"
-            />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+        {studentsGallery.map((photo, idx) => (
+          <ImageLightbox
+            key={idx}
+            src={getImageUrl(photo.asset._ref, 1200)}
+            alt={`Учень ${idx + 1}`}
+            className="w-full h-[620px] rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101 cursor-zoom-in"
+          />
+        ))}
+      </div>
+
       {department.studentsText && (
         <>
           <h3
