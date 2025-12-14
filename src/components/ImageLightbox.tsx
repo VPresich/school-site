@@ -17,10 +17,12 @@ export const ImageLightbox: FC<ImageLightboxProps> = ({ src, alt }) => {
         className="w-full h-48 object-cover rounded cursor-pointer hover:opacity-90 transition"
         onClick={() => setOpen(true)}
       />
-
-      <Dialog open={open} onClose={setOpen} className="relative z-50">
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        className="relative z-50"
+      >
         <div className="fixed inset-0 bg-black/80" aria-hidden="true" />
-
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="relative">
             <img
