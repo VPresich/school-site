@@ -2,6 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectPage, selectTotalPages } from '../redux/archive/selectors';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
+import {
+  FiChevronsLeft,
+  FiChevronLeft,
+  FiChevronRight,
+  FiChevronsRight,
+} from 'react-icons/fi';
 import clsx from 'clsx';
 
 interface PaginationProps {
@@ -45,10 +51,24 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
 
   return (
     <div className="flex justify-center gap-2 mt-6 flex-wrap">
+      {/* First page button */}
+      <button
+        className={clsx(
+          'px-2 py-1 rounded-lg border text-sm transition-all duration-300',
+          currentPage === 1
+            ? 'cursor-not-allowed opacity-40'
+            : 'hover:bg-gray-200 cursor-pointer hover:border-gray-200'
+        )}
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(1)}
+      >
+        <FiChevronsLeft size={18} className="text-gray-500" />
+      </button>
+
       {/* Previous button */}
       <button
         className={clsx(
-          'px-3 py-1 rounded-lg border text-sm transition-all duration-300',
+          'px-2 py-1 rounded-lg border text-sm transition-all duration-300',
           currentPage === 1
             ? 'cursor-not-allowed opacity-40'
             : 'hover:bg-gray-200 cursor-pointer hover:border-gray-200'
@@ -56,7 +76,7 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        <FaChevronLeft size={18} className="text-gray-500" />
+        <FiChevronLeft size={18} className="text-gray-500" />
       </button>
 
       {/* Pages */}
@@ -87,7 +107,7 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
       {/* Next button */}
       <button
         className={clsx(
-          'px-3 py-1 rounded-lg border text-sm transition-all duration-300',
+          'px-2 py-1 rounded-lg border text-sm transition-all duration-300',
           currentPage === totalPages
             ? 'cursor-not-allowed opacity-40'
             : 'hover:bg-gray-200 cursor-pointer hover:border-gray-200'
@@ -95,7 +115,19 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        <FaChevronRight size={18} className="text-gray-500" />
+        <FiChevronRight size={18} className="text-gray-500" />
+      </button>
+      <button
+        className={clsx(
+          'px-2 py-1 rounded-lg border text-sm transition-all duration-300',
+          currentPage === totalPages
+            ? 'cursor-not-allowed opacity-40'
+            : 'hover:bg-gray-200 cursor-pointer hover:border-gray-200'
+        )}
+        disabled={currentPage === totalPages}
+        onClick={() => onPageChange(totalPages)}
+      >
+        <FiChevronsRight size={18} className="text-gray-500" />
       </button>
     </div>
   );
