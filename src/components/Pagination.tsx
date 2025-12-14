@@ -16,16 +16,26 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
 
   const createPages = () => {
     const pages: (number | 'dots')[] = [];
+
+    // Always show first page
     pages.push(1);
 
+    // Left dots
     if (currentPage > 3) pages.push('dots');
 
-    for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-      if (i > 1 && i < totalPages) pages.push(i);
+    // Middle pages
+    for (
+      let i = Math.max(2, currentPage - 1);
+      i <= Math.min(totalPages - 1, currentPage + 1);
+      i++
+    ) {
+      pages.push(i);
     }
 
+    // Right dots
     if (currentPage < totalPages - 2) pages.push('dots');
 
+    // Always show last page
     if (totalPages > 1) pages.push(totalPages);
 
     return pages;
@@ -34,10 +44,11 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
   const pages = createPages();
 
   return (
-    <div className="flex justify-center gap-2 mt-6">
+    <div className="flex justify-center gap-2 mt-6 flex-wrap">
+      {/* Previous button */}
       <button
         className={clsx(
-          'px-3 py-1 rounded-lg border text-sm transition-all duration-400',
+          'px-3 py-1 rounded-lg border text-sm transition-all duration-300',
           currentPage === 1
             ? 'cursor-not-allowed opacity-40'
             : 'hover:bg-gray-200 cursor-pointer hover:border-gray-200'
@@ -45,21 +56,25 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        <FaChevronLeft size={18} text-gray-500 />
+        <FaChevronLeft size={18} className="text-gray-500" />
       </button>
 
+      {/* Pages */}
       {pages.map((p, idx) =>
         p === 'dots' ? (
-          <span key={idx} className="px-3 py-1 text-gray-500">
+          <span
+            key={`dots-${idx}`}
+            className="px-3 py-1 text-gray-500 select-none"
+          >
             …
           </span>
         ) : (
           <button
-            key={p}
+            key={`page-${p}`}
             className={clsx(
               'px-3 py-1 rounded-lg border text-sm transition-all duration-300',
               currentPage === p
-                ? 'bg-[#993333] text-white border-[#993333] cursor-pointer hover:border-red-200 hover:shadow-md hover:bg-red-500'
+                ? 'bg-[#993333] text-white border-[#993333] cursor-pointer'
                 : 'hover:bg-gray-200 text-gray-700 cursor-pointer hover:border-gray-200'
             )}
             onClick={() => onPageChange(p as number)}
@@ -69,6 +84,7 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
         )
       )}
 
+      {/* Next button */}
       <button
         className={clsx(
           'px-3 py-1 rounded-lg border text-sm transition-all duration-300',
@@ -79,7 +95,7 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        <FaChevronRight size={18} text-gray-500 />
+        <FaChevronRight size={18} className="text-gray-500" />
       </button>
     </div>
   );

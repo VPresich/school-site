@@ -6,11 +6,28 @@ export interface ArchiveCategory {
   value: string;
 }
 
+export enum Status {
+  Idle = 'idle',
+  Loading = 'loading',
+  Succeeded = 'succeeded',
+  Failed = 'failed',
+}
+
 export interface ArchiveVideo {
   url: string;
 }
 
 export interface ArchiveItem {
+  title: string;
+  date: string;
+  enddate?: string;
+  description?: PortableTextBlock[];
+  category: string;
+  images?: SanityImage[];
+  videos?: ArchiveVideo[];
+}
+
+export interface ArchiveItemUI {
   title: string;
   date: string;
   enddate?: string;
@@ -28,15 +45,24 @@ export interface FetchArchivePageArgs {
 export interface FetchArchivePageResponse {
   items: ArchiveItem[];
   total: number;
-  totalPages: number;
+  page?: number;
+  totalPages?: number;
 }
 
 export interface ArchiveState {
   items: ArchiveItem[];
-  status: string;
+  status: Status;
   error: string | null | undefined;
   page: number;
   limit: number;
   total: number;
   totalPages: number;
+}
+
+export interface FetchArchiveFilteredArgs {
+  page: number;
+  limit: number;
+  startDate: string | null;
+  endDate: string | null;
+  categories: string[];
 }

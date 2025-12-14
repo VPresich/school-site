@@ -6,7 +6,7 @@ import { setActivePage } from '../../redux/archive/slice';
 import Pagination from '../../components/Pagination';
 import { AppDispatch } from '../../redux/store';
 import {
-  selectArchiveList,
+  selectArchiveItemsUI,
   selectPage,
   selectLimit,
   selectTotalPages,
@@ -19,7 +19,7 @@ import {
 import css from './HomePage.module.css';
 
 function ArchivePage(): React.JSX.Element {
-  const archiveList = useSelector(selectArchiveList);
+  const archiveList = useSelector(selectArchiveItemsUI);
   const page = useSelector(selectPage);
   const limit = useSelector(selectLimit);
 

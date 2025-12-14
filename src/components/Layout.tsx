@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const initApp = async () => {
       try {
         const archiveList = await dispatch(
-          fetchArchivePage({ page: 2, limit: 10 })
+          fetchArchivePage({ page: 1, limit: 10 })
         ).unwrap();
         successNotify('Success loading ARCHIVE');
       } catch {

@@ -1,5 +1,5 @@
-import { ArchiveItem } from '../../redux/archive/types';
+import { ArchiveItemUI } from '../../redux/archive/types';
 
 export interface ArchiveListProps {
-  list?: ArchiveItem[];
+  list?: ArchiveItemUI[];
 }

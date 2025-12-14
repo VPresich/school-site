@@ -1,7 +1,7 @@
 import React from 'react';
 import ArchiveCard from '../ArchiveCard/ArchiveCard';
 import { ArchiveListProps } from './ArchiveList.types';
-import { ArchiveItem } from '../../redux/archive/types';
+import { ArchiveItemUI } from '../../redux/archive/types';
 
 const ArchiveList: React.FC<ArchiveListProps> = ({ list = [] }) => {
   if (list.length === 0) {
@@ -10,7 +10,7 @@ const ArchiveList: React.FC<ArchiveListProps> = ({ list = [] }) => {
 
   return (
     <div className="flex flex-col gap-6">
-      {list.map((item: ArchiveItem, idx: number) => (
+      {list.map((item: ArchiveItemUI, idx: number) => (
         <ArchiveCard key={idx} item={item} />
       ))}
     </div>
