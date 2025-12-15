@@ -27,7 +27,10 @@ function HomePage(): React.JSX.Element {
 
       {homePage.welcomeText && (
         <div className="mb-6 sm:mb-8 text-[#993333] font-semibold text-2xl sm:text-3xl md:text-4xl leading-snug">
-          <PortableText value={homePage.welcomeText} />
+          <PortableText
+            value={homePage.welcomeText}
+            components={PortableTextConfig}
+          />
         </div>
       )}
 

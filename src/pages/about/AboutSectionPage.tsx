@@ -23,7 +23,7 @@ const AboutSectionPage: React.FC = () => {
       >
         {section.title}
       </h2>
-      <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
+      <div className="text-md text-gray-700 bg-gray-50 p-8 rounded-xl shadow hover:shadow-md">
         {section.content && (
           <PortableText
             value={section.content}

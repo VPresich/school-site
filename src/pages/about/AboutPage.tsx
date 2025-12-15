@@ -132,7 +132,7 @@ function AboutPage(): React.JSX.Element {
         )}
 
         {tasks && (
-          <div className="text-md text-gray-700 bg-gray-100 p-8 rounded-xl shadow hover:shadow-md">
+          <div className="text-md text-gray-700 bg-gray-50 p-8 rounded-xl shadow hover:shadow-md">
             <h3
               className={clsx(
                 css.font,

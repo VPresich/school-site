@@ -45,7 +45,7 @@ const DepartmentPage: React.FC = () => {
   const studentsGallery = department.studentsGallery ?? [];
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-12">
+    <div className="max-w-7xl mx-auto p-8 space-y-12">
       <h2
         className={clsx(
           css.font,
@@ -55,13 +55,15 @@ const DepartmentPage: React.FC = () => {
         {department.title}
       </h2>
       {department.resume && (
-        <PortableText
-          value={department.resume}
-          components={PortableTextConfig}
-        />
+        <div className="bg-gray-50 mb-8 sm:mb-10 text-[15px] sm:text-base text-gray-700 p-4 sm:px-6 md:px-10 rounded-xl shadow hover:shadow-md transition">
+          <PortableText
+            value={department.resume}
+            components={PortableTextConfig}
+          />
+        </div>
       )}
       {department.teachersList && (
-        <>
+        <div className="bg-gray-50 mb-8 sm:mb-10 md:mb-12 p-4 sm:px-6 md:px-10 rounded-xl shadow hover:shadow-md transition">
           <h3
             className={clsx(
               css.font,
@@ -74,10 +76,10 @@ const DepartmentPage: React.FC = () => {
             value={department.teachersList}
             components={PortableTextConfig}
           />
-        </>
+        </div>
       )}
       {teachersGallery.length > 0 && (
-        <div className="flex flex-col gap-8 px-0 sm:px-0 md:px-10">
+        <div className="flex flex-col gap-8 md:gap-12 px-0 sm:px-0 md:px-10">
           {teachersGallery.map((photo, idx) => (
             <img
               key={idx}
@@ -90,12 +92,14 @@ const DepartmentPage: React.FC = () => {
       )}
 
       {department.teachersText && (
-        <PortableText
-          value={department.teachersText}
-          components={PortableTextConfig}
-        />
+        <div className="bg-gray-50 mb-8 sm:mb-10 text-[15px] sm:text-base text-gray-700 p-4 sm:px-6 md:px-10 rounded-xl shadow hover:shadow-md transition">
+          <PortableText
+            value={department.teachersText}
+            components={PortableTextConfig}
+          />
+        </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 px-0 sm:px-0 md:px-8">
         {studentsGallery.map((photo, idx) => (
           <ImageLightbox
             key={idx}
@@ -107,7 +111,7 @@ const DepartmentPage: React.FC = () => {
       </div>
 
       {department.studentsText && (
-        <>
+        <div className="bg-gray-50 mb-8 sm:mb-10 md:mb-12 p-4 sm:px-6 md:px-10 rounded-xl shadow hover:shadow-md transition">
           <h3
             className={clsx(
               css.font,
@@ -121,7 +125,7 @@ const DepartmentPage: React.FC = () => {
             value={department.studentsText}
             components={PortableTextConfig}
           />
-        </>
+        </div>
       )}
     </div>
   );

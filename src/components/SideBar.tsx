@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
 
   return (
     <aside
-      className="lg:flex flex-[0_0_20%] bg-white/80 shadow-md pl-4 pr-2 py-6 flex flex-col gap-1 
+      className="lg:flex flex-[0_0_20%] bg-white shadow-md pl-4 pr-2 py-6 flex flex-col gap-1 
       rounded-xl sticky top-0 h-screen"
     >
       <div className="flex-1 overflow-y-auto min-h-0 pr-2">
