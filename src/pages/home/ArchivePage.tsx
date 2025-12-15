@@ -5,6 +5,7 @@ import { fetchArchivePage } from '../../redux/archive/operation';
 import { setActivePage } from '../../redux/archive/slice';
 import Pagination from '../../components/Pagination';
 import { AppDispatch } from '../../redux/store';
+import ArchFilterForm from '../../components/ArchFilterForm/ArchFilterForm';
 import {
   selectArchiveItemsUI,
   selectPage,
@@ -53,8 +54,9 @@ function ArchivePage(): React.JSX.Element {
           'mb-12 text-center text-5xl font-bold text-[#993333]'
         )}
       >
-        Останні події
+        Архів подій
       </h2>
+      <ArchFilterForm />
       <ArchiveList list={archiveList} />
       <Pagination onPageChange={handlePageChange} />
     </div>

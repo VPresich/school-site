@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import clsx from 'clsx';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { FaRegCalendar } from 'react-icons/fa';
 import { uk } from 'date-fns/locale';
@@ -22,11 +23,17 @@ interface DateRange {
 interface DateRangePickerProps {
   value: DateRange;
   onChange: (dates: DateRange) => void;
+  startError?: string | undefined;
+  endError?: string | undefined;
+  className?: string;
 }
 
 const DateRangePicker: React.FC<DateRangePickerProps> = ({
   value,
   onChange,
+  startError,
+  endError,
+  className,
 }) => {
   const [startDate, setStartDate] = useState<Date | null>(value.startDate);
   const [endDate, setEndDate] = useState<Date | null>(value.endDate);
@@ -48,8 +55,10 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
   };
 
   return (
-    <div className="date-range-picker flex flex-col gap-2">
-      <div className="flex flex-col gap-1">
+    <div
+      className={clsx('date-range-picker', className ?? 'flex flex-col gap-2')}
+    >
+      <div className="flex flex-col">
         <label className="text-[#993333]">Дата початку</label>
 
         <div className="drp-wrapper">
@@ -67,15 +76,18 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
             maxDate={endDate ?? undefined}
             showPopperArrow={false}
           />
-
           <FaRegCalendar
             className="drp-icon"
             onClick={() => startRef.current?.setOpen(true)}
           />
         </div>
+
+        <div className="h-5">
+          {startError && <p className="text-sm text-red-600">{startError}</p>}
+        </div>
       </div>
 
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col">
         <label className="text-[#993333]">Дата завершення</label>
 
         <div className="drp-wrapper">
@@ -93,11 +105,16 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
             minDate={startDate ?? undefined}
             showPopperArrow={false}
           />
-
           <FaRegCalendar
             className="drp-icon"
             onClick={() => endRef.current?.setOpen(true)}
           />
+        </div>
+
+        <div className="relative h-5">
+          {endError && (
+            <p className="absolute text-sm text-red-600">{endError}</p>
+          )}
         </div>
       </div>
     </div>

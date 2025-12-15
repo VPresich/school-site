@@ -11,6 +11,7 @@ import {
 import { AppDispatch } from '../../redux/store';
 import DateRangePicker from '../DataPicker/DateRangePicker/DateRangePicker';
 import MultySelector from '../MultySelector/MultySelector';
+import DDMultySelector from '../MultySelector/DropDownMultySelector';
 import { categories } from '../../auxiliary/categories';
 import { transformCategory } from '../../auxiliary/transformCategory';
 import { feedbackSchema } from './feedbackSchema';
@@ -20,9 +21,7 @@ import {
   successNotify,
 } from '../../auxiliary/notification/notification';
 
-import Separator from '../Separator';
-
-const FilterForm: React.FC = () => {
+const ArchFilterForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const initDateRange = useSelector(selectDateRange);
   const initSelectedCat = useSelector(selectSelectedCats);
@@ -52,29 +51,30 @@ const FilterForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mb-4 mt-4 flex flex-col gap-3"
+      className="mb-4 mt-4 flex gap-3 items-end"
     >
       <Controller
         name="dateRange"
         control={control}
         render={({ field }) => (
-          <>
-            <DateRangePicker
-              value={field.value}
-              onChange={field.onChange}
-              startError={errors.dateRange?.startDate?.message}
-              endError={errors.dateRange?.endDate?.message}
-            />
-          </>
+          <DateRangePicker
+            value={field.value}
+            onChange={field.onChange}
+            startError={errors.dateRange?.startDate?.message}
+            endError={errors.dateRange?.endDate?.message}
+            className="flex flex-row gap-2"
+          />
         )}
       />
+
       <Controller
         name="selectedCats"
         control={control}
         render={({ field }) => (
-          <MultySelector
+          <DDMultySelector
             options={categories}
             selectedOptions={field.value}
+            nameOptions="Категорії"
             onChange={field.onChange}
             toValue={item => item.value}
             transform={transformCategory}
@@ -83,17 +83,18 @@ const FilterForm: React.FC = () => {
           />
         )}
       />
-
-      <button
-        type="submit"
-        className={`px-4 py-2 rounded-t-xl text-white bg-[#993333] hover:bg-[#d66044] transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400
-  `}
-        disabled={Object.keys(errors).length > 0}
-      >
-        Застосувати
-      </button>
+      <div className="flex flex-col">
+        <button
+          type="submit"
+          className="bg-[#993333] text-white rounded-xl py-3 px-4 transition-colors hover:bg-[#d66044] cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
+          disabled={Object.keys(errors).length > 0}
+        >
+          Застосувати
+        </button>
+        <div className="h-5" />
+      </div>
     </form>
   );
 };
 
-export default FilterForm;
+export default ArchFilterForm;

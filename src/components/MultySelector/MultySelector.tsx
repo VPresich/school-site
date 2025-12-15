@@ -17,16 +17,10 @@ interface MultySelectorProps<T> {
   options: T[];
   selectedOptions: string[];
   onChange: (selected: string[]) => void;
-
-  /** Converts option to string value (stored in selectedOptions) */
   toValue: ToStringFn<T>;
-
-  /** Converts value string to display object */
   transform: TransformFn;
-
-  /** React icon for checked state */
   CheckIcon: IconType;
-
+  error?: string;
   optionCSSClass?: string;
 }
 
@@ -38,6 +32,7 @@ function MultySelector<T>({
   toValue,
   transform,
   CheckIcon,
+  error,
   optionCSSClass,
 }: MultySelectorProps<T>) {
   const handleCheckboxChange = (value: string) => {
@@ -60,49 +55,54 @@ function MultySelector<T>({
 
   return (
     <div className={css.container}>
-      <div className={css.header}>
-        <span className={css.title}>Категорії</span>
-        <button
-          type="button"
-          onClick={handleSelectAllToggle}
-          className={css.button}
-        >
-          {selectedOptions.length === allValues.length
-            ? 'Скасувати всі'
-            : 'Обрати всі'}
-        </button>
+      <div className={css.wrapper}>
+        <div className={css.header}>
+          <span className={css.title}>Категорії</span>
+          <button
+            type="button"
+            onClick={handleSelectAllToggle}
+            className={css.button}
+          >
+            {selectedOptions.length === allValues.length
+              ? 'Скасувати всі'
+              : 'Обрати всі'}
+          </button>
+        </div>
+
+        <div className={css.list}>
+          {options.map((option, index) => {
+            const value = toValue(option);
+            const { title } = transform(value);
+            const checked = selectedOptions.includes(value);
+
+            return (
+              <label
+                key={value ?? index}
+                className={clsx(
+                  css.option,
+                  { [css.selected]: checked },
+                  optionCSSClass
+                )}
+              >
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => handleCheckboxChange(value)}
+                  className={css.input}
+                />
+
+                <span className={`${css.box} ${checked ? css.checked : ''}`}>
+                  {checked && <CheckIcon className={css.icon} />}
+                </span>
+
+                <span className={css.label}>{title}</span>
+              </label>
+            );
+          })}
+        </div>
       </div>
-
-      <div className={css.list}>
-        {options.map((option, index) => {
-          const value = toValue(option);
-          const { title } = transform(value);
-          const checked = selectedOptions.includes(value);
-
-          return (
-            <label
-              key={value ?? index}
-              className={clsx(
-                css.option,
-                { [css.selected]: checked },
-                optionCSSClass
-              )}
-            >
-              <input
-                type="checkbox"
-                checked={checked}
-                onChange={() => handleCheckboxChange(value)}
-                className={css.input}
-              />
-
-              <span className={`${css.box} ${checked ? css.checked : ''}`}>
-                {checked && <CheckIcon className={css.icon} />}
-              </span>
-
-              <span className={css.label}>{title}</span>
-            </label>
-          );
-        })}
+      <div className="h-2">
+        {error && <p className="text-sm text-red-600">{error}</p>}
       </div>
     </div>
   );

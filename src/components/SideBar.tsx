@@ -7,6 +7,7 @@ import { MenuItem } from './NavBar/Navbar.types';
 import FilterForm from './FilterForm/FilterForm';
 import { motion, AnimatePresence } from 'framer-motion';
 import { selectOpenIndex } from '../redux/menu/selector';
+import { menu } from './NavBar/MenuData';
 import Separator from './Separator';
 
 interface SidebarProps {
