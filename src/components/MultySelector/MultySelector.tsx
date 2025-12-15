@@ -1,7 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
 import { IconType } from 'react-icons';
-import css from './MultySelector.module.css';
 
 // ===== Generic helpers =====
 export interface CategoryItem {
@@ -16,24 +14,24 @@ export type TransformFn = (value: string) => CategoryItem;
 interface MultySelectorProps<T> {
   options: T[];
   selectedOptions: string[];
+  nameOptions: string;
   onChange: (selected: string[]) => void;
   toValue: ToStringFn<T>;
   transform: TransformFn;
   CheckIcon: IconType;
   error?: string;
-  optionCSSClass?: string;
 }
 
 // ===== Component =====
 function MultySelector<T>({
   options,
   selectedOptions,
+  nameOptions,
   onChange,
   toValue,
   transform,
   CheckIcon,
   error,
-  optionCSSClass,
 }: MultySelectorProps<T>) {
   const handleCheckboxChange = (value: string) => {
     const updated = selectedOptions.includes(value)
@@ -54,14 +52,14 @@ function MultySelector<T>({
   };
 
   return (
-    <div className={css.container}>
-      <div className={css.wrapper}>
-        <div className={css.header}>
-          <span className={css.title}>Категорії</span>
+    <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-6">
+        <div className="flex justify-between items-center">
+          <span className="text-[#993333]">{nameOptions}</span>
           <button
             type="button"
             onClick={handleSelectAllToggle}
-            className={css.button}
+            className="font-inherit font-normal text-[#993333] bg-transparent  cursor-pointer underline  decoration-transparent  hover:decoration-[#993333] transition-colors  duration-300"
           >
             {selectedOptions.length === allValues.length
               ? 'Скасувати всі'
@@ -69,7 +67,7 @@ function MultySelector<T>({
           </button>
         </div>
 
-        <div className={css.list}>
+        <div className="flex flex-col gap-2 bg-white">
           {options.map((option, index) => {
             const value = toValue(option);
             const { title } = transform(value);
@@ -78,24 +76,24 @@ function MultySelector<T>({
             return (
               <label
                 key={value ?? index}
-                className={clsx(
-                  css.option,
-                  { [css.selected]: checked },
-                  optionCSSClass
-                )}
+                className="flex items-center gap-2.5 cursor-pointer select-none relative"
               >
                 <input
                   type="checkbox"
                   checked={checked}
                   onChange={() => handleCheckboxChange(value)}
-                  className={css.input}
+                  className="absolute opacity-0 pointer-events-none"
                 />
 
-                <span className={`${css.box} ${checked ? css.checked : ''}`}>
-                  {checked && <CheckIcon className={css.icon} />}
+                <span
+                  className={`w-[18px] h-[18px] border border-[#993333] rounded flex items-center justify-center box-border ${
+                    checked ? 'bg-[#993333]' : 'bg-white'
+                  }`}
+                >
+                  {checked && <CheckIcon className="w-3.5 h-3.5 text-white" />}
                 </span>
 
-                <span className={css.label}>{title}</span>
+                <span className="text-sm text-[#993333]">{title}</span>
               </label>
             );
           })}

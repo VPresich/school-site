@@ -75,6 +75,7 @@ const FilterForm: React.FC = () => {
           <MultySelector
             options={categories}
             selectedOptions={field.value}
+            nameOptions="Категорії"
             onChange={field.onChange}
             toValue={item => item.value}
             transform={transformCategory}
@@ -86,7 +87,7 @@ const FilterForm: React.FC = () => {
 
       <button
         type="submit"
-        className={`px-4 py-2 rounded-t-xl text-white bg-[#993333] hover:bg-[#d66044] transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400
+        className={`px-4 py-2 rounded-xl text-white bg-[#993333] hover:bg-[#d66044] transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400
   `}
         disabled={Object.keys(errors).length > 0}
       >

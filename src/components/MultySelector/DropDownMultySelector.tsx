@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import { IconType } from 'react-icons';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
-
-import css from './MultySelector.module.css';
 
 interface DDMultySelectorProps<T> {
   options: T[];
@@ -56,7 +53,7 @@ function DDMultySelector<T>({
               text-[#993333]
               bg-white
               rounded-xl
-              py-3 px-4
+              py-2.5 px-4
               border border-[#993333]
               cursor-pointer
               transition-colors duration-300 ease-in-out
@@ -102,7 +99,7 @@ function DDMultySelector<T>({
               return (
                 <label
                   key={value ?? index}
-                  className={clsx(css.option, { [css.selected]: checked })}
+                  className="flex items-center gap-2.5 cursor-pointer select-none relative"
                 >
                   <input
                     type="checkbox"
@@ -110,7 +107,11 @@ function DDMultySelector<T>({
                     onChange={() => handleCheckboxChange(value)}
                     className="absolute opacity-0 pointer-events-none"
                   />
-                  <span className={`${css.box} ${checked ? css.checked : ''}`}>
+                  <span
+                    className={`w-[18px] h-[18px] border border-[#993333] rounded flex items-center justify-center box-border ${
+                      checked ? 'bg-[#993333]' : 'bg-white'
+                    }`}
+                  >
                     {checked && (
                       <CheckIcon className="w-3.5 h-3.5 text-white" />
                     )}

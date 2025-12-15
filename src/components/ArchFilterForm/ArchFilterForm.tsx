@@ -66,7 +66,6 @@ const ArchFilterForm: React.FC = () => {
           />
         )}
       />
-
       <Controller
         name="selectedCats"
         control={control}
@@ -86,7 +85,7 @@ const ArchFilterForm: React.FC = () => {
       <div className="flex flex-col">
         <button
           type="submit"
-          className="bg-[#993333] text-white rounded-xl py-3 px-4 transition-colors hover:bg-[#d66044] cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
+          className="bg-[#993333] text-white rounded-xl py-2.5 px-4 transition-colors hover:bg-[#d66044] cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
           disabled={Object.keys(errors).length > 0}
         >
           Застосувати
