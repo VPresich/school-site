@@ -99,7 +99,7 @@ function DDMultySelector<T>({
               return (
                 <label
                   key={value ?? index}
-                  className="flex items-center gap-2.5 cursor-pointer select-none relative"
+                  className="flex items-center gap-2 cursor-pointer group"
                 >
                   <input
                     type="checkbox"
@@ -110,7 +110,7 @@ function DDMultySelector<T>({
                   <span
                     className={`w-[18px] h-[18px] border border-[#993333] rounded flex items-center justify-center box-border ${
                       checked ? 'bg-[#993333]' : 'bg-white'
-                    }`}
+                    } group-hover:border-[#d66044] group-hover:bg-[#f0e6e6] transition-colors duration-200 `}
                   >
                     {checked && (
                       <CheckIcon className="w-3.5 h-3.5 text-white" />

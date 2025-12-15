@@ -47,11 +47,11 @@ function ArchivePage(): React.JSX.Element {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto p-4 sm:p-6 md:p-8 gap-1 sm:gap-2 md:gap-4">
+    <div className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto p-4 sm:p-6 md:p-8 gap-1">
       <h2
         className={clsx(
           css.font,
-          'mb-12 text-center text-5xl font-bold text-[#993333]'
+          'mb-4 md:mb-6 text-center text-5xl font-bold text-[#993333]'
         )}
       >
         Архів подій
