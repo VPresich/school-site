@@ -45,17 +45,17 @@ const DepartmentPage: React.FC = () => {
   const studentsGallery = department.studentsGallery ?? [];
 
   return (
-    <div className="max-w-7xl mx-auto p-8 space-y-12">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 space-y-12">
       <h2
         className={clsx(
           css.font,
-          'text-4xl font-semibold text-[#993333] text-center'
+          'text-2xl sm:text-3xl md:text-4xl font-semibold text-[#993333] text-center mb-2 sm:mb-3 md:mb-4'
         )}
       >
         {department.title}
       </h2>
       {department.resume && (
-        <div className="bg-gray-50 mb-8 sm:mb-10 text-[15px] sm:text-base text-gray-700 p-4 sm:px-6 md:px-10 rounded-xl shadow hover:shadow-md transition">
+        <div className="bg-gray-50 mb-4 sm:mb-8 md:mb-10 text-[15px] sm:text-base text-gray-700 p-4 sm:px-6 md:px-10 rounded-xl shadow hover:shadow-md transition">
           <PortableText
             value={department.resume}
             components={PortableTextConfig}
@@ -105,7 +105,7 @@ const DepartmentPage: React.FC = () => {
             key={idx}
             src={getImageUrl(photo.asset._ref, 1200)}
             alt={`Учень ${idx + 1}`}
-            className="w-full h-[620px] rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101 cursor-zoom-in"
+            className="w-full h-48 sm:h-80 md:h-[620px] rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101 cursor-zoom-in"
           />
         ))}
       </div>

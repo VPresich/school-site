@@ -20,8 +20,6 @@ import {
   successNotify,
 } from '../../auxiliary/notification/notification';
 
-import Separator from '../Separator';
-
 const FilterForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const initDateRange = useSelector(selectDateRange);
@@ -50,10 +48,7 @@ const FilterForm: React.FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="mb-4 mt-4 flex flex-col gap-3"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="mb-4 flex flex-col px-2">
       <Controller
         name="dateRange"
         control={control}
@@ -87,7 +82,7 @@ const FilterForm: React.FC = () => {
 
       <button
         type="submit"
-        className={`px-4 py-2 rounded-xl text-white bg-[#993333] hover:bg-[#d66044] transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400
+        className={`px-4 py-1.5 rounded-xl text-white bg-[#993333] hover:bg-[#d66044] transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400
   `}
         disabled={Object.keys(errors).length > 0}
       >

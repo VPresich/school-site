@@ -82,7 +82,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           />
         </div>
 
-        <div className="h-5">
+        <div className="h-3">
           {startError && <p className="text-sm text-red-600">{startError}</p>}
         </div>
       </div>
@@ -111,7 +111,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           />
         </div>
 
-        <div className="relative h-5">
+        <div className="relative h-3">
           {endError && (
             <p className="absolute text-sm text-red-600">{endError}</p>
           )}
@@ -122,103 +122,3 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
 };
 
 export default DateRangePicker;
-
-// import React, { useRef } from 'react';
-// import DatePicker, { registerLocale } from 'react-datepicker';
-// import { FaRegCalendar } from 'react-icons/fa';
-// import { uk } from 'date-fns/locale';
-
-// import 'react-datepicker/dist/react-datepicker.css';
-
-// registerLocale('uk', {
-//   ...uk,
-//   localize: {
-//     ...uk.localize,
-//     day: (n: number) => ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'][n],
-//   },
-// });
-
-// interface DateRange {
-//   startDate: Date | null;
-//   endDate: Date | null;
-// }
-
-// interface DateRangePickerProps {
-//   value: DateRange;
-//   onChange: (dates: DateRange) => void;
-// }
-
-// const DateRangePicker: React.FC<DateRangePickerProps> = ({
-//   value,
-//   onChange,
-// }) => {
-//   const startRef = useRef<DatePicker>(null);
-//   const endRef = useRef<DatePicker>(null);
-
-//   const handleStartChange = (date: Date | null) => {
-//     const newRange = {
-//       startDate: date,
-//       endDate:
-//         value.endDate && date && value.endDate < date ? null : value.endDate,
-//     };
-//     onChange(newRange);
-//   };
-
-//   const handleEndChange = (date: Date | null) => {
-//     onChange({ startDate: value.startDate, endDate: date });
-//   };
-
-//   return (
-//     <div className="date-range-picker">
-//       <div className="date-picker-field">
-//         <label>Дата початку</label>
-//         <div className="drp-wrapper">
-//           <DatePicker
-//             ref={startRef}
-//             selected={value.startDate}
-//             onChange={handleStartChange}
-//             locale="uk"
-//             placeholderText="Оберіть дату"
-//             maxDate={value.endDate ?? undefined}
-//             showMonthDropdown
-//             showYearDropdown
-//             dropdownMode="select"
-//             showPopperArrow={false}
-//             className="drp-input"
-//             calendarClassName="drp-calendar"
-//           />
-//           <FaRegCalendar
-//             className="drp-icon"
-//             onClick={() => startRef.current?.setOpen(true)}
-//           />
-//         </div>
-//       </div>
-
-//       <div className="date-picker-field">
-//         <label>Дата завершення</label>
-//         <div className="drp-wrapper">
-//           <DatePicker
-//             ref={endRef}
-//             selected={value.endDate}
-//             onChange={handleEndChange}
-//             locale="uk"
-//             placeholderText="Оберіть дату"
-//             minDate={value.startDate ?? undefined}
-//             showMonthDropdown
-//             showYearDropdown
-//             dropdownMode="select"
-//             showPopperArrow={false}
-//             className="drp-input"
-//             calendarClassName="drp-calendar"
-//           />
-//           <FaRegCalendar
-//             className="drp-icon"
-//             onClick={() => endRef.current?.setOpen(true)}
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DateRangePicker;

@@ -9,11 +9,11 @@ const DepartmentsPage: React.FC = () => {
   const departments = useSelector(selectAllDepartments);
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 md:p-8">
       <h2
         className={clsx(
           css.font,
-          'mb-12 text-center text-5xl font-bold text-[#993333]'
+          'text-center font-bold text-[#993333] mb-8 sm:mb-10 text-3xl sm:text-4xl md:text-5xl'
         )}
       >
         Відділи школи

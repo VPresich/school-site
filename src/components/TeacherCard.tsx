@@ -14,7 +14,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
   const [showBio, setShowBio] = useState(false);
 
   return (
-    <div className="relative p-2 flex flex-col items-center w-72 cursor-pointer bg-white rounded-xl shadow-md">
+    <div className="relative p-2 flex flex-col items-center w-64 sm:w-72 max-w-full mx-auto cursor-pointer bg-white rounded-xl shadow-md">
       <div
         className="w-full aspect-3/4 rounded-t-xl overflow-hidden relative"
         onClick={() => setShowBio(prev => !prev)}

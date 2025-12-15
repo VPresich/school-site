@@ -4,7 +4,6 @@ import { GiMusicalScore } from 'react-icons/gi';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import { Link, useLocation } from 'react-router-dom';
 import { MenuItem } from './NavBar/Navbar.types';
-import FilterForm from './FilterForm/FilterForm';
 import { motion, AnimatePresence } from 'framer-motion';
 import { selectOpenIndex } from '../redux/menu/selector';
 import { menu } from './NavBar/MenuData';
@@ -52,13 +51,6 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
             );
           })}
         </AnimatePresence>
-        {openIndex === 0 && (
-          <>
-            <Separator />
-            <p className="font-semibold text-[#993333] mt-4">Фільтр подій</p>
-            <FilterForm />
-          </>
-        )}
       </div>
     </aside>
   );

@@ -53,7 +53,7 @@ function MultySelector<T>({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
         <div className="flex justify-between items-center">
           <span className="text-[#993333]">{nameOptions}</span>
           <button
@@ -67,7 +67,7 @@ function MultySelector<T>({
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 bg-white">
+        <div className="flex flex-col gap-1.5 bg-white">
           {options.map((option, index) => {
             const value = toValue(option);
             const { title } = transform(value);

@@ -70,7 +70,7 @@ function DDMultySelector<T>({
             />
           </div>
         </button>
-        <div className="relative h-5">
+        <div className="relative h-3">
           {error && <p className="absolute text-sm text-red-600">{error}</p>}
         </div>
       </div>

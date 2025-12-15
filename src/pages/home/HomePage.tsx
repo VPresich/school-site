@@ -19,7 +19,7 @@ function HomePage(): React.JSX.Element {
       <h2
         className={clsx(
           css.font,
-          'font-bold mb-4 sm:mb-6 text-[#993333] text-3xl sm:text-4xl md:text-5xl'
+          'text-center font-bold text-[#993333] mb-8 sm:mb-10 text-3xl sm:text-4xl md:text-5xl'
         )}
       >
         {homePage.title}

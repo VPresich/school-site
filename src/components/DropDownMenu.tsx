@@ -38,7 +38,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
         "
       >
         <GiMusicalNotes
-          className={`absolute left-2 top-1/2 -translate-y-1/2 text-white text-xl transition-all duration-300
+          className={`absolute z-200 left-2 top-1/2 -translate-y-1/2 text-white text-xl transition-all duration-300
           ${isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
          `}
         />

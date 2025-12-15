@@ -90,7 +90,7 @@ const ArchFilterForm: React.FC = () => {
         >
           Застосувати
         </button>
-        <div className="h-5" />
+        <div className="h-3" />
       </div>
     </form>
   );
