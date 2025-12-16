@@ -11,67 +11,6 @@ const SidebarNew: React.FC = () => {
         <p className="text-sm text-gray-500">м. Київ, Солом'янський район</p>
       </div>
 
-      {/* Контактна інформація */}
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-semibold text-[#993333]">Контакти</h3>
-        <p className="text-sm">📍 вул. Андрія Мельника, 29, 03058</p>
-        <p className="text-sm">☎ 457-71-93 (Секретар)</p>
-        <p className="text-sm">☎ 457-71-75 (Черговий)</p>
-        <p className="text-sm">✉ kdshm1@ukr.net</p>
-        <div className="flex gap-3 mt-2">
-          <a href="#" className="text-[#4267B2] hover:text-[#2a4d8b]">
-            <FaFacebookF />
-          </a>
-          <a href="#" className="text-[#C13584] hover:text-[#89255a]">
-            <FaInstagram />
-          </a>
-          <a href="#" className="text-[#FF0000] hover:text-[#aa0000]">
-            <FaYoutube />
-          </a>
-        </div>
-      </div>
-
-      {/* Навігація */}
-      <nav className="flex flex-col gap-2">
-        <h3 className="text-lg font-semibold text-[#993333]">Меню</h3>
-        <Link
-          to="/about"
-          className="text-sm text-gray-700 hover:text-[#993333]"
-        >
-          Про школу
-        </Link>
-        <Link
-          to="/departments"
-          className="text-sm text-gray-700 hover:text-[#993333]"
-        >
-          Відділи
-        </Link>
-        <Link
-          to="/teachers"
-          className="text-sm text-gray-700 hover:text-[#993333]"
-        >
-          Викладачі
-        </Link>
-        <Link
-          to="/students"
-          className="text-sm text-gray-700 hover:text-[#993333]"
-        >
-          Учні та досягнення
-        </Link>
-        <Link
-          to="/festival"
-          className="text-sm text-gray-700 hover:text-[#993333]"
-        >
-          Фестиваль мистецтв
-        </Link>
-        <Link
-          to="/contacts"
-          className="text-sm text-gray-700 hover:text-[#993333]"
-        >
-          Контакти
-        </Link>
-      </nav>
-
       {/* Останні новини / події */}
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold text-[#993333]">Останні новини</h3>

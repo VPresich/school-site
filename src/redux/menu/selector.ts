@@ -16,3 +16,8 @@ export const selectActiveMenuItem = (state: RootState) => {
     return null;
   return menu[index];
 };
+
+export const selectHomeMenu = (state: RootState) => {
+  if (!menu[0] || !menu[0].items || menu[0].items.length === 0) return null;
+  return menu[0];
+};

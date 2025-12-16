@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="bg-white/30 backdrop-blur-md px-2 shadow-md relative">
+    <nav className="bg-white/30 backdrop-blur-md px-2 shadow-md relative z-50">
       <div className="hidden md:flex w-full max-w-7xl mx-auto justify-center gap-0">
         {menu.map((item: MenuItem, idx: number) => (
           <DropDownMenu

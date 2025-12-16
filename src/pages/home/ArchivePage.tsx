@@ -56,7 +56,7 @@ function ArchivePage(): React.JSX.Element {
           'text-4xl font-semibold text-[#993333] text-center shrink-0'
         )}
       >
-        Архів подій
+        Новини / події
       </h2>
 
       <div className="flex items-start justify-between w-full gap-4">

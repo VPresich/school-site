@@ -75,6 +75,9 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
             dropdownMode="select"
             maxDate={endDate ?? undefined}
             showPopperArrow={false}
+            popperContainer={({ children }) => (
+              <div className="relative z-10">{children}</div>
+            )}
           />
           <FaRegCalendar
             className="drp-icon"
@@ -104,6 +107,9 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
             dropdownMode="select"
             minDate={startDate ?? undefined}
             showPopperArrow={false}
+            popperContainer={({ children }) => (
+              <div className="relative z-10">{children}</div>
+            )}
           />
           <FaRegCalendar
             className="drp-icon"

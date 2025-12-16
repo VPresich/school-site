@@ -1,35 +1,51 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { GiMusicalScore } from 'react-icons/gi';
-import { selectActiveMenuItem } from '../redux/menu/selector';
-import { Link, useLocation } from 'react-router-dom';
-import { MenuItem } from './NavBar/Navbar.types';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { selectOpenIndex } from '../redux/menu/selector';
-import { menu } from './NavBar/MenuData';
-import Separator from './Separator';
+
+import { MenuItem } from './NavBar/Navbar.types';
+import {
+  selectOpenIndex,
+  selectActiveMenuItem,
+  selectHomeMenu,
+} from '../redux/menu/selector';
+
+import MenuLink from './MenuLink';
+import SidebarContacts from './SidebarContacts';
 
 interface SidebarProps {
   menu: MenuItem[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
+const Sidebar: React.FC<SidebarProps> = () => {
   const location = useLocation();
-  const activeMenuItem = useSelector(selectActiveMenuItem);
-  const openIndex = useSelector(selectOpenIndex);
-
-  if (!activeMenuItem || !activeMenuItem.items) return null;
+  const menuOpenIndex = useSelector(selectOpenIndex);
+  const activeMenu = useSelector(selectActiveMenuItem);
+  const homeMenu = useSelector(selectHomeMenu);
+  const homeMenuItems = homeMenu?.items || [];
+  const activeMenuItems = activeMenu?.items || [];
 
   return (
     <aside
-      className="lg:flex flex-[0_0_20%] bg-white shadow-md pl-4 pr-2 py-6 flex flex-col gap-1 
-      rounded-xl sticky top-0 h-screen"
+      className="lg:flex flex-[0_0_20%] bg-white shadow-md pl-4 pr-2 py-6
+  flex flex-col gap-1 rounded-xl sticky top-0 h-screen"
     >
+      {/* Верхня прокручувана частина меню */}
       <div className="flex-1 overflow-y-auto min-h-0 pr-2">
+        {homeMenuItems.map(subItem => (
+          <MenuLink
+            key={subItem.path}
+            to={subItem.path}
+            label={subItem.label}
+            Icon={GiMusicalScore}
+            isActive={location.pathname === subItem.path}
+          />
+        ))}
+
         <AnimatePresence>
-          {activeMenuItem.items.map(subItem => {
-            const isActive = location.pathname === subItem.path;
-            return (
+          {menuOpenIndex &&
+            activeMenuItems.map(subItem => (
               <motion.div
                 key={subItem.path}
                 initial={{ scaleY: 0, opacity: 0 }}
@@ -38,19 +54,20 @@ const Sidebar: React.FC<SidebarProps> = ({ menu }) => {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <Link
+                <MenuLink
                   to={subItem.path}
-                  className={`flex font-semibold items-center px-2 py-2 rounded-t-xl hover:bg-[#d66044] hover:text-white transition-colors ${
-                    isActive ? 'bg-[#993333] text-white' : 'text-[#993333]'
-                  }`}
-                >
-                  <GiMusicalScore className="text-xl shrink-0 mr-2" />
-                  <span className="flex-1">{subItem.label}</span>
-                </Link>
+                  label={subItem.label}
+                  Icon={GiMusicalScore}
+                  isActive={location.pathname === subItem.path}
+                />
               </motion.div>
-            );
-          })}
+            ))}
         </AnimatePresence>
+      </div>
+
+      {/* Контакти завжди внизу */}
+      <div className="mt-auto flex justify-left">
+        <SidebarContacts />
       </div>
     </aside>
   );
