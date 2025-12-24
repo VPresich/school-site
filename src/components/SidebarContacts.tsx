@@ -15,7 +15,7 @@ const SidebarContacts: React.FC = () => {
       </div>
 
       <div className="bg-gray-50 p-3 space-y-4 text-gray-800">
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-start">
           <FaMapMarkerAlt className="text-[#993333] mt-1 shrink-0" />
           <p className="text-sm leading-snug">
             м. Київ, 03058
@@ -26,18 +26,25 @@ const SidebarContacts: React.FC = () => {
           </p>
         </div>
 
-        <div className="space-y-1 text-sm ">
-          <div className="flex gap-2">
+        <div className="space-y-1 text-sm">
+          <div className="flex gap-2 items-center">
             <FaPhoneAlt className="text-[#993333] shrink-0" />
-            <span>457-71-93 — Секретар</span>
+
+            <a href="tel:+380444577193" className="hover:underline">
+              +38 (044) 457-71-93
+            </a>
           </div>
-          <div className="flex gap-2">
+
+          <div className="flex gap-2 items-center">
             <FaPhoneAlt className="text-[#993333] shrink-0" />
-            <span>457-71-75 — Черговий</span>
+
+            <a href="tel:+380444577175" className="hover:underline">
+              +38 (044) 457-71-75
+            </a>
           </div>
         </div>
 
-        <div className="flex gap-2 text-sm ">
+        <div className="flex gap-2 text-sm items-center">
           <FaEnvelope className="text-[#993333] shrink-0" />
           <a
             href="mailto:kdshm1@ukr.net"
@@ -47,12 +54,12 @@ const SidebarContacts: React.FC = () => {
           </a>
         </div>
 
-        <div className="flex gap-2 pt-2 justify-center">
+        <div className="flex gap-2 justify-center">
           <a
             href="https://www.facebook.com/groups/1858115981099923/"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white shadow hover:bg-[#f0dada] transition"
+            className="p-2 rounded-full bg-white shadow hover:bg-[rgba(153,51,51,0.1)] transition duration-300 ease-in-out"
           >
             <FaFacebookF className="text-[#1877F2]" />
           </a>
@@ -60,7 +67,7 @@ const SidebarContacts: React.FC = () => {
             href="https://www.youtube.com/@no1586"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white shadow hover:bg-[#f0dada] transition"
+            className="p-2 rounded-full bg-white shadow hover:bg-[rgba(153,51,51,0.1)] transition duration-300 ease-in-out"
           >
             <FaYoutube className="text-[#FF0000]" />
           </a>

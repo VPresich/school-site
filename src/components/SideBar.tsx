@@ -31,7 +31,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
       className="lg:flex flex-[0_0_20%] bg-white shadow-md pl-4 pr-2 py-6
   flex flex-col gap-1 rounded-xl sticky top-0 h-screen"
     >
-      {/* Верхня прокручувана частина меню */}
       <div className="flex-1 overflow-y-auto min-h-0 pr-2">
         {homeMenuItems.map(subItem => (
           <MenuLink
@@ -64,8 +63,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
             ))}
         </AnimatePresence>
       </div>
-
-      {/* Контакти завжди внизу */}
       <div className="mt-auto flex justify-left">
         <SidebarContacts />
       </div>
