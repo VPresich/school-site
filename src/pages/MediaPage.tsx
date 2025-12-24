@@ -1,10 +1,20 @@
 import React from 'react';
-import { media } from '../auxiliary/media';
+import { useSelector } from 'react-redux';
+import { getImageUrl } from '../api/getImageUrl';
+import { ImageLightbox } from '../components/ImageLightbox';
+import {
+  selectMediaTitle,
+  selectMediaVideos,
+  selectMediaPhotos,
+} from '../redux/media/selectors';
 import clsx from 'clsx';
 import { getYouTubeId } from '../auxiliary/getYuotubeId';
 import css from './home/HomePage.module.css';
 
 function MediaPage(): React.JSX.Element {
+  const videoList = useSelector(selectMediaVideos);
+  const mediaTitle = useSelector(selectMediaTitle);
+  const photoList = useSelector(selectMediaPhotos);
   return (
     <div className="p-4 sm:p-6 md:p-8 max-w-7xl mx-auto">
       <h2
@@ -13,11 +23,11 @@ function MediaPage(): React.JSX.Element {
           'text-center font-bold text-[#993333] mb-8 sm:mb-10 text-3xl sm:text-4xl md:text-5xl'
         )}
       >
-        Медіатека
+        {mediaTitle}
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {media.map(item => {
+        {videoList.map(item => {
           const videoId = getYouTubeId(item.url);
           if (!videoId) return null;
 
@@ -53,6 +63,28 @@ function MediaPage(): React.JSX.Element {
             </div>
           );
         })}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {photoList.map((photo, idx) => (
+          <div
+            key={idx}
+            className="group bg-white rounded-xl overflow-hidden shadow transition-shadow duration-300 ease-out hover:shadow-lg"
+          >
+            <div className="relative w-full pb-[56.25%] overflow-hidden">
+              <ImageLightbox
+                src={getImageUrl(photo.image.asset._ref, 1200)}
+                alt={`Фото ${idx + 1}`}
+                className="absolute top-0 left-0 w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-102"
+              />
+            </div>
+            <div className="p-4 sm:p-5">
+              <h3 className="font-semibold text-sm sm:text-base text-[#993333]">
+                {photo.title}
+              </h3>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

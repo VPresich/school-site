@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { PortableText } from '@portabletext/react';
 import { getImageUrl } from '../../api/getImageUrl';
 import TeachersGrid from '../../components/TeachersGrid';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+
 import {
   selectAboutPage,
   selectAboutTitle,
