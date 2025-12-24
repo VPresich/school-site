@@ -1,10 +1,9 @@
-export interface CategoryItem {
+export interface MediaItem {
   title: string;
   url: string;
 }
-// www.youtube.com/@no1586
-//www.facebook.com/groups/1858115981099923/
-export const categories: CategoryItem[] = [
+
+export const media: MediaItem[] = [
   {
     title: 'Jingle Bells',
     url: 'https://youtu.be/UvXcDFtnYgg?list=PLVmWo1kLi6fViKM0sp9QHJGg1KQT9p0Bm',
