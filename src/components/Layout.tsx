@@ -6,6 +6,7 @@ import { fetchHome } from '../redux/home/operations';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import { fetchAbout } from '../redux/about/operations';
 import { fetchDepartments } from '../redux/departments/operations';
+import { fetchMedia } from '../redux/media/operations';
 import HeadSlider from './HeadSlider/HeadSlider';
 import HeaderTitle from './HeaderTitle/HeaderTitle';
 import {
@@ -64,6 +65,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         }
       } catch {
         errNotify('Error loading DEPARTMENTS');
+      }
+
+      try {
+        await dispatch(fetchMedia()).unwrap();
+        if (isDevMode) {
+          successNotify('Success loading MEDIA');
+        }
+      } catch {
+        errNotify('Error loading MEDIA');
       }
     };
 

@@ -24,11 +24,20 @@ function MediaPage(): React.JSX.Element {
           return (
             <div
               key={item.url}
-              className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden"
+              className="
+                      group bg-white rounded-xl overflow-hidden
+                      shadow transition-shadow duration-300 ease-out
+                      hover:shadow-lg
+                    "
             >
-              <div className="relative w-full pb-[56.25%]">
+              <div className="relative w-full pb-[56.25%] overflow-hidden">
                 <iframe
-                  className="absolute top-0 left-0 w-full h-full"
+                  className="
+                      absolute top-0 left-0 w-full h-full
+                      transform transition duration-300 ease-out
+                      group-hover:scale-102
+                      group-hover:blur-[0.5px]
+                    "
                   src={`https://www.youtube.com/embed/${videoId}`}
                   title={item.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -37,7 +46,7 @@ function MediaPage(): React.JSX.Element {
               </div>
 
               <div className="p-3">
-                <h3 className="font-semibold text-sm sm:text-base text-[#993333] ">
+                <h3 className="font-semibold text-sm sm:text-base text-[#993333]">
                   {item.title}
                 </h3>
               </div>

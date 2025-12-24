@@ -16,3 +16,9 @@ export interface SanitySlug {
   _type: 'slug';
   current: string;
 }
+
+export interface SanityVideo {
+  _key: string;
+  title: string;
+  url: string;
+}
