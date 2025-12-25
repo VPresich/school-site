@@ -3,7 +3,7 @@ import {
   fetchArchive,
   fetchArchivePage,
   fetchArchiveFiltered,
-} from './operation';
+} from './operations';
 import { ArchiveState, Status } from './types';
 
 const initialState: ArchiveState = {

@@ -99,16 +99,19 @@ const DepartmentPage: React.FC = () => {
           />
         </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 px-0 sm:px-0 md:px-8">
-        {studentsGallery.map((photo, idx) => (
-          <ImageLightbox
-            key={idx}
-            src={getImageUrl(photo.asset._ref, 1200)}
-            alt={`Учень ${idx + 1}`}
-            className="w-full h-48 sm:h-80 md:h-[620px] rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101 cursor-zoom-in"
-          />
-        ))}
-      </div>
+
+      {studentsGallery.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 px-0 sm:px-0 md:px-8">
+          {studentsGallery.map((photo, idx) => (
+            <ImageLightbox
+              key={idx}
+              src={getImageUrl(photo.asset._ref, 1200)}
+              alt={`Учень ${idx + 1}`}
+              className="w-full h-48 sm:h-80 md:h-[620px] rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101 cursor-zoom-in"
+            />
+          ))}
+        </div>
+      )}
 
       {department.studentsText && (
         <div className="bg-gray-50 mb-8 sm:mb-10 md:mb-12 p-4 sm:px-6 md:px-10 rounded-xl shadow hover:shadow-md transition">

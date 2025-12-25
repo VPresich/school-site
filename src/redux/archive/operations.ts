@@ -18,10 +18,10 @@ export const fetchArchive = createAsyncThunk<
     const query = encodeURIComponent(
       '*[_type == "archive"] | order(date desc, _createdAt desc){title, date, enddate, description, category, images, videos}'
     );
-    const response = await axiosInst.get<{ result: { items: ArchiveItem[] } }>(
+    const response = await axiosInst.get<{ result: ArchiveItem[] }>(
       `?query=${query}`
     );
-    const items = response.data.result.items;
+    const items = response.data.result;
     return items;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);

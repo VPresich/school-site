@@ -25,66 +25,69 @@ function MediaPage(): React.JSX.Element {
       >
         {mediaTitle}
       </h2>
+      <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {videoList.map(item => {
+            const videoId = getYouTubeId(item.url);
+            if (!videoId) return null;
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {videoList.map(item => {
-          const videoId = getYouTubeId(item.url);
-          if (!videoId) return null;
-
-          return (
-            <div
-              key={item.url}
-              className="
+            return (
+              <div
+                key={item.url}
+                className="
                       group bg-white rounded-xl overflow-hidden
                       shadow transition-shadow duration-300 ease-out
                       hover:shadow-lg
                     "
-            >
-              <div className="relative w-full pb-[56.25%] overflow-hidden">
-                <iframe
-                  className="
+              >
+                <div className="relative w-full pb-[56.25%] overflow-hidden">
+                  <iframe
+                    className="
                       absolute top-0 left-0 w-full h-full
                       transform transition duration-300 ease-out
                       group-hover:scale-102
                       group-hover:blur-[0.5px]
                     "
-                  src={`https://www.youtube.com/embed/${videoId}`}
-                  title={item.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+                    src={`https://www.youtube.com/embed/${videoId}`}
+                    title={item.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+
+                <div className="p-3">
+                  <h3 className="font-semibold text-sm sm:text-base text-[#993333]">
+                    {item.title}
+                  </h3>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {photoList.map((photo, idx) => (
+            <div
+              key={idx}
+              className="group relative bg-white rounded-xl overflow-hidden shadow transition-shadow duration-300 ease-out hover:shadow-lg"
+            >
+              <div className="relative w-full pb-[56.25%] overflow-hidden">
+                <ImageLightbox
+                  src={getImageUrl(photo.image.asset._ref, 1200)}
+                  alt={`Фото ${idx + 1}`}
+                  className="absolute top-0 left-0 w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-102 cursor-zoom-in"
                 />
               </div>
-
-              <div className="p-3">
-                <h3 className="font-semibold text-sm sm:text-base text-[#993333]">
-                  {item.title}
-                </h3>
-              </div>
+              {photo.title && (
+                <div className="absolute bottom-0 left-0 w-full bg-opacity-80 p-2">
+                  <h3 className="font-semibold text-sm sm:text-base text-white truncate">
+                    {photo.title}
+                  </h3>
+                </div>
+              )}
             </div>
-          );
-        })}
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {photoList.map((photo, idx) => (
-          <div
-            key={idx}
-            className="group bg-white rounded-xl overflow-hidden shadow transition-shadow duration-300 ease-out hover:shadow-lg"
-          >
-            <div className="relative w-full pb-[56.25%] overflow-hidden">
-              <ImageLightbox
-                src={getImageUrl(photo.image.asset._ref, 1200)}
-                alt={`Фото ${idx + 1}`}
-                className="absolute top-0 left-0 w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-102"
-              />
-            </div>
-            <div className="p-4 sm:p-5">
-              <h3 className="font-semibold text-sm sm:text-base text-[#993333]">
-                {photo.title}
-              </h3>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

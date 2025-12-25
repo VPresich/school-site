@@ -21,7 +21,7 @@ const ContactPage: React.FC = () => {
         Наші контакти
       </h1>
 
-      <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 bg-gray-100 rounded-xl shadow hover:shadow-md transition p-4 sm:p-6 md:p-8">
+      <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 bg-gray-50 rounded-xl shadow hover:shadow-md transition p-4 sm:p-6 md:p-8">
         <div className="flex-[0_0_360px] flex flex-col gap-6 sm:gap-8 md:gap-10 max-w-md">
           <section>
             <h2 className="text-xl sm:text-2xl font-semibold mb-2">Адреса</h2>

@@ -35,3 +35,13 @@ export const selectSectionBySlug = (slug: string) => (state: RootState) => {
     section => section.slug?.current === slug
   );
 };
+
+export const selectGalleryBySectionSlug =
+  (slug: string) => (state: RootState) =>
+    state.about.page?.sections?.find(section => section.slug?.current === slug)
+      ?.gallery ?? [];
+
+export const selectMainPhotoBySectionSlug =
+  (slug: string) => (state: RootState) =>
+    state.about.page?.sections?.find(section => section.slug?.current === slug)
+      ?.mainphoto ?? '';

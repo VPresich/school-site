@@ -33,6 +33,7 @@ export interface AboutSchollSection {
   title: string;
   slug: SanitySlug;
   content: PortableTextBlock[];
+  mainphoto?: SanityImage;
   gallery?: GallerySectionItem[];
 }
 

@@ -1,12 +1,13 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
-import { fetchArchivePage } from '../redux/archive/operation';
+import { fetchArchivePage } from '../redux/archive/operations';
 import { fetchHome } from '../redux/home/operations';
 import { selectActiveMenuItem } from '../redux/menu/selector';
 import { fetchAbout } from '../redux/about/operations';
 import { fetchDepartments } from '../redux/departments/operations';
 import { fetchMedia } from '../redux/media/operations';
+import { fetchUpcomingEvents } from '../redux/announcement/operations';
 import HeadSlider from './HeadSlider/HeadSlider';
 import HeaderTitle from './HeaderTitle/HeaderTitle';
 import {
@@ -74,6 +75,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         }
       } catch {
         errNotify('Error loading MEDIA');
+      }
+
+      try {
+        await dispatch(fetchUpcomingEvents()).unwrap();
+        if (isDevMode) {
+          successNotify('Success loading ANNOUNCEMENTS');
+        }
+      } catch {
+        errNotify('Error loading ANNOUNCEMENTS');
       }
     };
 

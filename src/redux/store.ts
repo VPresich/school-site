@@ -7,6 +7,7 @@ import loaderReduser from './loader/slice';
 import homeReduser from './home/slice';
 import aboutReducer from './about/slice';
 import mediaReduser from './media/slice';
+import announcementReducer from './announcement/slice';
 import filterReducer from './filter/slice';
 
 export const store = configureStore({
@@ -18,6 +19,7 @@ export const store = configureStore({
     home: homeReduser,
     about: aboutReducer,
     media: mediaReduser,
+    announcement: announcementReducer,
     filter: filterReducer,
   },
 });

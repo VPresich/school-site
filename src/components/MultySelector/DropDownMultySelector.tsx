@@ -53,7 +53,7 @@ function DDMultySelector<T>({
               text-[#993333]
               bg-white
               rounded-xl
-              py-2.5 px-4
+              py-2 px-4
               border border-[#993333]
               cursor-pointer
               transition-colors duration-300 ease-in-out
@@ -61,7 +61,7 @@ function DDMultySelector<T>({
               hover:text-white
               "
         >
-          <div className="flex items-center gap-4 ">
+          <div className="flex items-center gap-4">
             <span>Вибрати</span>
             <IoChevronDown
               className={`transition-transform duration-200 ${

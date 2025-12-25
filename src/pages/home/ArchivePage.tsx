@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoColorFilterOutline } from 'react-icons/io5';
-import { fetchArchivePage } from '../../redux/archive/operation';
+import { fetchArchivePage } from '../../redux/archive/operations';
 import { setActivePage } from '../../redux/archive/slice';
 import Pagination from '../../components/Pagination';
 import FilterSlider from '../../components/FilterSlider';
@@ -53,7 +53,7 @@ function ArchivePage(): React.JSX.Element {
       <h2
         className={clsx(
           css.font,
-          'text-4xl font-semibold text-[#993333] text-center shrink-0'
+          'text-2xl sm:text-3xl md:text-4xl font-semibold text-[#993333] text-center shrink-0'
         )}
       >
         Новини / події

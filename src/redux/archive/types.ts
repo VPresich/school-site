@@ -25,6 +25,7 @@ export interface ArchiveItem {
   category: string;
   images?: SanityImage[];
   videos?: ArchiveVideo[];
+  poster?: SanityImage;
 }
 
 export interface ArchiveItemUI {
@@ -35,6 +36,7 @@ export interface ArchiveItemUI {
   category: ArchiveCategory;
   images?: SanityImage[];
   videos?: ArchiveVideo[];
+  poster?: SanityImage;
 }
 
 export interface FetchArchivePageArgs {
