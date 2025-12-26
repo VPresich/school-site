@@ -1,34 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUpcomingEvents } from './operations';
+import { fetchLastYearPoster } from './operations';
 import { Status } from '../archive/types';
-import { AnnouncementState } from './types';
+import { PosterState } from './types';
 
-const initialState: AnnouncementState = {
+const initialState: PosterState = {
   items: [],
   status: Status.Idle,
   error: null,
 };
 
-const announcementSlice = createSlice({
-  name: 'announcement',
+const posterSlice = createSlice({
+  name: 'poster',
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchUpcomingEvents.pending, state => {
+      .addCase(fetchLastYearPoster.pending, state => {
         state.status = Status.Loading;
         state.error = null;
       })
-      .addCase(fetchUpcomingEvents.fulfilled, (state, action) => {
+      .addCase(fetchLastYearPoster.fulfilled, (state, action) => {
         state.status = Status.Succeeded;
         state.items = action.payload;
         state.error = null;
       })
-      .addCase(fetchUpcomingEvents.rejected, (state, action) => {
+      .addCase(fetchLastYearPoster.rejected, (state, action) => {
         state.status = Status.Failed;
         state.error = action.payload;
       });
   },
 });
 
-export default announcementSlice.reducer;
+export default posterSlice.reducer;

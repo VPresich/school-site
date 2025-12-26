@@ -18,6 +18,7 @@ export interface ArchiveVideo {
 }
 
 export interface ArchiveItem {
+  _id: string;
   title: string;
   date: string;
   enddate?: string;
@@ -25,18 +26,12 @@ export interface ArchiveItem {
   category: string;
   images?: SanityImage[];
   videos?: ArchiveVideo[];
+  diplomas?: SanityImage[];
   poster?: SanityImage;
 }
 
-export interface ArchiveItemUI {
-  title: string;
-  date: string;
-  enddate?: string;
-  description?: PortableTextBlock[];
+export interface ArchiveItemUI extends Omit<ArchiveItem, 'category'> {
   category: ArchiveCategory;
-  images?: SanityImage[];
-  videos?: ArchiveVideo[];
-  poster?: SanityImage;
 }
 
 export interface FetchArchivePageArgs {
@@ -59,6 +54,7 @@ export interface ArchiveState {
   limit: number;
   total: number;
   totalPages: number;
+  currentItem: ArchiveItem | null;
 }
 
 export interface FetchArchiveFilteredArgs {

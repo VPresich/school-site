@@ -8,6 +8,8 @@ import homeReduser from './home/slice';
 import aboutReducer from './about/slice';
 import mediaReduser from './media/slice';
 import announcementReducer from './announcement/slice';
+import posterReducer from './poster/slice';
+import achievementReducer from './achievement/slice';
 import filterReducer from './filter/slice';
 
 export const store = configureStore({
@@ -20,6 +22,8 @@ export const store = configureStore({
     about: aboutReducer,
     media: mediaReduser,
     announcement: announcementReducer,
+    poster: posterReducer,
+    achievement: achievementReducer,
     filter: filterReducer,
   },
 });

@@ -3,6 +3,7 @@ import {
   fetchArchive,
   fetchArchivePage,
   fetchArchiveFiltered,
+  fetchArchiveById,
 } from './operations';
 import { ArchiveState, Status } from './types';
 
@@ -14,6 +15,7 @@ const initialState: ArchiveState = {
   limit: 10,
   total: 0,
   totalPages: 0,
+  currentItem: null,
 };
 
 const archiveSlice = createSlice({
@@ -80,6 +82,22 @@ const archiveSlice = createSlice({
       .addCase(fetchArchiveFiltered.rejected, (state, action) => {
         state.status = Status.Failed;
         state.error = action.payload ?? 'Помилка';
+      })
+      // -------------------------------------------------------------
+      .addCase(fetchArchiveById.pending, state => {
+        state.status = Status.Loading;
+        state.error = null;
+        state.currentItem = null;
+      })
+      .addCase(fetchArchiveById.fulfilled, (state, action) => {
+        state.status = Status.Succeeded;
+        state.currentItem = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchArchiveById.rejected, (state, action) => {
+        state.status = Status.Failed;
+        state.currentItem = null;
+        state.error = action.payload ?? 'Подію не знайдено';
       });
   },
 });

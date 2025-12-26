@@ -16,7 +16,7 @@ export const fetchArchive = createAsyncThunk<
 >('archive/fetchArchive', async (_, thunkAPI) => {
   try {
     const query = encodeURIComponent(
-      '*[_type == "archive"] | order(date desc, _createdAt desc){title, date, enddate, description, category, images, videos}'
+      '*[_type == "archive"] | order(date desc, _createdAt desc){_id, title, date, enddate, description, category, images, videos, diplomas, poster}'
     );
     const response = await axiosInst.get<{ result: ArchiveItem[] }>(
       `?query=${query}`
@@ -44,13 +44,16 @@ export const fetchArchivePage = createAsyncThunk<
         "items": *[_type == "archive"]
           | order(date desc, _createdAt desc)
           [${offset}...${end}]{
+            _id,
             title,
             date,
             enddate,
             description,
             category,
             images,
-            videos
+            videos,
+            diplomas,
+            poster
           },
         "total": count(*[_type == "archive"])
       }
@@ -89,17 +92,13 @@ export const fetchArchiveFiltered = createAsyncThunk<
     const offset = (page - 1) * limit;
     const end = offset + limit;
 
-    /* ===== build GROQ filters ===== */
     const filters: string[] = ['_type == "archive"'];
-
     if (startDate) {
       filters.push(`date >= "${startDate}"`);
     }
-
     if (endDate) {
       filters.push(`date <= "${endDate}"`);
     }
-
     if (categories.length > 0) {
       filters.push(`category in ${JSON.stringify(categories)}`);
     }
@@ -111,13 +110,16 @@ export const fetchArchiveFiltered = createAsyncThunk<
         "items": *[${where}]
           | order(date desc, _createdAt desc)
           [${offset}...${end}]{
+            _id,
             title,
             date,
             enddate,
             description,
             category,
             images,
-            videos
+            videos,
+            diplomas,
+            poster
           },
         "total": count(*[${where}])
       }
@@ -138,6 +140,41 @@ export const fetchArchiveFiltered = createAsyncThunk<
       page,
       totalPages: Math.ceil(total / limit),
     };
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const fetchArchiveById = createAsyncThunk<
+  ArchiveItem,
+  string,
+  { rejectValue: string }
+>('archive/fetchArchiveById', async (id, thunkAPI) => {
+  try {
+    const query = encodeURIComponent(
+      `*[_type == "archive" && _id == "${id}"][0]{
+        _id,
+        title,
+        date,
+        enddate,
+        description,
+        category,
+        images,
+        videos,
+        diplomas,
+        poster
+      }`
+    );
+
+    const response = await axiosInst.get<{ result: ArchiveItem }>(
+      `?query=${query}`
+    );
+
+    if (!response.data.result) {
+      return thunkAPI.rejectWithValue('Подію не знайдено');
+    }
+
+    return response.data.result;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);
   }

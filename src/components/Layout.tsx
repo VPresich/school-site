@@ -8,6 +8,8 @@ import { fetchAbout } from '../redux/about/operations';
 import { fetchDepartments } from '../redux/departments/operations';
 import { fetchMedia } from '../redux/media/operations';
 import { fetchUpcomingEvents } from '../redux/announcement/operations';
+import { fetchLastYearPoster } from '../redux/poster/operations';
+import { fetchLastYearDiplomas } from '../redux/achievement/operations';
 import HeadSlider from './HeadSlider/HeadSlider';
 import HeaderTitle from './HeaderTitle/HeaderTitle';
 import {
@@ -84,6 +86,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         }
       } catch {
         errNotify('Error loading ANNOUNCEMENTS');
+      }
+
+      try {
+        await dispatch(fetchLastYearPoster()).unwrap();
+        if (isDevMode) {
+          successNotify('Success loading POSTERS');
+        }
+      } catch {
+        errNotify('Error loading POSTERS');
+      }
+      try {
+        await dispatch(fetchLastYearDiplomas()).unwrap();
+        if (isDevMode) {
+          successNotify('Success loading DIPLOMAS');
+        }
+      } catch {
+        errNotify('Error loading DIPLOMAS');
       }
     };
 

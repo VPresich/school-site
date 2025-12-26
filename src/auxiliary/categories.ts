@@ -14,4 +14,5 @@ export const categories: CategoryItem[] = [
   { title: 'Оголошення', value: 'announcement' },
   { title: 'Прослухування', value: 'audition' },
   { title: 'Творчий вечір', value: 'meeting' },
+  { title: 'Досягнення', value: 'achievements' },
 ];

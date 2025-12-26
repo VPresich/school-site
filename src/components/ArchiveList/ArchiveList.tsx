@@ -10,8 +10,8 @@ const ArchiveList: React.FC<ArchiveListProps> = ({ list = [] }) => {
 
   return (
     <div className="flex flex-col gap-6">
-      {list.map((item: ArchiveItemUI, idx: number) => (
-        <ArchiveCard key={idx} item={item} />
+      {list.map((item: ArchiveItemUI) => (
+        <ArchiveCard key={item._id} item={item} />
       ))}
     </div>
   );

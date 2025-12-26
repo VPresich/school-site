@@ -6,12 +6,14 @@ interface ImageLightboxProps {
   src: string;
   alt?: string;
   className?: string;
+  onError?: React.ReactEventHandler<HTMLImageElement>;
 }
 
 export const ImageLightbox: FC<ImageLightboxProps> = ({
   src,
   alt,
   className,
+  onError,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -25,6 +27,7 @@ export const ImageLightbox: FC<ImageLightboxProps> = ({
           'w-full h-48 object-cover rounded cursor-pointer hover:opacity-90 transition'
         }
         onClick={() => setOpen(true)}
+        onError={onError}
       />
       <Dialog
         open={open}

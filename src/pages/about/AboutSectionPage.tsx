@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { PortableText } from '@portabletext/react';
 import { ImageLightbox } from '../../components/ImageLightbox';
 import { getImageUrl } from '../../api/getImageUrl';
+import AchievementGallery from '../../components/AchievementsGallery';
 import PortableTextConfig from '../../components/PortableTextConfig';
 import {
   selectSectionBySlug,
@@ -61,7 +62,7 @@ const AboutSectionPage: React.FC = () => {
             <div className="w-full h-full rounded-full overflow-hidden">
               <img
                 src={getImageUrl(mainPhoto.asset._ref, 1200)}
-                alt="Директор школи"
+                alt="Основне фото"
                 className="
                   w-full h-full
                   object-cover
@@ -84,7 +85,7 @@ const AboutSectionPage: React.FC = () => {
               hover:shadow-xl
             "
           >
-            <div className="relative w-full pb-[75%] overflow-hidden">
+            <div className="relative w-full pb-[70%] overflow-hidden">
               <ImageLightbox
                 src={getImageUrl(photo.image.asset._ref, 1200)}
                 alt={`Фото ${idx + 1}`}
@@ -124,6 +125,7 @@ const AboutSectionPage: React.FC = () => {
           </div>
         ))}
       </div>
+      <AchievementGallery />
     </div>
   );
 };

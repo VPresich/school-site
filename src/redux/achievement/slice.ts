@@ -1,34 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUpcomingEvents } from './operations';
+import { fetchLastYearDiplomas } from './operations';
 import { Status } from '../archive/types';
-import { AnnouncementState } from './types';
+import { AchievementState } from './types';
 
-const initialState: AnnouncementState = {
+const initialState: AchievementState = {
   items: [],
   status: Status.Idle,
   error: null,
 };
 
-const announcementSlice = createSlice({
-  name: 'announcement',
+const achievementSlice = createSlice({
+  name: 'achievement',
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchUpcomingEvents.pending, state => {
+      .addCase(fetchLastYearDiplomas.pending, state => {
         state.status = Status.Loading;
         state.error = null;
       })
-      .addCase(fetchUpcomingEvents.fulfilled, (state, action) => {
+      .addCase(fetchLastYearDiplomas.fulfilled, (state, action) => {
         state.status = Status.Succeeded;
         state.items = action.payload;
         state.error = null;
       })
-      .addCase(fetchUpcomingEvents.rejected, (state, action) => {
+      .addCase(fetchLastYearDiplomas.rejected, (state, action) => {
         state.status = Status.Failed;
         state.error = action.payload;
       });
   },
 });
 
-export default announcementSlice.reducer;
+export default achievementSlice.reducer;
