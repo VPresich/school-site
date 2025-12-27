@@ -10,6 +10,7 @@ import mediaReduser from './media/slice';
 import announcementReducer from './announcement/slice';
 import posterReducer from './poster/slice';
 import achievementReducer from './achievement/slice';
+import bannerReducer from './banner/slice';
 import filterReducer from './filter/slice';
 
 export const store = configureStore({
@@ -24,6 +25,7 @@ export const store = configureStore({
     announcement: announcementReducer,
     poster: posterReducer,
     achievement: achievementReducer,
+    banner: bannerReducer,
     filter: filterReducer,
   },
 });

@@ -15,10 +15,7 @@ import { categories } from '../../auxiliary/categories';
 import { transformCategory } from '../../auxiliary/transformCategory';
 import { feedbackSchema } from './feedbackSchema';
 import { FilterValues } from '../../redux/filter/types';
-import {
-  errNotify,
-  successNotify,
-} from '../../auxiliary/notification/notification';
+import { errNotify, successNotify } from '../../auxiliary/notification';
 
 const FilterForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

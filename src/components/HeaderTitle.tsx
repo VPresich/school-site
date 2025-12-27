@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './HeaderTitle.module.css';
+import css from '../pages/home/HomePage.module.css';
 import clsx from 'clsx';
 
 const HeaderTitle: React.FC = () => {

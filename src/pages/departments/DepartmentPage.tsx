@@ -9,10 +9,7 @@ import { fetchDepartmentBySlug } from '../../redux/departments/operations';
 import { selectDepartmentBySlug } from '../../redux/departments/selectors';
 import { ImageLightbox } from '../../components/ImageLightbox';
 import { useParams } from 'react-router-dom';
-import {
-  errNotify,
-  successNotify,
-} from '../../auxiliary/notification/notification';
+import { errNotify, successNotify } from '../../auxiliary/notification';
 import css from './DepartmentPage.module.css';
 
 const isDevMode = import.meta.env.VITE_DEVELOPED_MODE === 'true';

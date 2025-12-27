@@ -10,12 +10,10 @@ import { fetchMedia } from '../redux/media/operations';
 import { fetchUpcomingEvents } from '../redux/announcement/operations';
 import { fetchLastYearPoster } from '../redux/poster/operations';
 import { fetchLastYearDiplomas } from '../redux/achievement/operations';
-import HeadSlider from './HeadSlider/HeadSlider';
-import HeaderTitle from './HeaderTitle/HeaderTitle';
-import {
-  successNotify,
-  errNotify,
-} from '../auxiliary/notification/notification';
+import { fetchActiveBanners } from '../redux/banner/operations';
+import HeadSlider from './HeadSlider';
+import HeaderTitle from './HeaderTitle';
+import { successNotify, errNotify } from '../auxiliary/notification';
 import Sidebar from './SideBar';
 import { menu } from './NavBar/MenuData';
 import Navbar from './NavBar/Navbar';
@@ -103,6 +101,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         }
       } catch {
         errNotify('Error loading DIPLOMAS');
+      }
+      try {
+        await dispatch(fetchActiveBanners()).unwrap();
+        if (isDevMode) {
+          successNotify('Success loading BANNERS');
+        }
+      } catch {
+        errNotify('Error loading BANNERS');
       }
     };
 

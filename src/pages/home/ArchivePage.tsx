@@ -13,11 +13,8 @@ import {
   selectPage,
   selectLimit,
 } from '../../redux/archive/selectors';
-import ArchiveList from '../../components/ArchiveList/ArchiveList';
-import {
-  errNotify,
-  successNotify,
-} from '../../auxiliary/notification/notification';
+import ArchiveList from '../../components/ArchiveList';
+import { errNotify, successNotify } from '../../auxiliary/notification';
 import css from './HomePage.module.css';
 
 const isDevMode = import.meta.env.VITE_DEVELOPED_MODE === 'true';

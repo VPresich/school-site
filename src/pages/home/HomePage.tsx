@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PortableText } from '@portabletext/react';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppDispatch } from '../../redux/store';
+import { fetchActiveBanners } from '../../redux/banner/operations';
 import { selectHomePage } from '../../redux/home/selectors';
+import { selectBanners } from '../../redux/banner/selectors';
 import DepartmentList from '../../components/DepartmentList';
 import PortableTextConfig from '../../components/PortableTextConfig';
 import CTASection from '../../components/CtaSection';
+import BannerList from '../../components/BannerList';
+import { errNotify, successNotify } from '../../auxiliary/notification';
 import css from './HomePage.module.css';
 
-function HomePage(): React.JSX.Element {
-  const homePage = useSelector(selectHomePage);
-  if (!homePage) return <div>Дані не знайдено</div>;
+const isDevMode = import.meta.env.VITE_DEVELOPED_MODE === 'true';
 
+function HomePage(): React.JSX.Element {
+  const dispatch = useDispatch<AppDispatch>();
+  const homePage = useSelector(selectHomePage);
+
+  useEffect(() => {
+    const initBanner = async () => {
+      try {
+        await dispatch(fetchActiveBanners()).unwrap();
+        if (isDevMode) {
+          successNotify('Success loading BANNERS');
+        }
+      } catch {
+        errNotify('Error loading BANNERS');
+      }
+    };
+
+    initBanner();
+  }, [dispatch]);
+
+  const banners = useSelector(selectBanners);
+  if (!homePage) return <div>Дані не знайдено</div>;
   const cta = homePage?.ctaSection;
 
   return (
@@ -35,13 +59,17 @@ function HomePage(): React.JSX.Element {
       )}
 
       {homePage.shortDescription && (
-        <div className="mb-8 sm:mb-10 md:mb-12 text-[15px] sm:text-base text-gray-700 bg-gray-100 p-4 rounded-xl shadow hover:shadow-md transition">
+        <div className="mb-8 sm:mb-10 md:mb-12 text-[15px] sm:text-base text-gray-700 bg-gray-100 p-2 md:p-4 rounded-xl shadow hover:shadow-md transition">
           <PortableText
             value={homePage.shortDescription}
             components={PortableTextConfig}
           />
         </div>
       )}
+
+      <div className="max-w-xl mx-auto">
+        <BannerList banners={banners} />
+      </div>
 
       {cta && (
         <div className="mb-8 sm:mb-10 md:mb-12">

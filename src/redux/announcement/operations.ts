@@ -14,7 +14,7 @@ export const fetchUpcomingEvents = createAsyncThunk<
 
     const fromDate = monthAgo.toISOString().split('T')[0];
     const query = encodeURIComponent(
-      `*[_type == "archive" && date >= "${fromDate}"] | order(date desc, _createdAt desc){
+      `*[_type == "archive" && date >= "${fromDate}" && category != "achievements"] | order(date desc, _createdAt desc){
         _id,
         title,
         date,        

@@ -26,7 +26,6 @@ export const fetchLastYearDiplomas = createAsyncThunk<
       `?query=${query}`
     );
     const items = response.data.result;
-    console.log('ITEMS', items);
     return items;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);

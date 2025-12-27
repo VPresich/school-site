@@ -24,3 +24,7 @@ export const selectPostersUI = createSelector(selectPosters, items =>
 //     return items.filter(item => selectedCats.includes(item.category.value));
 //   }
 // );
+
+export const selectAdmissionPosters = createSelector(selectPostersUI, items => {
+  return items.filter(item => item.category.value.includes('admissions'));
+});

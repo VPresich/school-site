@@ -1,7 +1,10 @@
 import React from 'react';
-import ArchiveCard from '../ArchiveCard/ArchiveCard';
-import { ArchiveListProps } from './ArchiveList.types';
-import { ArchiveItemUI } from '../../redux/archive/types';
+import ArchiveCard from './ArchiveCard';
+import { ArchiveItemUI } from '../redux/archive/types';
+
+export interface ArchiveListProps {
+  list?: ArchiveItemUI[];
+}
 
 const ArchiveList: React.FC<ArchiveListProps> = ({ list = [] }) => {
   if (list.length === 0) {

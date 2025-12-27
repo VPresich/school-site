@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const slidesImport = import.meta.glob(
-  '../../assets/images/slider/*.{jpg,png}',
-  { eager: true, as: 'url' }
-);
-const slides = Object.values(slidesImport);
+const slidesImport = import.meta.glob('../assets/images/slider/*.{jpg,png}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
+const slides: string[] = Object.values(slidesImport) as string[];
 
 const HeadSlider: React.FC = () => {
   const [current, setCurrent] = useState(0);

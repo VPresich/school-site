@@ -4,6 +4,7 @@ import { ErrorBoundary } from '../components/ErrorBoundary';
 const HomePage = lazy(() => import('../pages/home/HomePage'));
 const ArchivePage = lazy(() => import('../pages/home/ArchivePage'));
 const PostersPage = lazy(() => import('../pages/home/PostersPage'));
+const AdmissionsPage = lazy(() => import('../pages/home/AdmissionsPage'));
 const AboutPage = lazy(() => import('../pages/about/AboutPage'));
 const AboutSectionPage = lazy(() => import('../pages/about/AboutSectionPage'));
 const AnnouncementsPage = lazy(() => import('../pages/home/AnnouncementsPage'));
@@ -29,6 +30,7 @@ function AppRoutes() {
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/announcements" element={<AnnouncementsPage />} />
           <Route path="/posters" element={<PostersPage />} />
+          <Route path="/admissions" element={<AdmissionsPage />} />
           <Route path="/media" element={<MediaPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />

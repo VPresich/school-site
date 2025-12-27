@@ -8,6 +8,7 @@ export const menu: MenuItem[] = [
       { label: 'Анонси', path: '/announcements' },
       { label: 'Події', path: '/archive' },
       { label: 'Афіші', path: '/posters' },
+      { label: 'Вступ до школи', path: '/admissions' },
     ],
   },
   {

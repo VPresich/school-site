@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { ArchiveCardProps } from './ArchiveCard.types';
-import { formatDate } from '../../auxiliary/formatDate';
+import { ArchiveItemUI } from '../redux/archive/types';
+import { formatDate } from '../auxiliary/formatDate';
 import { PortableText } from '@portabletext/react';
-import PortableTextConfig from '../PortableTextConfig';
-import DiplomasGallery from '../DiplomasGallery';
-import ImageCardSlider from '../ImageCardSlider';
-import { ImageLightbox } from '../ImageLightbox';
-import { getImageUrl } from '../../api/getImageUrl';
+import PortableTextConfig from './PortableTextConfig';
+import DiplomasGallery from './DiplomasGallery';
+import ImageCardSlider from './ImageCardSlider';
+import { ImageLightbox } from './ImageLightbox';
+import { getImageUrl } from '../api/getImageUrl';
 
 const DEFAULT_PREVIEW_BLOCKS = 3;
+
+interface ArchiveCardProps {
+  item: ArchiveItemUI;
+}
 
 const ArchiveCard: React.FC<ArchiveCardProps> = ({ item }) => {
   const [expanded, setExpanded] = useState(false);
