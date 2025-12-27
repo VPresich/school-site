@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import css from './HomePage.module.css';
@@ -14,7 +15,7 @@ const AdmissionsPage: React.FC = () => {
       <h2
         className={clsx(
           css.font,
-          'text-2xl sm:text-3xl md:text-4xl font-semibold text-[#993333] text-center'
+          'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#993333] text-center'
         )}
       >
         Вступ до школи
@@ -65,9 +66,28 @@ const AdmissionsPage: React.FC = () => {
               <h3 className="text-[#993333] font-semibold text-lg leading-snug">
                 {item.title}
               </h3>
-              <button className="text-[#993333] text-sm hover:underline">
-                Деталі
-              </button>
+              <div className="flex justify-end">
+                <button
+                  className="              
+                bottom-3
+                right-3
+                z-10
+                bg-[#993333]/90
+                backdrop-blur
+                text-white
+                text-xs
+                px-3
+                py-1.5
+                rounded-full
+                shadow
+                hover:bg-[#d66044]
+                 hover:cursor-pointer
+                transition
+              "
+                >
+                  <Link to={`/archive/${item._id}`}>Деталі</Link>
+                </button>
+              </div>
             </div>
           </div>
         ))}

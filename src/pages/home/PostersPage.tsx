@@ -15,7 +15,7 @@ const PostersPage: React.FC = () => {
       <h2
         className={clsx(
           css.font,
-          'text-2xl sm:text-3xl md:text-4xl font-semibold text-[#993333] text-center'
+          'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#993333] text-center'
         )}
       >
         Афіші

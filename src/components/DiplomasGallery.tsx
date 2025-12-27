@@ -11,7 +11,7 @@ const DiplomasGallery: React.FC<DiplomasGalleryProps> = ({ diplomas }) => {
   if (!diplomas || diplomas.length === 0) return null;
 
   return (
-    <div className="mt-4">
+    <div className="mt-1 sm:mt-2 md:mt-3 lg:mt-4">
       <h3 className="text-2xl font-semibold text-[#993333] mb-2">Дипломи</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {diplomas.map((diploma, index) => (
@@ -21,7 +21,9 @@ const DiplomasGallery: React.FC<DiplomasGalleryProps> = ({ diplomas }) => {
             alt="Диплом"
             className="
               w-full
-              h-64
+              h-48
+              sm:h-56
+              md:h-64
               object-cover
               rounded
               shadow

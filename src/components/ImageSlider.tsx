@@ -40,15 +40,34 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           <>
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 transition-transform transition-bg  duration-300 p-3 rounded-full shadow-lg cursor-pointer"
+              className="
+                absolute left-1 md:left-2 top-1/2 transform -translate-y-1/2 
+                bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 
+                transition-transform transition-bg duration-300 
+                p-1 sm:p-2 md:p-3 lg:p-4 
+                rounded-full shadow-lg cursor-pointer
+              "
             >
-              <FaChevronLeft size={20} />
+              <FaChevronLeft
+                size={16}
+                className="sm:text-[20px] md:text-[24px]"
+              />
             </button>
+
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 transition-transform transition-bg  duration-300 p-3 rounded-full shadow-lg cursor-pointer"
+              className="
+                absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 
+                bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 
+                transition-transform transition-bg duration-300 
+                p-1 sm:p-2 md:p-3 lg:p-4 
+                rounded-full shadow-lg cursor-pointer
+              "
             >
-              <FaChevronRight size={20} />
+              <FaChevronRight
+                size={16}
+                className="sm:text-[20px] md:text-[24px]"
+              />
             </button>
           </>
         )}

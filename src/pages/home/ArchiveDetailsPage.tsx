@@ -23,7 +23,7 @@ const ArchiveDetailsPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
-      <ArchiveCard item={item} />
+      <ArchiveCard item={item} preview_blocks={30} />
     </div>
   );
 };

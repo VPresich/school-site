@@ -8,18 +8,20 @@ import ImageCardSlider from './ImageCardSlider';
 import { ImageLightbox } from './ImageLightbox';
 import { getImageUrl } from '../api/getImageUrl';
 
-const DEFAULT_PREVIEW_BLOCKS = 3;
-
 interface ArchiveCardProps {
   item: ArchiveItemUI;
+  preview_blocks?: number;
 }
 
-const ArchiveCard: React.FC<ArchiveCardProps> = ({ item }) => {
+const ArchiveCard: React.FC<ArchiveCardProps> = ({
+  item,
+  preview_blocks = 3,
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   if (!item.description || item.description.length === 0) return null;
 
-  const previewBlocks = item.description.slice(0, DEFAULT_PREVIEW_BLOCKS);
+  const previewBlocks = item.description.slice(0, preview_blocks);
 
   return (
     <div className="bg-gray-50 rounded-lg shadow-md hover:shadow-xl p-4 sm:p-6 md:p-8 transition-shadow duration-300 relative">
@@ -51,7 +53,7 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({ item }) => {
         </div>
 
         <div className="w-full text-right">
-          <span className="text-xs md:text-sm font-medium text-[#993333] tracking-tight capitalize">
+          <span className="text-xs md:text-sm font-medium text-[#993333] tracking-tight">
             {item.category.title}
           </span>
         </div>
@@ -62,7 +64,7 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({ item }) => {
               components={PortableTextConfig}
             />
           </div>
-          {item.description.length > DEFAULT_PREVIEW_BLOCKS && (
+          {item.description.length > preview_blocks && (
             <div className="text-right mt-0.5">
               <button
                 onClick={() => setExpanded(!expanded)}

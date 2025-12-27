@@ -24,16 +24,17 @@ const AboutSectionPage: React.FC = () => {
   if (!section) return <div>Секція не знайдена</div>;
 
   return (
-    <div className="max-w-7xl mx-auto p-3 sm:p-4 md:p-8 space-y-1 sm:space-y-4 md:space-y-8">
+    <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-8 space-y-1 sm:space-y-4 md:space-y-8">
       <h2
         className={clsx(
           css.font,
-          'text-4xl font-semibold text-[#993333] text-center'
+          'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#993333] text-center mb-2 sm:mb-4 md:mb-6'
         )}
       >
         {section.title}
       </h2>
-      <div className="text-md text-gray-700 bg-gray-50 p-8 rounded-xl shadow hover:shadow-md">
+
+      <div className="text-md text-gray-700 bg-gray-50 p-3 md:p-6 lg:p-8 rounded-xl shadow hover:shadow-md">
         {section.content && (
           <PortableText
             value={section.content}

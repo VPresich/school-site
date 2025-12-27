@@ -10,7 +10,7 @@ export const categories: CategoryItem[] = [
   { title: 'Відкритий урок', value: 'lesson' },
   { title: 'Екзамен', value: 'exam' },
   { title: 'Фестиваль', value: 'festival' },
-  { title: 'Прийом', value: 'admissions' },
+  { title: 'Вступ до школи', value: 'admissions' },
   { title: 'Оголошення', value: 'announcement' },
   { title: 'Прослухування', value: 'audition' },
   { title: 'Творчий вечір', value: 'meeting' },
