@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import css from './HomePage.module.css';
+import ArchiveDetailsModal from '../../components/ArchiveDetailsModal';
 import { getImageUrl } from '../../api/getImageUrl';
 import { selectPostersUI } from '../../redux/poster/selectors';
 import PosterImage from '../../components/PosterImage';
 
 const PostersPage: React.FC = () => {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const posters = useSelector(selectPostersUI);
 
   return (
@@ -44,6 +45,7 @@ const PostersPage: React.FC = () => {
               />
             </div>
             <button
+              onClick={() => setSelectedId(item._id)}
               className="
                 absolute
                 bottom-3
@@ -63,11 +65,17 @@ const PostersPage: React.FC = () => {
 
               "
             >
-              <Link to={`/archive/${item._id}`}>Деталі</Link>
+              Деталі
             </button>
           </div>
         ))}
       </div>
+      {selectedId && (
+        <ArchiveDetailsModal
+          archiveId={selectedId}
+          onClose={() => setSelectedId(null)}
+        />
+      )}
     </div>
   );
 };
