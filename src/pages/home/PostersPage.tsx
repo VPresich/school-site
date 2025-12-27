@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import css from './HomePage.module.css';
+import ArchiveDetailsModal from '../../components/ArchiveDetailsModal';
 import { getImageUrl } from '../../api/getImageUrl';
 import { selectPostersUI } from '../../redux/poster/selectors';
 import PosterImage from '../../components/PosterImage';
 
 const PostersPage: React.FC = () => {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const posters = useSelector(selectPostersUI);
 
   return (
@@ -28,7 +30,7 @@ const PostersPage: React.FC = () => {
         {posters.map(item => (
           <div
             key={item._id}
-            className="group bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col items-center"
+            className="relative group bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col items-center"
           >
             <div className="flex items-center justify-center w-full h-64 sm:h-76 bg-gray-50 rounded-lg p-2 sm:p-3 md:p-4">
               <PosterImage
@@ -42,9 +44,38 @@ const PostersPage: React.FC = () => {
                 className="w-full h-full object-cover rounded-lg"
               />
             </div>
+            <button
+              onClick={() => setSelectedId(item._id)}
+              className="
+                absolute
+                bottom-3
+                right-3
+                z-10
+                bg-white/90
+                backdrop-blur
+                text-[#993333]
+                text-xs
+                px-3
+                py-1.5
+                rounded-full
+                shadow
+                hover:bg-white
+                 hover:cursor-pointer
+                transition
+
+              "
+            >
+              Деталі
+            </button>
           </div>
         ))}
       </div>
+      {selectedId && (
+        <ArchiveDetailsModal
+          archiveId={selectedId}
+          onClose={() => setSelectedId(null)}
+        />
+      )}
     </div>
   );
 };

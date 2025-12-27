@@ -19,3 +19,14 @@ export const selectTotalPages = (state: RootState) => state.archive.totalPages;
 
 export const selectArchiveStatus = (state: RootState) => state.archive.status;
 export const selectArchiveError = (state: RootState) => state.archive.error;
+
+const selectCurrentItem = (state: RootState) => state.archive.currentItem;
+
+export const selectCurrentItemUI = createSelector(selectCurrentItem, item => {
+  if (!item) return null;
+
+  return {
+    ...item,
+    category: transformCategory(item.category),
+  };
+});

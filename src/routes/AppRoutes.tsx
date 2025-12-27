@@ -3,6 +3,9 @@ import { Routes, Route } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 const HomePage = lazy(() => import('../pages/home/HomePage'));
 const ArchivePage = lazy(() => import('../pages/home/ArchivePage'));
+const ArchiveDetailsPage = lazy(
+  () => import('../pages/home/ArchiveDetailsPage')
+);
 const PostersPage = lazy(() => import('../pages/home/PostersPage'));
 const AdmissionsPage = lazy(() => import('../pages/home/AdmissionsPage'));
 const AboutPage = lazy(() => import('../pages/about/AboutPage'));
@@ -27,7 +30,6 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/archive" element={<ArchivePage />} />
           <Route path="/announcements" element={<AnnouncementsPage />} />
           <Route path="/posters" element={<PostersPage />} />
           <Route path="/admissions" element={<AdmissionsPage />} />
@@ -37,6 +39,8 @@ function AppRoutes() {
           <Route path="/about/general" element={<AboutPage />} />
           <Route path="/about/:slug" element={<AboutSectionPage />} />
           <Route path="/departments" element={<DepartmentsPage />} />
+          <Route path="/archive" element={<ArchivePage />} />
+          <Route path="/archive/:id" element={<ArchiveDetailsPage />} />
           <Route path="/departments/:slug" element={<DepartmentPage />} />
         </Routes>
       </ErrorBoundary>
