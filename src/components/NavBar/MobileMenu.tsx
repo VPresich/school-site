@@ -33,6 +33,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ menu, isOpen, closeMenu }) => {
           items={item.items || []}
           openIndex={openIndex}
           setOpenIndex={setOpenIndex}
+          closeMobileMenu={closeMenu}
         />
       ))}
     </div>

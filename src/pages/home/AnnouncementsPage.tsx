@@ -40,7 +40,7 @@ const AnnouncementsPage: React.FC = () => {
               duration-300
             "
           >
-            <div className="flex items-center justify-center w-full h-60 md:h-68 rounded-lg p-2 sm:p-3 md:p-4">
+            <div className="flex items-center justify-center w-full h-68 rounded-lg p-2 sm:p-3 md:p-4">
               <PosterImage
                 src={
                   event.poster
