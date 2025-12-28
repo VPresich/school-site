@@ -34,7 +34,16 @@ const ImageCardSlider: React.FC<ImageCardSliderProps> = ({
           key={currentImage.asset._ref}
           src={getImageUrl(currentImage.asset._ref, 600)}
           alt={alt}
-          className="w-full max-h-96 object-contain mx-auto cursor-zoom-in transition-transform duration-500 ease-in-out"
+          className="
+              max-w-full          
+              max-h-[500px]       
+              w-auto              
+              h-auto              
+              object-contain       
+              mx-auto             
+              cursor-zoom-in
+              transition-transform duration-500 ease-in-out
+            "
           onClick={() => setLightboxOpen(true)}
         />
 
@@ -42,13 +51,13 @@ const ImageCardSlider: React.FC<ImageCardSliderProps> = ({
           <>
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 transition-transform transition-bg  duration-300 p-3 rounded-full shadow-lg cursor-pointer"
+              className="absolute -left-4  md:left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 transition-transform transition-bg  duration-300 p-3 rounded-full shadow-lg cursor-pointer"
             >
               <FiChevronLeft size={20} />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 transition-transform transition-bg  duration-300 p-3 rounded-full shadow-lg cursor-pointer"
+              className="absolute -right-4  md:right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 transition-transform transition-bg  duration-300 p-3 rounded-full shadow-lg cursor-pointer"
             >
               <FiChevronRight size={20} />
             </button>

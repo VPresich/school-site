@@ -46,7 +46,7 @@ const DepartmentPage: React.FC = () => {
       <h2
         className={clsx(
           css.font,
-          'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#993333] text-center mb-2 sm:mb-3 md:mb-4'
+          'text-2xl sm:text-3xl md:text-4xl font-semibold text-[#993333] text-center mb-2 sm:mb-3 md:mb-4'
         )}
       >
         {department.title}
@@ -104,7 +104,7 @@ const DepartmentPage: React.FC = () => {
               key={idx}
               src={getImageUrl(photo.asset._ref, 1200)}
               alt={`Учень ${idx + 1}`}
-              className="w-full h-auto md:h-[620px] rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101 cursor-zoom-in"
+              className="w-full h-auto md:h-[560px] rounded-lg object-cover shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-101 cursor-zoom-in"
             />
           ))}
         </div>

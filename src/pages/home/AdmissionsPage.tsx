@@ -15,7 +15,7 @@ const AdmissionsPage: React.FC = () => {
       <h2
         className={clsx(
           css.font,
-          'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#993333] text-center'
+          'text-2xl sm:text-3xl md:text-4xl font-semibold text-[#993333] text-center'
         )}
       >
         Вступ до школи
@@ -49,7 +49,7 @@ const AdmissionsPage: React.FC = () => {
               <PosterImage
                 src={
                   item.poster
-                    ? getImageUrl(item.poster.asset._ref, 800)
+                    ? getImageUrl(item.poster.asset._ref, 1200)
                     : undefined
                 }
                 categoryValue={item.category.value}

@@ -1,5 +1,6 @@
 import { PortableTextBlock } from '@portabletext/types';
 import { SanityImage } from '../types';
+import { SanityVideo } from '../types';
 
 export interface ArchiveCategory {
   title: string;
@@ -13,10 +14,6 @@ export enum Status {
   Failed = 'failed',
 }
 
-export interface ArchiveVideo {
-  url: string;
-}
-
 export interface ArchiveItem {
   _id: string;
   title: string;
@@ -25,7 +22,7 @@ export interface ArchiveItem {
   description?: PortableTextBlock[];
   category: string;
   images?: SanityImage[];
-  videos?: ArchiveVideo[];
+  videos?: SanityVideo[];
   diplomas?: SanityImage[];
   poster?: SanityImage;
 }

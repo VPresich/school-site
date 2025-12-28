@@ -20,7 +20,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
         onClick={() => setShowBio(prev => !prev)}
       >
         <img
-          src={getImageUrl(teacher.photo.asset._ref, 600)}
+          src={getImageUrl(teacher.photo.asset._ref, 1200)}
           alt={teacher.name}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-102"
         />

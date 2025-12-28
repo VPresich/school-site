@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getImageUrl } from '../api/getImageUrl';
-import { ImageLightbox } from '../components/ImageLightbox';
+import VideoGallery from '../components/VideoGallery';
+import MediaPhotoGallery from '../components/MediaPhotoGallery';
 import {
   selectMediaTitle,
   selectMediaVideos,
   selectMediaPhotos,
 } from '../redux/media/selectors';
 import clsx from 'clsx';
-import { getYouTubeId } from '../auxiliary/getYuotubeId';
 import css from './home/HomePage.module.css';
 
 function MediaPage(): React.JSX.Element {
@@ -25,69 +24,14 @@ function MediaPage(): React.JSX.Element {
       >
         {mediaTitle}
       </h2>
-      <div className="flex flex-col gap-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {videoList.map(item => {
-            const videoId = getYouTubeId(item.url);
-            if (!videoId) return null;
-
-            return (
-              <div
-                key={item.url}
-                className="
-                      group bg-white rounded-xl overflow-hidden
-                      shadow transition-shadow duration-300 ease-out
-                      hover:shadow-lg
-                    "
-              >
-                <div className="relative w-full pb-[56.25%] overflow-hidden">
-                  <iframe
-                    className="
-                      absolute top-0 left-0 w-full h-full
-                      transform transition duration-300 ease-out
-                      group-hover:scale-102
-                      group-hover:blur-[0.5px]
-                    "
-                    src={`https://www.youtube.com/embed/${videoId}`}
-                    title={item.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-
-                <div className="p-3">
-                  <h3 className="font-semibold text-sm sm:text-base text-[#993333]">
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {photoList.map((photo, idx) => (
-            <div
-              key={idx}
-              className="group relative bg-white rounded-xl overflow-hidden shadow transition-shadow duration-300 ease-out hover:shadow-lg"
-            >
-              <div className="relative w-full pb-[56.25%] overflow-hidden">
-                <ImageLightbox
-                  src={getImageUrl(photo.image.asset._ref, 1200)}
-                  alt={`Фото ${idx + 1}`}
-                  className="absolute top-0 left-0 w-full h-full object-cover transform transition duration-300 ease-out group-hover:scale-102 cursor-zoom-in"
-                />
-              </div>
-              {photo.title && (
-                <div className="absolute bottom-0 left-0 w-full bg-opacity-80 p-2">
-                  <h3 className="font-semibold text-sm sm:text-base text-white truncate">
-                    {photo.title}
-                  </h3>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+        <VideoGallery
+          videoList={videoList}
+          className={
+            'grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6'
+          }
+        />
+        <MediaPhotoGallery photoList={photoList} />
       </div>
     </div>
   );

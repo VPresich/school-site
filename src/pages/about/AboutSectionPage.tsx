@@ -28,7 +28,7 @@ const AboutSectionPage: React.FC = () => {
       <h2
         className={clsx(
           css.font,
-          'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#993333] text-center mb-2 sm:mb-4 md:mb-6'
+          'text-2xl sm:text-3xl md:text-4xl font-semibold text-[#993333] text-center mb-2 sm:mb-4 md:mb-6'
         )}
       >
         {section.title}

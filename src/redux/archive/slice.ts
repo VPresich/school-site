@@ -28,6 +28,9 @@ const archiveSlice = createSlice({
     setActivePage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
+    clearCurrentItem(state) {
+      state.currentItem = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -101,6 +104,7 @@ const archiveSlice = createSlice({
       });
   },
 });
-export const { clearArchive, setActivePage } = archiveSlice.actions;
+export const { clearArchive, setActivePage, clearCurrentItem } =
+  archiveSlice.actions;
 
 export default archiveSlice.reducer;

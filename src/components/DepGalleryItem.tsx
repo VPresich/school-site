@@ -45,12 +45,34 @@ const DepGalleryItem: React.FC<DepGalleryItemProps> = ({ dep }) => {
         </div>
       )}
 
-      <Link
+      {/* <Link
         to={`/departments/${dep.slug.current}`}
         className="mt-auto pt-4 inline-block text-[#993333] font-medium hover:underline"
       >
         Детальніше
-      </Link>
+      </Link> */}
+      <div className="flex justify-end mt-auto">
+        <button
+          className="
+              bottom-3
+              right-3
+              z-10
+              bg-white/90            
+              backdrop-blur
+              text-[#993333]
+              text-xs
+              px-3
+              py-1.5
+              rounded-full
+              shadow
+              hover:bg-white
+              hover:cursor-pointer
+              transition
+            "
+        >
+          <Link to={`/departments/${dep.slug.current}`}>Деталі</Link>
+        </button>
+      </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import PortableTextConfig from './PortableTextConfig';
 import DiplomasGallery from './DiplomasGallery';
 import ImageCardSlider from './ImageCardSlider';
 import { ImageLightbox } from './ImageLightbox';
+import VideoGallery from './VideoGallery';
 import { getImageUrl } from '../api/getImageUrl';
 
 interface ArchiveCardProps {
@@ -41,7 +42,7 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({
               <ImageLightbox
                 src={getImageUrl(item.poster.asset._ref, 1200)}
                 alt={`${item.title} афіша`}
-                className="w-8 h-8 cursor-zoom-in"
+                className="w-8 h-8 cursor-zoom-in transition-transform duration-300 hover:scale-125 hover:shadow-lg"
               />
             )}
           </div>
@@ -57,15 +58,15 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({
             {item.category.title}
           </span>
         </div>
-        <div>
-          <div className="prose prose-sm max-w-none text-left mt-0.5">
+        <div className="mt-1">
+          <div className="prose prose-sm max-w-none text-left ">
             <PortableText
               value={expanded ? item.description : previewBlocks}
               components={PortableTextConfig}
             />
           </div>
           {item.description.length > preview_blocks && (
-            <div className="text-right mt-0.5">
+            <div className="text-right mt-0">
               <button
                 onClick={() => setExpanded(!expanded)}
                 className="text-[#993333] underline cursor-pointer"
@@ -77,7 +78,16 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({
         </div>
 
         {item.images && item.images.length > 0 && (
-          <ImageCardSlider images={item.images} alt={item.title} />
+          <div className="mt-2 sm:mt-4 md:mt-6 lg:mt-8">
+            <ImageCardSlider images={item.images} alt={item.title} />
+          </div>
+        )}
+
+        {item.videos && item.videos.length > 0 && (
+          <VideoGallery
+            videoList={item.videos}
+            className="grid grid-cols-1 mx-auto w-full max-w-5xl mt-2 sm:mt-4 md:mt-6 lg:mt-8"
+          />
         )}
 
         {item.diplomas && <DiplomasGallery diplomas={item.diplomas} />}
