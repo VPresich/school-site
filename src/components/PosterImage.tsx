@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { ImageLightbox } from './ImageLightbox';
-import MobileZoomButton from './MobileZoomButton';
+import MobileZoomIcon from './MobileZoomIcon';
 
 interface PosterImageProps {
   src?: string;
@@ -32,7 +32,7 @@ const PosterImage: React.FC<PosterImageProps> = ({
           )}
           onError={() => setError(true)}
         />
-        <MobileZoomButton onClick={() => null} />
+        <MobileZoomIcon />
       </div>
     );
   }
