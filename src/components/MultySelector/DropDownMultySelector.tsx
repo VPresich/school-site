@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { IconType } from 'react-icons';
-import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
+import { IoChevronDown } from 'react-icons/io5';
 
 interface DDMultySelectorProps<T> {
   options: T[];
@@ -24,6 +24,7 @@ function DDMultySelector<T>({
   error,
 }: DDMultySelectorProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleCheckboxChange = (value: string) => {
     const updated = selectedOptions.includes(value)
@@ -42,8 +43,24 @@ function DDMultySelector<T>({
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative inline-block">
+    <div ref={dropdownRef} className="relative inline-block">
       <div className="flex flex-col">
         <span className="text-[#993333]">{nameOptions}</span>
         <button
