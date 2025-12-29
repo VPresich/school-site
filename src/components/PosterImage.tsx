@@ -32,7 +32,7 @@ const PosterImage: React.FC<PosterImageProps> = ({
           )}
           onError={() => setError(true)}
         />
-        <MobileZoomButton onClick={() => {}} />
+        <MobileZoomButton onClick={() => null} />
       </div>
     );
   }
