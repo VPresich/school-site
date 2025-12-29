@@ -17,7 +17,11 @@ import { feedbackSchema } from './feedbackSchema';
 import { FilterValues } from '../../redux/filter/types';
 import { errNotify, successNotify } from '../../auxiliary/notification';
 
-const FilterForm: React.FC = () => {
+interface FilterFormProps {
+  onClose: () => void;
+}
+
+const FilterForm: React.FC<FilterFormProps> = ({ onClose }) => {
   const dispatch = useDispatch<AppDispatch>();
   const initDateRange = useSelector(selectDateRange);
   const initSelectedCat = useSelector(selectSelectedCats);
@@ -38,6 +42,7 @@ const FilterForm: React.FC = () => {
     try {
       dispatch(saveSelectedCats(data.selectedCats));
       dispatch(saveDateRange(data.dateRange));
+      onClose();
     } catch (error) {
       errNotify('Filter not saves');
     }

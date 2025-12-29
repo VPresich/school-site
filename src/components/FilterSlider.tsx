@@ -16,7 +16,7 @@ const FilterSlider: React.FC<FilterSliderProps> = ({ onClose }) => {
         >
           <IoClose size={22} />
         </button>
-        <FilterForm />
+        <FilterForm onClose={onClose} />
       </div>
     </div>
   );
