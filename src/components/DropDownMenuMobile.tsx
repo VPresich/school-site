@@ -25,12 +25,10 @@ const DropDownMenuMobile: React.FC<DropDownMenuMobileProps> = ({
   const isOpen = openIndex === id;
   const isActive = currentPath === to;
 
-  // переход по основному пункту
   const handleNavigate = () => {
     closeMobileMenu();
   };
 
-  // открытие / закрытие подменю ТОЛЬКО по стрелке
   const handleToggle = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();

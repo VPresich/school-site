@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoColorFilterOutline } from 'react-icons/io5';
-import { fetchArchivePage } from '../../redux/archive/operations';
+import { fetchArchiveFiltered } from '../../redux/archive/operations';
+import { selectFilterParams } from '../../redux/filter/selectors';
 import { setActivePage } from '../../redux/archive/slice';
 import Pagination from '../../components/Pagination';
 import FilterSlider from '../../components/FilterSlider';
@@ -24,13 +25,22 @@ function ArchivePage(): React.JSX.Element {
   const archiveList = useSelector(selectArchiveItemsUI);
   const page = useSelector(selectPage);
   const limit = useSelector(selectLimit);
+  const filterParams = useSelector(selectFilterParams);
 
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
+    if (page !== 1) {
+      dispatch(setActivePage(1));
+    }
+  }, [dispatch, filterParams]);
+
+  useEffect(() => {
     const getArchivePage = async () => {
       try {
-        await dispatch(fetchArchivePage({ page, limit })).unwrap();
+        await dispatch(
+          fetchArchiveFiltered({ page, limit, ...filterParams })
+        ).unwrap();
         if (isDevMode) {
           successNotify('Success loading ARCHIVE PAGE');
         }
@@ -39,7 +49,7 @@ function ArchivePage(): React.JSX.Element {
       }
     };
     getArchivePage();
-  }, [dispatch, page, limit]);
+  }, [dispatch, page, limit, filterParams]);
 
   const handlePageChange = (p: number) => {
     dispatch(setActivePage(p));

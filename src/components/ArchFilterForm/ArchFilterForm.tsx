@@ -10,7 +10,6 @@ import {
 } from '../../redux/filter/selectors';
 import { AppDispatch } from '../../redux/store';
 import DateRangePicker from '../DataPicker/DateRangePicker/DateRangePicker';
-import MultySelector from '../MultySelector/MultySelector';
 import DDMultySelector from '../MultySelector/DropDownMultySelector';
 import { categories } from '../../auxiliary/categories';
 import { transformCategory } from '../../auxiliary/transformCategory';
