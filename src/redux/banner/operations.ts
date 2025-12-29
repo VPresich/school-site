@@ -29,7 +29,6 @@ export const fetchActiveBanners = createAsyncThunk<
       `?query=${query}`
     );
     const items = response.data.result;
-    console.log('BANNERS', items);
     return items;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);

@@ -38,7 +38,6 @@ const ArchFilterForm: React.FC = () => {
     try {
       dispatch(saveSelectedCats(data.selectedCats));
       dispatch(saveDateRange(data.dateRange));
-      successNotify('Filter saved');
     } catch (error) {
       errNotify('Filter not saves');
     }
