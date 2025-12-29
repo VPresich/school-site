@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { ImageLightbox } from './ImageLightbox';
+import MobileZoomButton from './MobileZoomButton';
 
 interface PosterImageProps {
   src?: string;
@@ -21,15 +22,18 @@ const PosterImage: React.FC<PosterImageProps> = ({
 
   if (src && !error) {
     return (
-      <ImageLightbox
-        src={src}
-        alt={alt}
-        className={clsx(
-          className,
-          'cursor-zoom-in hover:scale-105 transition-transform duration-300 shadow-xl'
-        )}
-        onError={() => setError(true)}
-      />
+      <div className="relative h-full w-full">
+        <ImageLightbox
+          src={src}
+          alt={alt}
+          className={clsx(
+            className,
+            'cursor-zoom-in hover:scale-105 transition-transform duration-300 shadow-xl'
+          )}
+          onError={() => setError(true)}
+        />
+        <MobileZoomButton onClick={() => {}} />
+      </div>
     );
   }
 
