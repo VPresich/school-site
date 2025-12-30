@@ -9,7 +9,7 @@ const MobileZoomIcon: FC<MobileZoomIconProps> = ({ className }) => {
   return (
     <span
       className={`
-        absolute bottom-3 right-3
+        absolute top-3 right-3
         md:hidden
         bg-black/60
         p-2
