@@ -2,6 +2,7 @@ import React from 'react';
 import { SanityImage } from '../redux/types';
 import { ImageLightbox } from './ImageLightbox';
 import { getImageUrl } from '../api/getImageUrl';
+import MobileZoomIcon from './MobileZoomIcon';
 
 interface DiplomasGalleryProps {
   diplomas: SanityImage[];
@@ -17,11 +18,12 @@ const DiplomasGallery: React.FC<DiplomasGalleryProps> = ({ diplomas }) => {
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {diplomas.map((diploma, index) => (
-          <ImageLightbox
-            key={index}
-            src={getImageUrl(diploma.asset._ref, 1200)}
-            alt="Диплом"
-            className="
+          <div className="relative h-full w-full">
+            <ImageLightbox
+              key={index}
+              src={getImageUrl(diploma.asset._ref, 1200)}
+              alt="Диплом"
+              className="
               w-full
               h-48
               sm:h-56
@@ -33,7 +35,9 @@ const DiplomasGallery: React.FC<DiplomasGalleryProps> = ({ diplomas }) => {
               hover:opacity-90
               transition
             "
-          />
+            />
+            <MobileZoomIcon />
+          </div>
         ))}
       </div>
     </div>
