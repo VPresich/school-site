@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { ArchiveItemUI } from '../redux/archive/types';
 import { formatDate } from '../auxiliary/formatDate';
 import { PortableText } from '@portabletext/react';
 import PortableTextConfig from './PortableTextConfig';
 import DiplomasGallery from './DiplomasGallery';
 import ImageCardSlider from './ImageCardSlider';
-import { ImageLightbox } from './ImageLightbox';
+import { selectItemImages } from '../redux/archive/selectors';
 import VideoGallery from './VideoGallery';
-import { getImageUrl } from '../api/getImageUrl';
 
 interface ArchiveCardProps {
   item: ArchiveItemUI;
   preview_blocks?: number;
+  isCurrent?: boolean;
 }
 
 const ArchiveCard: React.FC<ArchiveCardProps> = ({
   item,
   preview_blocks = 3,
+  isCurrent = false,
 }) => {
   const [expanded, setExpanded] = useState(false);
+
+  const itemImages = useSelector(
+    selectItemImages({
+      card: item,
+      isCurrent,
+    })
+  );
 
   if (!item.description || item.description.length === 0) return null;
 
@@ -32,32 +41,29 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({
       ></div>
 
       <div className="flex flex-col gap-2">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold text-[#993333] leading-snug">
-              {item.title}
-            </h2>
+        <div className="flex justify-between items-center gap-2">
+          <h2
+            className="
+              text-xl md:text-2xl lg:text-2xl
+              font-semibold text-[#993333] leading-snug
+              max-w-[70%] sm:max-w-full
+              wrap-break-words
+            "
+          >
+            {item.title}
+          </h2>
 
-            {item.poster && (
-              <ImageLightbox
-                src={getImageUrl(item.poster.asset._ref, 1200)}
-                alt={`${item.title} афіша`}
-                className="w-8 h-8 cursor-zoom-in transition-transform duration-300 hover:scale-125 hover:shadow-lg"
-              />
-            )}
+          <div className="flex flex-col gap-1 items-end shrink-0">
+            <span className="text-xs sm:text-sm md:text-base font-semibold text-gray-700 text-right leading-tight">
+              <span>{formatDate(item.date)}</span>
+              {item.enddate && <span>{formatDate(item.enddate)}</span>}
+            </span>
+            <span className="text-xs md:text-sm font-medium text-[#993333] tracking-tight">
+              {item.category.title}
+            </span>
           </div>
-
-          <span className="text-sm sm:text-base font-semibold text-gray-700">
-            {formatDate(item.date)}
-            {item.enddate ? ` - ${formatDate(item.enddate)}` : ''}
-          </span>
         </div>
 
-        <div className="w-full text-right">
-          <span className="text-xs md:text-sm font-medium text-[#993333] tracking-tight">
-            {item.category.title}
-          </span>
-        </div>
         <div className="mt-1">
           <div className="prose prose-sm max-w-none text-left ">
             <PortableText
@@ -77,9 +83,9 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({
           )}
         </div>
 
-        {item.images && item.images.length > 0 && (
+        {itemImages && itemImages.length > 0 && (
           <div className="mt-2 sm:mt-4 md:mt-6 lg:mt-8">
-            <ImageCardSlider images={item.images} alt={item.title} />
+            <ImageCardSlider images={itemImages} alt={item.title} />
           </div>
         )}
 

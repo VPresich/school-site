@@ -22,14 +22,9 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
 
   const createPages = () => {
     const pages: (number | 'dots')[] = [];
-
-    // Always show first page
     pages.push(1);
-
-    // Left dots
     if (currentPage > 3) pages.push('dots');
 
-    // Middle pages
     for (
       let i = Math.max(2, currentPage - 1);
       i <= Math.min(totalPages - 1, currentPage + 1);
@@ -38,20 +33,15 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
       pages.push(i);
     }
 
-    // Right dots
     if (currentPage < totalPages - 2) pages.push('dots');
-
-    // Always show last page
     if (totalPages > 1) pages.push(totalPages);
-
     return pages;
   };
 
   const pages = createPages();
 
   return (
-    <div className="flex justify-center gap-2 mt-6 flex-wrap">
-      {/* First page button */}
+    <div className="flex justify-center gap-1 sm:gap-2 mt-6 flex-wrap">
       <button
         className={clsx(
           'px-2 py-1 rounded-lg border text-sm transition-all duration-300',
@@ -64,8 +54,6 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
       >
         <FiChevronsLeft size={18} className="text-gray-500" />
       </button>
-
-      {/* Previous button */}
       <button
         className={clsx(
           'px-2 py-1 rounded-lg border text-sm transition-all duration-300',
@@ -78,8 +66,6 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
       >
         <FiChevronLeft size={18} className="text-gray-500" />
       </button>
-
-      {/* Pages */}
       {pages.map((p, idx) =>
         p === 'dots' ? (
           <span
@@ -103,8 +89,6 @@ const Pagination: React.FC<PaginationProps> = ({ onPageChange }) => {
           </button>
         )
       )}
-
-      {/* Next button */}
       <button
         className={clsx(
           'px-2 py-1 rounded-lg border text-sm transition-all duration-300',

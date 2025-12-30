@@ -1,5 +1,5 @@
 import { RootState } from '../store';
-
+import { ArchiveItemUI } from './types';
 import { createSelector } from '@reduxjs/toolkit';
 import { transformCategory } from '../../auxiliary/transformCategory';
 
@@ -30,3 +30,23 @@ export const selectCurrentItemUI = createSelector(selectCurrentItem, item => {
     category: transformCategory(item.category),
   };
 });
+
+type SelectItemImagesArgs = {
+  card: ArchiveItemUI;
+  isCurrent?: boolean;
+};
+
+export const selectItemImages = ({ card, isCurrent }: SelectItemImagesArgs) =>
+  createSelector(
+    selectArchiveItemsUI,
+    selectCurrentItemUI,
+    (items, currentItem) => {
+      const item = isCurrent
+        ? currentItem
+        : items.find(item => item._id === card._id);
+
+      if (!item) return [];
+
+      return [...(item.images ?? []), ...(item.poster ? [item.poster] : [])];
+    }
+  );

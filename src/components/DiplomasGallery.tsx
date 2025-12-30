@@ -12,7 +12,9 @@ const DiplomasGallery: React.FC<DiplomasGalleryProps> = ({ diplomas }) => {
 
   return (
     <div className="mt-1 sm:mt-2 md:mt-3 lg:mt-4">
-      <h3 className="text-2xl font-semibold text-[#993333] mb-2">Дипломи</h3>
+      <h3 className="text-xl md:text-2xl font-semibold text-[#993333] mb-2">
+        Дипломи
+      </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {diplomas.map((diploma, index) => (
           <ImageLightbox
