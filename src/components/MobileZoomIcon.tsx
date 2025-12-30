@@ -9,10 +9,10 @@ const MobileZoomIcon: FC<MobileZoomIconProps> = ({ className }) => {
   return (
     <span
       className={`
-        absolute top-3 right-3
+        absolute top-2 right-2
         md:hidden
-        bg-black/60
-        p-2
+        bg-black/70
+        p-1
         rounded-full
         shadow-lg
         flex items-center justify-center
@@ -21,7 +21,7 @@ const MobileZoomIcon: FC<MobileZoomIconProps> = ({ className }) => {
       `}
       aria-hidden="true"
     >
-      <FiSearch className="w-5 h-5 text-white" />
+      <FiSearch className="w-4 h-4 text-white" />
     </span>
   );
 };
