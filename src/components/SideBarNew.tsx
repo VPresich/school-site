@@ -5,13 +5,11 @@ import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 const SidebarNew: React.FC = () => {
   return (
     <aside className="w-full md:w-80 bg-white rounded-lg shadow-md p-6 flex flex-col gap-6">
-      {/* Логотип або назва школи */}
       <div className="text-center">
         <h2 className="text-2xl font-bold text-[#993333]">Школа мистецтв №1</h2>
         <p className="text-sm text-gray-500">м. Київ, Солом'янський район</p>
       </div>
 
-      {/* Останні новини / події */}
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold text-[#993333]">Останні новини</h3>
         <Link
@@ -34,7 +32,6 @@ const SidebarNew: React.FC = () => {
         </Link>
       </div>
 
-      {/* Швидкі посилання */}
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold text-[#993333]">
           Швидкі посилання

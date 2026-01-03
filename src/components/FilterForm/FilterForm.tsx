@@ -49,7 +49,10 @@ const FilterForm: React.FC<FilterFormProps> = ({ onClose }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mb-4 flex flex-col px-2">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-4 px-2 pb-4"
+    >
       <Controller
         name="dateRange"
         control={control}
