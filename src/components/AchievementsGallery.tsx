@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectDiplomas } from '../redux/achievement/selectors';
+import MobileZoomIcon from './MobileZoomIcon';
 import { ImageLightbox } from './ImageLightbox';
 import { getImageUrl } from '../api/getImageUrl';
 
@@ -29,27 +30,30 @@ const AchievementGallery: React.FC = () => {
               hover:shadow-xl
             "
         >
-          <div className="relative w-full pb-[120%] overflow-hidden">
-            <ImageLightbox
-              src={getImageUrl(item.diploma.asset._ref, 1200)}
-              alt={`Фото ${idx + 1}`}
-              className="
+          <div className="relative h-full w-full">
+            <div className="relative w-full pb-[120%] overflow-hidden">
+              <ImageLightbox
+                src={getImageUrl(item.diploma.asset._ref, 1200)}
+                alt={`Фото ${idx + 1}`}
+                className="
                 absolute top-0 left-0 w-full h-full object-cover
                 transform transition duration-300 ease-out
                 group-hover:scale-105
                 cursor-zoom-in
               "
-            />
+              />
 
-            <div
-              className="
+              <div
+                className="
                 absolute inset-0
                 bg-black/0
                 transition duration-300
                 group-hover:bg-black/20
                 pointer-events-none
               "
-            />
+              />
+            </div>
+            <MobileZoomIcon />
           </div>
         </div>
       ))}
