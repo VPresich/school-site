@@ -29,21 +29,20 @@ const ImageCardSlider: React.FC<ImageCardSliderProps> = ({
 
   return (
     <>
-      <div className={`relative w-full ${className}`}>
+      <div
+        className={`relative w-full h-[500px] flex items-center justify-center ${className}`}
+      >
         <img
           key={currentImage.asset._ref}
           src={getImageUrl(currentImage.asset._ref, 600)}
           alt={alt}
           className="
-              max-w-full          
-              max-h-[500px]       
-              w-auto              
-              h-auto              
-              object-contain       
-              mx-auto             
-              cursor-zoom-in
-              transition-transform duration-500 ease-in-out
-            "
+            max-w-full
+            max-h-full
+            object-contain
+            cursor-zoom-in
+            transition-opacity duration-300
+          "
           onClick={() => setLightboxOpen(true)}
         />
 
@@ -64,52 +63,6 @@ const ImageCardSlider: React.FC<ImageCardSliderProps> = ({
           </>
         )}
       </div>
-
-      {/* <Dialog
-        open={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        className="relative z-50"
-      >
-        <div
-          className="fixed inset-0 bg-black/80"
-          aria-hidden="true"
-          onClick={() => setLightboxOpen(false)}
-        />
-        <div className="fixed inset-0 flex items-center justify-center p-4 pointer-events-none">
-          <div className="relative pointer-events-auto">
-            <img
-              src={getImageUrl(currentImage.asset._ref, 1200)}
-              alt={alt}
-              className="max-w-[90vw] max-h-[90vh] object-contain rounded shadow-2xl"
-            />
-
-            <button
-              onClick={() => setLightboxOpen(false)}
-              className="absolute -top-4 -right-4 bg-black text-white w-10 h-10 rounded-full text-2xl flex items-center justify-center hover:bg-gray-800 cursor-pointer"
-            >
-              <IoCloseOutline size={20} />
-            </button>
-
-            {images.length > 1 && (
-              <>
-                <button
-                  onClick={prevImage}
-                  className="absolute -left-6 top-1/2 -translate-y-1/2 bg-black text-white w-10 h-10 rounded-full text-2xl flex items-center justify-center hover:bg-gray-800 cursor-pointer"
-                >
-                  <FiChevronLeft size={20} />
-                </button>
-
-                <button
-                  onClick={nextImage}
-                  className="absolute -right-6 top-1/2 -translate-y-1/2 bg-black text-white w-10 h-10 rounded-full text-2xl flex items-center justify-center hover:bg-gray-800 cursor-pointer"
-                >
-                  <FiChevronRight size={20} />
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      </Dialog> */}
       <Dialog
         open={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
