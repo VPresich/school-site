@@ -41,10 +41,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             <button
               onClick={prevImage}
               className="
-                absolute left-1 md:left-2 top-1/2 transform -translate-y-1/2 
-                bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 
-                transition-transform transition-bg duration-300 
-                p-1 sm:p-2 md:p-3 lg:p-4 
+                absolute left-1 md:left-2 top-1/2 transform -translate-y-1/2
+                bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110
+                transition-transform transition-bg duration-300
+                p-1 sm:p-2 md:p-3 lg:p-4
                 rounded-full shadow-lg cursor-pointer
               "
             >
@@ -57,10 +57,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             <button
               onClick={nextImage}
               className="
-                absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 
-                bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110 
-                transition-transform transition-bg duration-300 
-                p-1 sm:p-2 md:p-3 lg:p-4 
+                absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2
+                bg-white bg-opacity-70 hover:bg-opacity-100 hover:scale-110
+                transition-transform transition-bg duration-300
+                p-1 sm:p-2 md:p-3 lg:p-4
                 rounded-full shadow-lg cursor-pointer
               "
             >
