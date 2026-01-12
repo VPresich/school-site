@@ -77,11 +77,6 @@ const ImageCardSlider: React.FC<ImageCardSliderProps> = ({
 
         <div className="fixed inset-0 flex items-center justify-center p-4 pointer-events-none">
           <div className="relative pointer-events-auto flex items-center justify-center w-full h-full">
-            {/* <img
-              src={getImageUrl(currentImage.asset._ref, 1200)}
-              alt={alt}
-              className="max-w-[90vw] max-h-[90vh] object-contain rounded shadow-2xl"
-            /> */}
             <img
               src={getImageUrl(currentImage.asset._ref, 2000)}
               alt={alt}

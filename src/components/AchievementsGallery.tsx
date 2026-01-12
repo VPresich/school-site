@@ -35,6 +35,7 @@ const AchievementGallery: React.FC = () => {
               <ImageLightbox
                 src={getImageUrl(item.diploma.asset._ref, 1200)}
                 alt={`Фото ${idx + 1}`}
+                mode="document"
                 className="
                 absolute top-0 left-0 w-full h-full object-cover
                 transform transition duration-300 ease-out

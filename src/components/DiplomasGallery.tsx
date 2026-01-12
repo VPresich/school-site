@@ -22,6 +22,8 @@ const DiplomasGallery: React.FC<DiplomasGalleryProps> = ({ diplomas }) => {
             <ImageLightbox
               key={index}
               src={getImageUrl(diploma.asset._ref, 1200)}
+              srcLarge={getImageUrl(diploma.asset._ref, 1600)}
+              mode="document"
               alt="Диплом"
               className="
               w-full
